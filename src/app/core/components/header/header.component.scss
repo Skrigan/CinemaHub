@@ -1,0 +1,80 @@
+.header {
+  height: 7rem;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem;
+}
+
+.logo {
+  height: 5.6rem;
+  width: 5.6rem;
+  border: 0.3rem solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 4rem;
+  cursor: pointer;
+  &__text {
+    font-family: sans-serif;
+    color: white;
+    font-size: 2.4rem;
+    background-color: black;
+  }
+}
+
+.nav {
+  margin: 0 auto 0 0;
+  &__ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+  }
+  &__ul li {
+    cursor: pointer;
+  }
+}
+
+.active-link {
+  color: white;
+  position: relative;
+}
+
+.active-link:before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -0.6rem;
+  height: 0.2rem;
+  width: 100%;
+  background: white;
+}
+
+.search {
+  position: relative;
+  &__input {
+    height: 3.6rem;
+    width: 30rem;
+    font-size: 1.8rem;
+    border-radius: 1rem;
+    border: none;
+    padding-left: 2rem;
+    padding-right: 4rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    &:focus {
+      color: black;
+      outline: none;
+      background-color: white;
+    }
+  }
+  &__icon {
+    height: 3.6rem;
+    padding: 0.8rem;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+  }
+}

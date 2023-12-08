@@ -1,0 +1,21 @@
+//@import "normalize.css";
+
+$main-bg: #000000;
+$main-tc:  rgba(255, 255, 255, 0.6);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: $main-bg;
+  color: $main-tc;
+  padding: 0 10rem;
+  overflow-x: hidden;
+}
