@@ -1,10 +1,11 @@
 .header {
+  position: relative;
   height: 7rem;
-  font-size: 2rem;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 5rem;
+  gap: 3rem;
 }
 
 .logo {
@@ -18,7 +19,6 @@
   margin: 0 4rem;
   cursor: pointer;
   &__text {
-    font-family: sans-serif;
     color: white;
     font-size: 2.4rem;
     background-color: black;
@@ -30,7 +30,7 @@
   &__ul {
     list-style: none;
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
   }
   &__ul li {
     cursor: pointer;
@@ -40,41 +40,51 @@
 .active-link {
   color: white;
   position: relative;
-}
-
-.active-link:before {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -0.6rem;
-  height: 0.2rem;
-  width: 100%;
-  background: white;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -0.6rem;
+    height: 0.2rem;
+    width: 100%;
+    background: white;
+  }
 }
 
 .search {
-  position: relative;
+  position: absolute;
+  right: 0;
+  width: 22rem;
+  transition: width .3s linear;
+  padding: 1rem 0;
+  background-color: black;
+
   &__input {
-    height: 3.6rem;
-    width: 30rem;
-    font-size: 1.8rem;
+    width: 100%;
+    height: 2.6rem;
     border-radius: 1rem;
     border: none;
-    padding-left: 2rem;
-    padding-right: 4rem;
-    background-color: rgba(255, 255, 255, 0.15);
+    padding-left: 3rem;
+    background-color: black;
+    transition: background-color .3s linear;
     color: rgba(255, 255, 255, 0.9);
+    color: rgb(117, 117, 117);
     &:focus {
       color: black;
       outline: none;
       background-color: white;
     }
   }
+
+  &:focus-within {
+    width: calc(100% - 16.6rem);
+  }
+
   &__icon {
-    height: 3.6rem;
-    padding: 0.8rem;
+    height: 2.6rem;
+    padding: 0.6rem;
+    padding-left: 1rem;
     position: absolute;
-    right: 0;
-    cursor: pointer;
+    left: 0;
   }
 }

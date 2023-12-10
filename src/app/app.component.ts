@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {mockedPremieres, mockedReleases} from "./core/interfaces/IRelease";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CinemaHub';
+  protected readonly mockedPremieres = mockedPremieres;
+  protected readonly mockedReleases = mockedReleases;
 }

@@ -1,0 +1,20 @@
+<div class="slider">
+  <ng-content></ng-content>
+  <div class="cards" #cardsRef>
+    <div class="card" *ngFor="let card of cards" [ngStyle]="{'min-width': cardMinWidth}">
+      <img class="card__img" [src]="card.posterUrl" alt="failed to load poster image">
+      <div class="card__text">
+        <h4 class="card__title">{{card.nameRu}}</h4>
+        <p class="card__info">{{getCardInfo(card)}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="control">
+    <div class="control__left" #controlLeft (click)="moveLeft($event)" style="visibility: hidden">
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#000000A0'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+    </div>
+    <div class="control__right" #controlRight (click)="moveRight($event)">
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#000000A0'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+    </div>
+  </div>
+</div>

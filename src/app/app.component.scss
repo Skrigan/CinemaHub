@@ -1,72 +1,25 @@
-.slider {
-  position: relative;
-  .cards {
-    display: flex;
-    //overflow: hidden;
-    gap: 1.5rem;
-    width: 100%;
-    .card {
-      min-width: calc((100% - 3rem) / 3);
-      &__img {
-        border-radius: 2rem;
-        width: 100%;
-      }
-    }
-  }
-
-  .control {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: space-between;
-    width: calc(100% + 6rem + 1.5rem);
-    cursor: pointer;
-    &__left, &__right {
-      //padding: 2rem;
-      background: rgba(128, 128, 128, 0.5);
-      backdrop-filter: blur(5px);
-      border-radius: 50%;
-      width: 6rem;
-      height: 6rem;
-      position: relative;
-      & svg {
-        width: 1.5rem;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-40%, -50%);
-      }
-    }
-    &__left svg {
-      transform: translate(-60%, -50%) rotate(180deg);
-    }
-  }
-}
-
-.slider2 {
-  position: relative;
-}
-
-.cards2 {
+.premieres {
   display: flex;
-  //overflow: hidden;
+  font-size: 1.5vw;
   gap: 1rem;
-  width: 100%;
-  .card2 {
-    min-width: calc((100% - 3rem) / 4);
-    &__img2 {
-      border-radius: 2rem;
-      width: 100%;
-    }
+  margin: 2rem 0;
+  align-items: center;
+  &__svg {
+    height: 2rem;
   }
 }
 
-.control2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.title {
+  display: flex;
+  font-size: 1.2vw;
+  gap: 1rem;
+  margin: 2rem 0;
+  align-items: center;
+  &__svg {
+    height: 2rem;
+  }
 }
 
+section {
+  margin-bottom: 5vw;
+}
