@@ -1,0 +1,39 @@
+:host {
+  position: relative;
+  cursor: pointer;
+  transition: scale .1s linear;
+  &:hover {
+    scale: 1.05;
+  }
+}
+
+.img {
+  border-radius: .7vw;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text {
+  position: absolute;
+  &__title {
+    font-size: .9vw;
+    color: white;
+    margin: .3vw 0;
+  }
+  &__info {
+    font-size: .675vw;
+    text-transform: capitalize;
+  }
+}
+
+.rating {
+  position: absolute;
+  top: .8vw;
+  left: .8vw;
+  font-size: .8vw;
+  padding: .2vw;
+  border-radius: .2vw;
+  background-color: #3bb33b;
+  color: white;
+}

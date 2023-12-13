@@ -8,8 +8,8 @@ import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { SliderComponent } from './core/components/slider/slider.component';
 import {NgOptimizedImage} from "@angular/common";
-import { PremierCardComponent } from './core/components/premier-card/premier-card.component';
 import { MovieCardComponent } from './core/components/movie-card/movie-card.component';
+import { ReleaseCardComponent } from './core/components/release-card/release-card.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +17,8 @@ import { MovieCardComponent } from './core/components/movie-card/movie-card.comp
     HeaderComponent,
     FooterComponent,
     SliderComponent,
-    PremierCardComponent,
     MovieCardComponent,
+    ReleaseCardComponent,
   ],
   imports: [
     BrowserModule,

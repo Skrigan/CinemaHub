@@ -18,9 +18,8 @@ export interface IRelease {
   duration: number,
   releaseDate: string
 }
-//используй ПОСТЕР, название, дату, жанры, страну, продолжительность дату
 
-export const mockedReleases = [
+export const mockedReleases: IRelease[] = [
   {
     "filmId": 4819561,
     "nameRu": "Мой парень — купидон",
@@ -164,60 +163,6 @@ export const mockedReleases = [
     "expectationsRatingVoteCount": 188,
     "duration": 87,
     "releaseDate": "2023-12-01"
-  },
-  {
-    "filmId": 4629247,
-    "nameRu": "",
-    "nameEn": "We Dare to Dream",
-    "year": 2023,
-    "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/4629247.jpg",
-    "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/4629247.jpg",
-    "countries": [
-      {
-        "country": "Великобритания"
-      }
-    ],
-    "genres": [
-      {
-        "genre": "документальный"
-      },
-      {
-        "genre": "спорт"
-      }
-    ],
-    "rating": null,
-    "ratingVoteCount": 0,
-    "expectationsRating": null,
-    "expectationsRatingVoteCount": 2,
-    "duration": 96,
-    "releaseDate": "2023-12-01"
-  },
-  {
-    "filmId": 5125572,
-    "nameRu": "",
-    "nameEn": "Thriller 40",
-    "year": 2023,
-    "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/5125572.jpg",
-    "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/5125572.jpg",
-    "countries": [
-      {
-        "country": "США"
-      }
-    ],
-    "genres": [
-      {
-        "genre": "документальный"
-      },
-      {
-        "genre": "музыка"
-      }
-    ],
-    "rating": null,
-    "ratingVoteCount": 3,
-    "expectationsRating": null,
-    "expectationsRatingVoteCount": 3,
-    "duration": 90,
-    "releaseDate": "2023-12-02"
   },
   {
     "filmId": 5284642,
@@ -409,33 +354,6 @@ export const mockedReleases = [
     "releaseDate": "2023-12-06"
   },
   {
-    "filmId": 5424528,
-    "nameRu": "",
-    "nameEn": "John Lennon: Murder Without a Trial",
-    "year": 2023,
-    "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/5424528.jpg",
-    "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/5424528.jpg",
-    "countries": [
-      {
-        "country": "США"
-      },
-      {
-        "country": "Великобритания"
-      }
-    ],
-    "genres": [
-      {
-        "genre": "документальный"
-      }
-    ],
-    "rating": null,
-    "ratingVoteCount": 6,
-    "expectationsRating": null,
-    "expectationsRatingVoteCount": 1,
-    "duration": 0,
-    "releaseDate": "2023-12-06"
-  },
-  {
     "filmId": 1436043,
     "nameRu": "Сны Алисы",
     "nameEn": null,
@@ -484,36 +402,6 @@ export const mockedReleases = [
     "releaseDate": "2023-12-07"
   },
   {
-    "filmId": 4549971,
-    "nameRu": "",
-    "nameEn": "Merry Little Batman",
-    "year": 2023,
-    "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/4549971.jpg",
-    "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/4549971.jpg",
-    "countries": [
-      {
-        "country": "США"
-      }
-    ],
-    "genres": [
-      {
-        "genre": "мультфильм"
-      },
-      {
-        "genre": "комедия"
-      },
-      {
-        "genre": "семейный"
-      }
-    ],
-    "rating": null,
-    "ratingVoteCount": 7,
-    "expectationsRating": 100.0,
-    "expectationsRatingVoteCount": 103,
-    "duration": 0,
-    "releaseDate": "2023-12-08"
-  },
-  {
     "filmId": 4511543,
     "nameRu": "Оставь мир позади",
     "nameEn": "Leave the World Behind",
@@ -541,32 +429,41 @@ export const mockedReleases = [
     "releaseDate": "2023-12-08"
   },
   {
-    "filmId": 5396742,
-    "nameRu": "",
-    "nameEn": "Mr. Monk's Last Case: A Monk Movie",
+    "filmId": 5318704,
+    "nameRu": "Крик. Ночь перед Рождеством",
+    "nameEn": "It's a Wonderful Knife",
     "year": 2023,
-    "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/5396742.jpg",
-    "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/5396742.jpg",
+    "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/5318704.jpg",
+    "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/5318704.jpg",
     "countries": [
       {
+        "country": "Великобритания"
+      },
+      {
         "country": "США"
+      },
+      {
+        "country": "Канада"
       }
     ],
     "genres": [
       {
+        "genre": "ужасы"
+      },
+      {
         "genre": "комедия"
       },
       {
-        "genre": "криминал"
+        "genre": "фантастика"
       }
     ],
-    "rating": null,
-    "ratingVoteCount": 0,
-    "expectationsRating": null,
-    "expectationsRatingVoteCount": 40,
-    "duration": 0,
-    "releaseDate": "2023-12-08"
-  }
+    "rating": 4.787,
+    "ratingVoteCount": 243,
+    "expectationsRating": 98.12,
+    "expectationsRatingVoteCount": 188,
+    "duration": 87,
+    "releaseDate": "2023-12-01"
+  },
 ]
 
 

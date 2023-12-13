@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, OnInit} from '@angular/core';
+import {IRelease} from "../../interfaces/IRelease";
+import {IMovie} from "../../interfaces/IMovie";
 
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
-  styleUrl: './movie-card.component.scss'
+  styleUrl: './movie-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MovieCardComponent {
+export class MovieCardComponent implements OnInit {
+  @Input({ required: true }) card!: IMovie;
+  textInfo: string = '';
 
+  constructor(public elementRef: ElementRef) {
+  }
+
+  ngOnInit() {
+    this.textInfo = `
+      ${this.card.year},
+      ${this.card.countries[0].name},
+      ${this.card.genres[0].name}
+    `
+  }
 }

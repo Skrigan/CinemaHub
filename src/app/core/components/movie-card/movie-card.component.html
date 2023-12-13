@@ -1,1 +1,6 @@
-<p>movie-card works!</p>
+<img class="img" [src]="card.poster.previewUrl" alt="failed to load poster image">
+<div class="text">
+  <h4 class="text__title">{{card.name}}</h4>
+  <p class="text__info">{{textInfo}}</p>
+</div>
+<div class="rating">{{card.rating.kp | number: '1.1-1'}}</div>

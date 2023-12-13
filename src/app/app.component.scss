@@ -1,25 +1,50 @@
-.premieres {
-  display: flex;
-  font-size: 1.5vw;
-  gap: 1rem;
-  margin: 2rem 0;
-  align-items: center;
-  &__svg {
-    height: 2rem;
-  }
-}
+//.premieres {
+//  display: flex;
+//  //font-size: 2.4rem;
+//  font-size: 1.2vw;
+//  margin: 1vw 0;
+//  align-items: center;
+//}
 
 .title {
   display: flex;
   font-size: 1.2vw;
-  gap: 1rem;
-  margin: 2rem 0;
+  gap: .5vw;
+  margin: 1vw 0;
   align-items: center;
+  &_premieres {
+    font-size: 1.4vw;
+  }
   &__svg {
-    height: 2rem;
+    height: 1vw;
   }
 }
 
 section {
   margin-bottom: 5vw;
+}
+
+.card {
+  position: relative;
+  &__img {
+    border-radius: 2rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__text {
+    position: absolute;
+    //bottom: 0;
+  }
+  &__title {
+    //font-size: 2rem;
+    font-size: 1.2vw;
+    color: white;
+    margin: 1rem 0;
+  }
+  &__info {
+    //font-size: 1.6rem;
+    font-size: .9vw;
+    text-transform: capitalize;
+  }
 }

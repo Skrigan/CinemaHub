@@ -2,45 +2,47 @@
 <main>
   <router-outlet></router-outlet>
   <section>
-    <h2 class="premieres">
-      <p class="premieres__text">Ближайшие премьеры</p>
-    </h2>
-    <app-slider [cards]="mockedReleases" [displayedImages]=4></app-slider>
+    <h2 class="title title_premieres">Ближайшие премьеры</h2>
+    <app-slider [displayedImages]=4>
+      <app-release-card #cards *ngFor="let card of mockedReleases" [card]="card"></app-release-card>
+    </app-slider>
   </section>
   <section>
     <h3 class="title">
       <p class="title__text">Фильмы</p>
       <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
     </h3>
-    <app-slider [cards]="mockedPremieres" [displayedImages]=7></app-slider>
+    <app-slider [displayedImages]=6>
+      <app-movie-card #cards *ngFor="let card of mockedMovies" [card]="card"></app-movie-card>
+    </app-slider>
   </section>
-  <section>
-    <h3 class="title">
-      <p class="title__text">Сериалы</p>
-      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
-    </h3>
-    <app-slider [cards]="mockedPremieres" [displayedImages]=7></app-slider>
-  </section>
-  <section>
-    <h3 class="title">
-      <p class="title__text">Мульфильмы</p>
-      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
-    </h3>
-    <app-slider [cards]="mockedPremieres" [displayedImages]=7></app-slider>
-  </section>
-  <section>
-    <h3 class="title">
-      <p class="title__text">Мультсериалы</p>
-      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
-    </h3>
-    <app-slider [cards]="mockedPremieres" [displayedImages]=7></app-slider>
-  </section>
-  <section>
-    <h3 class="title">
-      <p class="title__text">Аниме</p>
-      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
-    </h3>
-    <app-slider [cards]="mockedPremieres" [displayedImages]=7></app-slider>
-  </section>
+<!--  <section>-->
+<!--    <h3 class="title">-->
+<!--      <p class="title__text">Сериалы</p>-->
+<!--      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>-->
+<!--    </h3>-->
+<!--    <app-slider [cards]="mockedPremieres" [displayedImages]=7></app-slider>-->
+<!--  </section>-->
+<!--  <section>-->
+<!--    <h3 class="title">-->
+<!--      <p class="title__text">Мульфильмы</p>-->
+<!--      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>-->
+<!--    </h3>-->
+<!--    <app-slider [cards]="mockedPremieres" [displayedImages]=7></app-slider>-->
+<!--  </section>-->
+<!--  <section>-->
+<!--    <h3 class="title">-->
+<!--      <p class="title__text">Мультсериалы</p>-->
+<!--      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>-->
+<!--    </h3>-->
+<!--    <app-slider [cards]="mockedPremieres" [displayedImages]=7></app-slider>-->
+<!--  </section>-->
+<!--  <section>-->
+<!--    <h3 class="title">-->
+<!--      <p class="title__text">Аниме</p>-->
+<!--      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>-->
+<!--    </h3>-->
+<!--    <app-slider [cards]="mockedPremieres" [displayedImages]=7></app-slider>-->
+<!--  </section>-->
 </main>
 <app-footer></app-footer>
