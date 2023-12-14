@@ -13,15 +13,14 @@ import { mockedAnime } from "./core/data/mockedAnime";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'CinemaHub';
-  protected readonly mockedReleases = mockedReleases;
+  protected readonly mockedReleases = mockedReleases.slice(0, 16);
   protected readonly mockedMovies = mockedMovies.slice(0, 24);
   protected readonly mockedSeries = mockedSeries.slice(0, 24);
   protected readonly mockedCartoons = mockedCartoons.slice(0, 24);
   protected readonly mockedAnimatedSeries = mockedAnimatedSeries.slice(0, 24);
   protected readonly mockedAnime = mockedAnime.slice(0, 24);
-  cardMinWidth!: string;
 
+  cardMinWidth!: string;
 
  ngOnInit() {
    this.cardMinWidth = `calc((100% - ${(4 - 1)}vw) / 4)`;

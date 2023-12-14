@@ -1,12 +1,13 @@
 import {
-  Component,
-  Input,
-  ContentChildren,
-  ViewChild,
   AfterContentInit,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
   ElementRef,
+  Input,
   OnInit,
-  QueryList
+  QueryList,
+  ViewChild
 } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
@@ -28,7 +29,8 @@ enum ruMonth {
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
-  styleUrl: './slider.component.scss'
+  styleUrl: './slider.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SliderComponent implements OnInit, AfterContentInit {
   @Input() displayedImages: number = 3;
