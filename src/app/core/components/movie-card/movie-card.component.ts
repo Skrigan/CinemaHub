@@ -1,5 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, OnInit} from '@angular/core';
-import {IRelease} from "../../interfaces/IRelease";
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {IMovie} from "../../interfaces/IMovie";
 
 @Component({

@@ -1,5 +1,4 @@
-import {Component, ElementRef, HostListener, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import { IRelease } from "./core/interfaces/IRelease";
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import { mockedMovies } from "./core/data/mockedMovies";
 import { mockedReleases } from "./core/data/mockedReleases";
 import { mockedSeries } from "./core/data/mockedSeries";

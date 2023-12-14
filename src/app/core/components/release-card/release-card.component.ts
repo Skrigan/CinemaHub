@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {IRelease} from "../../interfaces/IRelease";
 
 enum ruMonth {

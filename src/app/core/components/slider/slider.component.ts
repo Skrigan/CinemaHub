@@ -2,29 +2,13 @@ import {
   AfterContentInit,
   ChangeDetectionStrategy,
   Component,
-  ContentChildren,
   ElementRef,
-  Input, OnChanges,
+  Input,
   OnInit,
-  QueryList, SimpleChanges,
   ViewChild
 } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
-enum ruMonth {
-  'Января',
-  'Февраля',
-  'Марта',
-  'Апреля',
-  'Мая',
-  'Июня',
-  'Июля',
-  'Августа',
-  'Сентября',
-  'Октября',
-  'Ноября',
-  'Декабря',
-}
 
 @Component({
   selector: 'app-slider',
@@ -35,19 +19,21 @@ enum ruMonth {
 export class SliderComponent implements OnInit, AfterContentInit {
   @Input() displayedImages: number = 3;
 
-  @ContentChildren('cards', {read: ElementRef}) cardList!: QueryList<ElementRef>;
   @ViewChild('controlLeft', { static: true }) controlLeft!: ElementRef;
   @ViewChild('controlRight', { static: true }) controlRight!: ElementRef;
   @ViewChild('cardsRef', { static: true }) cardsRef!: ElementRef;
 
+  protected cards: HTMLElement[] = [];
   protected currentSlide = 0;
   protected cardMinWidth = '';
 
-  constructor(private http: HttpClient) {
-  }
+  // constructor(private http: HttpClient) {
+  // }
 
   ngOnInit() {
     this.cardMinWidth = `calc((100% - ${(this.displayedImages - 1)}vw) / ${this.displayedImages})`;
+    // const trash = Array.from(this.cardsRef.nativeElement.children);
+    // console.log(trash);
     // this.http.get<any>('https://kinopoiskapiunofficial.tech/api/v2.1/films/releases', {
     //   headers: {
     //     'X-API-KEY': 'e4ef3242-e2cc-4ea4-933e-d4f1b854cafd',
@@ -64,11 +50,11 @@ export class SliderComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.cardList.forEach((item) => {
-        item.nativeElement.style.minWidth = this.cardMinWidth;
+    this.cards = Array.from(this.cardsRef.nativeElement.children);
+    this.cards.forEach((item: HTMLElement) => {
+        item.style.minWidth = this.cardMinWidth;
     })
   }
-
 
   moveLeft(event: MouseEvent) {
     if (this.currentSlide === 0) {
@@ -83,7 +69,7 @@ export class SliderComponent implements OnInit, AfterContentInit {
   }
 
   moveRight(event: MouseEvent) {
-    const maxSlide = Math.ceil(this.cardList.length / this.displayedImages);
+    const maxSlide = Math.ceil(this.cards.length / this.displayedImages);
     if (this.currentSlide === maxSlide) {
       return;
     }
