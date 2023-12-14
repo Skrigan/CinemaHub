@@ -11,29 +11,27 @@
   .control {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: space-between;
-    width: calc(100% + 5vw);
-    &__left, &__right {
-      //padding: 2rem;
-      background: rgba(128, 128, 128, 0.5);
-      backdrop-filter: blur(0.2vw);
-      border-radius: 50%;
-      width: 4vw;
-      height: 4vw;
-      position: relative;
-      cursor: pointer;
-      & svg {
-        width: 1vw;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-40%, -50%);
-      }
+    transform: translateY(-50%);
+    background: rgba(128, 128, 128, 0.5);
+    backdrop-filter: blur(0.2vw);
+    border-radius: 50%;
+    width: 4vw;
+    height: 4vw;
+    cursor: pointer;
+    &_left {
+      left: -2.5vw;
     }
-    &__left svg {
+    &_right {
+      right: -2.5vw;
+    }
+    &_left svg, &_right svg {
+      width: 1vw;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-40%, -50%);
+    }
+    &_left svg {
       transform: translate(-60%, -50%) rotate(180deg);
     }
   }

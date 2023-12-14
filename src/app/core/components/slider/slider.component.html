@@ -2,12 +2,10 @@
   <div class="cards" #cardsRef>
     <ng-content></ng-content>
   </div>
-  <div class="control">
-    <div class="control__left" #controlLeft (click)="moveLeft($event)" style="visibility: hidden">
+    <div class="control control_left" #controlLeft (click)="moveLeft($event)" style="visibility: hidden">
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#000000A0'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
     </div>
-    <div class="control__right" #controlRight (click)="moveRight($event)">
+    <div class="control control_right" #controlRight (click)="moveRight($event)">
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#000000A0'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
     </div>
-  </div>
 </div>
