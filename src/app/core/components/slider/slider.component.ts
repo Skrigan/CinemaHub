@@ -4,9 +4,9 @@ import {
   Component,
   ContentChildren,
   ElementRef,
-  Input,
+  Input, OnChanges,
   OnInit,
-  QueryList,
+  QueryList, SimpleChanges,
   ViewChild
 } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
@@ -35,7 +35,7 @@ enum ruMonth {
 export class SliderComponent implements OnInit, AfterContentInit {
   @Input() displayedImages: number = 3;
 
-  @ContentChildren('cards') cardList!: QueryList<any>;
+  @ContentChildren('cards', {read: ElementRef}) cardList!: QueryList<ElementRef>;
   @ViewChild('controlLeft', { static: true }) controlLeft!: ElementRef;
   @ViewChild('controlRight', { static: true }) controlRight!: ElementRef;
   @ViewChild('cardsRef', { static: true }) cardsRef!: ElementRef;
@@ -65,13 +65,10 @@ export class SliderComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit() {
     this.cardList.forEach((item) => {
-      if (item.nativeElement) {
         item.nativeElement.style.minWidth = this.cardMinWidth;
-      } else if (item.elementRef) {
-        item.elementRef.nativeElement.style.minWidth = this.cardMinWidth;
-      }
     })
   }
+
 
   moveLeft(event: MouseEvent) {
     if (this.currentSlide === 0) {

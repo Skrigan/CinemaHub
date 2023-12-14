@@ -41,6 +41,9 @@
   }
   &__ul li {
     cursor: pointer;
+    &:hover {
+      color: white;
+    }
   }
 }
 

@@ -12,9 +12,6 @@ export class MovieCardComponent implements OnInit {
   @Input({ required: true }) card!: IMovie;
   textInfo: string = '';
 
-  constructor(public elementRef: ElementRef) {
-  }
-
   ngOnInit() {
     this.textInfo = `
       ${this.card.year},

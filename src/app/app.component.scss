@@ -1,12 +1,32 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black;
+  z-index: 1;
+  width: 100%;
+  padding: 0 7%;
+  transition: top .2s linear;
+  &_hidden {
+    top: -4.5vw;
+  }
+}
+
+.main {
+  margin-top: 4.5vw;
+}
+
 .title {
-  display: flex;
+  display: inline-flex;
   font-size: 1.2vw;
   gap: .5vw;
+  transition: gap .1s linear;
   margin: 2vw 0 2vw 1vw;
   align-items: center;
   cursor: pointer;
   &:hover {
     color: white;
+    gap: .8vw;
     svg {
       fill: white;
     }

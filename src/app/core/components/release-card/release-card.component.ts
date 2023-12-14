@@ -26,9 +26,6 @@ export class ReleaseCardComponent implements OnInit {
   @Input({ required: true }) card!: IRelease;
   textInfo: string = '';
 
-  constructor(public elementRef: ElementRef) {
-  }
-
   ngOnInit() {
     const date = new Date(this.card.releaseDate);
     this.textInfo = `
