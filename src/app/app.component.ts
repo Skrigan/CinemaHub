@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import {IRelease, mockedPremieres, mockedReleases} from "./core/interfaces/IRelease";
-import {mockedMovies} from "./core/interfaces/IMovie";
+import { IRelease } from "./core/interfaces/IRelease";
+import { mockedMovies } from "./core/data/mockedMovies";
+import { mockedReleases } from "./core/data/mockedReleases";
+import { mockedSeries } from "./core/data/mockedSeries";
+import { mockedCartoons } from "./core/data/mockedCartoons";
+import { mockedAnimatedSeries } from "./core/data/mockedAnimated-Series";
+import { mockedAnime } from "./core/data/mockedAnime";
 
 @Component({
   selector: 'app-root',
@@ -11,6 +16,10 @@ export class AppComponent {
   title = 'CinemaHub';
   protected readonly mockedReleases = mockedReleases;
   protected readonly mockedMovies = mockedMovies.slice(0, 24);
+  protected readonly mockedSeries = mockedSeries.slice(0, 24);
+  protected readonly mockedCartoons = mockedCartoons.slice(0, 24);
+  protected readonly mockedAnimatedSeries = mockedAnimatedSeries.slice(0, 24);
+  protected readonly mockedAnime = mockedAnime.slice(0, 24);
   cardMinWidth!: string;
 
 
