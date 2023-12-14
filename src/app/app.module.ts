@@ -10,6 +10,8 @@ import { SliderComponent } from './core/components/slider/slider.component';
 import {NgOptimizedImage} from "@angular/common";
 import { MovieCardComponent } from './core/components/movie-card/movie-card.component';
 import { ReleaseCardComponent } from './core/components/release-card/release-card.component';
+import { MainComponent } from './core/pages/main/main.component';
+import { FilmsComponent } from './core/pages/films/films.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ReleaseCardComponent } from './core/components/release-card/release-car
     SliderComponent,
     MovieCardComponent,
     ReleaseCardComponent,
+    MainComponent,
+    FilmsComponent,
   ],
   imports: [
     BrowserModule,
