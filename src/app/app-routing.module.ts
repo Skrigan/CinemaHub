@@ -6,6 +6,11 @@ import { FilmsComponent } from "./core/pages/films/films.component";
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'main',
+    pathMatch: "full",
+  },
+  {
+    path: 'main',
     component: MainComponent,
   },
   {

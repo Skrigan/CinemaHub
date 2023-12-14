@@ -1,10 +1,4 @@
 import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
-import { mockedMovies } from "./core/data/mockedMovies";
-import { mockedReleases } from "./core/data/mockedReleases";
-import { mockedSeries } from "./core/data/mockedSeries";
-import { mockedCartoons } from "./core/data/mockedCartoons";
-import { mockedAnimatedSeries } from "./core/data/mockedAnimated-Series";
-import { mockedAnime } from "./core/data/mockedAnime";
 
 @Component({
   selector: 'app-root',
@@ -21,13 +15,6 @@ export class AppComponent implements OnInit{
       this.headerRef.nativeElement.classList.remove('header_hidden');
     }
   }
-
-  protected readonly mockedReleases = mockedReleases.slice(0, 16);
-  protected readonly mockedMovies = mockedMovies.slice(0, 24);
-  protected readonly mockedSeries = mockedSeries.slice(0, 24);
-  protected readonly mockedCartoons = mockedCartoons.slice(0, 24);
-  protected readonly mockedAnimatedSeries = mockedAnimatedSeries.slice(0, 24);
-  protected readonly mockedAnime = mockedAnime.slice(0, 24);
 
   cardMinWidth!: string;
 
