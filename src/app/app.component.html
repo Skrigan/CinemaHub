@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main>
   <router-outlet></router-outlet>
-  <section>
+  <section class="premieres">
     <h2 class="title title_premieres">Ближайшие премьеры</h2>
     <app-slider [displayedImages]=4>
       <app-release-card #cards *ngFor="let card of mockedReleases" [card]="card"></app-release-card>

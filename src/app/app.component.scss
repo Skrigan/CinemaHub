@@ -1,19 +1,24 @@
-//.premieres {
-//  display: flex;
-//  //font-size: 2.4rem;
-//  font-size: 1.2vw;
-//  margin: 1vw 0;
-//  align-items: center;
-//}
-
 .title {
   display: flex;
   font-size: 1.2vw;
   gap: .5vw;
-  margin: 1vw 0;
+  margin: 2vw 0 2vw 1vw;
   align-items: center;
+  cursor: pointer;
+  &:hover {
+    color: white;
+    svg {
+      fill: white;
+    }
+  }
   &_premieres {
+    color: rgba(255, 255, 255, 0.6);
     font-size: 1.4vw;
+    margin: 1vw 0 2vw 1vw;
+    cursor: default;
+    &:hover {
+      color: rgba(255, 255, 255, 0.6);
+    }
   }
   &__svg {
     height: 1vw;
@@ -21,7 +26,10 @@
 }
 
 section {
-  margin-bottom: 5vw;
+  padding-bottom: 3vw;
+  &.premieres {
+    padding-bottom: 4.5vw;
+  }
 }
 
 .card {
@@ -34,16 +42,13 @@ section {
   }
   &__text {
     position: absolute;
-    //bottom: 0;
   }
   &__title {
-    //font-size: 2rem;
     font-size: 1.2vw;
     color: white;
     margin: 1rem 0;
   }
   &__info {
-    //font-size: 1.6rem;
     font-size: .9vw;
     text-transform: capitalize;
   }
