@@ -1,0 +1,74 @@
+.selector {
+  position: relative;
+  width: 10vw;
+  font-size: .8vw;
+  cursor: pointer;
+}
+
+.placeholder {
+  height: 2.6vw;
+  padding: .4vw .8vw;
+  background-color: #1c1c1f;
+  transition: background-color .2s;
+  border-radius: .3vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
+  &__icon {
+    width: 0.5vw;
+    transform: rotate(90deg);
+    transition: transform .2s;
+    &_rotated {
+      transform: rotate(-90deg);
+    }
+  }
+  &__title {
+    color: white;
+  }
+  &__option {
+    font-size: .6vw;
+    text-transform: capitalize;
+  }
+  &:hover {
+    background-color: #2a2a2e;
+  }
+}
+
+.options {
+  background-color: #1c1c1f;
+  position: absolute;
+  top: calc(100% + .5vw);
+  //display: none;
+  text-transform: capitalize;
+  overflow-x: hidden;
+  overflow-y: auto;
+  //overscroll-behavior: contain;
+  max-height: 14.5vw;
+  z-index: 2;
+  border-radius: .3vw;
+  width: 100%;
+
+  &__hidden {
+    display: none;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &__value {
+    position: relative;
+    padding: .5vw .8vw;
+    transition: background-color .2s, color .2s;
+    &_selected {
+      background-color: #3d3d43;
+      color: white;
+    }
+    &:hover {
+      background-color: #2a2a2e;
+      color: white;
+    }
+  }
+}

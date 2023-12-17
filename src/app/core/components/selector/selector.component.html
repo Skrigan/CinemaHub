@@ -1,0 +1,13 @@
+<div class="selector">
+  <div class="selector__placeholder placeholder" #placeholder (click)="toggleDropdown()">
+    <div class="placeholder__text">
+      <span class="placeholder__title">{{title}}</span>
+      <span class="placeholder__option" #option></span>
+    </div>
+    <svg #icon class="placeholder__icon" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+  </div>
+  <div class="selector__dropdown options options__hidden" #dropdown (click)="getOption($event)">
+    <div class="options__value" *ngIf="anyOption">любой</div>
+    <div class="options__value" *ngFor="let option of options">{{option}}</div>
+  </div>
+</div>

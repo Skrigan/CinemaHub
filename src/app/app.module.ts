@@ -12,6 +12,7 @@ import { MovieCardComponent } from './core/components/movie-card/movie-card.comp
 import { ReleaseCardComponent } from './core/components/release-card/release-card.component';
 import { MainComponent } from './core/pages/main/main.component';
 import { FilmsComponent } from './core/pages/films/films.component';
+import { SelectorComponent } from './core/components/selector/selector.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FilmsComponent } from './core/pages/films/films.component';
     ReleaseCardComponent,
     MainComponent,
     FilmsComponent,
+    SelectorComponent,
   ],
   imports: [
     BrowserModule,
