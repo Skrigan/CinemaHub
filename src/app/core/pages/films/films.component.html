@@ -1,15 +1,14 @@
 <section>
   <h3 class="title">
-    <p class="title__text">Фильмы</p>
+    <p class="title__text">{{title}}</p>
   </h3>
   <div class="filters">
     <app-selector [title]="'Жанр'" [options]=genres (onSelect)="getGenre($event)"></app-selector>
     <app-selector [title]="'Год выхода'" [options]=years (onSelect)="getYear($event)"></app-selector>
     <app-selector [title]="'Рейтинг'" [options]=ratings (onSelect)="getRating($event)"></app-selector>
-    <app-selector style="margin: 0 0 0 auto;" [title]="'Сортировать'" [anyOption]="false" [options]=sortings (onSelect)="getSort($event)"></app-selector>
+    <app-selector style="margin: 0 0 0 auto;" [title]="'Сортировать'" [anyOption]="false" [options]=sortings (onSelect)="getSort($event!)"></app-selector>
   </div>
   <div class="films" #films>
-    <app-movie-card *ngFor="let card of mockedMovies" [card]="card"></app-movie-card>
+    <app-movie-card *ngFor="let card of cards" [card]="card"></app-movie-card>
   </div>
 </section>
-

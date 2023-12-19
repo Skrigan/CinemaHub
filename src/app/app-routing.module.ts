@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {RouteReuseStrategy, RouterModule, Routes} from '@angular/router';
 import { MainComponent } from "./core/pages/main/main.component";
 import { FilmsComponent } from "./core/pages/films/films.component";
+import {CustomRouteReuseStrategy} from "./customRouteReuseStrategy";
 
 const routes: Routes = [
   {
@@ -17,14 +18,29 @@ const routes: Routes = [
     path: 'films',
     component: FilmsComponent,
   },
-  // {
-  //   path: 'films:id',
-  //   component: MainComponent,
-  // },
+  {
+    path: 'series',
+    component: FilmsComponent,
+  },
+  {
+    path: 'cartoons',
+    component: FilmsComponent,
+  },
+  {
+    path: 'animated-series',
+    component: FilmsComponent,
+  },
+  {
+    path: 'anime',
+    component: FilmsComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  // providers: [{
+  //   provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy
+  // }],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

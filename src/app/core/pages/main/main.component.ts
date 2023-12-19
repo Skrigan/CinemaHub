@@ -12,11 +12,10 @@ import { mockedAnime } from '../../data/mockedAnime';
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
-  protected readonly mockedReleases = mockedReleases.slice(0, 16);
-  protected readonly mockedMovies = mockedMovies.slice(0, 24);
-  protected readonly mockedSeries = mockedSeries.slice(0, 24);
-  protected readonly mockedCartoons = mockedCartoons.slice(0, 24);
-  protected readonly mockedAnimatedSeries = mockedAnimatedSeries.slice(0, 24);
-  protected readonly mockedAnime = mockedAnime.slice(0, 24);
-
+  protected readonly mockedReleases = mockedReleases;
+  protected readonly mockedMovies = mockedMovies;
+  protected readonly mockedSeries = mockedSeries;
+  protected readonly mockedCartoons = mockedCartoons;
+  protected readonly mockedAnimatedSeries = mockedAnimatedSeries;
+  protected readonly mockedAnime = mockedAnime;
 }

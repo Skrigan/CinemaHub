@@ -33,7 +33,6 @@ export class SliderComponent implements OnInit, AfterContentInit {
   ngOnInit() {
     this.cardMinWidth = `calc((100% - ${(this.displayedImages - 1)}vw) / ${this.displayedImages})`;
     // const trash = Array.from(this.cardsRef.nativeElement.children);
-    // console.log(trash);
     // this.http.get<any>('https://kinopoiskapiunofficial.tech/api/v2.1/films/releases', {
     //   headers: {
     //     'X-API-KEY': 'e4ef3242-e2cc-4ea4-933e-d4f1b854cafd',

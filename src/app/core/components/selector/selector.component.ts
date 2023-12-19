@@ -53,7 +53,6 @@ export class SelectorComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.dropdown)
     this.selected = this.dropdown.nativeElement.firstElementChild;
     this.selected.classList.add('options__value_selected');
     if (!this.anyOption) this.option.nativeElement.textContent = this.selected.textContent;
