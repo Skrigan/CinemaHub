@@ -6,8 +6,9 @@ import { mockedCartoons } from "../../data/mockedCartoons";
 import { mockedAnimatedSeries } from "../../data/mockedAnimated-Series";
 import { mockedAnime } from "../../data/mockedAnime";
 
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {IMovie} from "../../interfaces/IMovie";
+import {HttpParams} from "@angular/common/http";
 
 const infoFromPath: any = {
   "films": {
@@ -48,10 +49,10 @@ export class FilmsComponent implements OnInit, AfterViewInit{
   ratings = ratings;
   sortings = sortings;
 
-  genre: string | null = null;
-  year: string | null = null;
-  rating: string | null = null;
-  sort: string | null = null;
+  // genre: string | null = null;
+  // year: string | null = null;
+  // rating: string | null = null;
+  // sort: string | null = null;
 
   searchParams!: {
     typeNumber: number
@@ -60,12 +61,12 @@ export class FilmsComponent implements OnInit, AfterViewInit{
     rating: string | null,
     sortField: string,
   };
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
+    console.log('init!!')
     const key = this.route.snapshot.routeConfig?.path!;
-
     this.title = infoFromPath[key].title;
     this.searchParams = {
       typeNumber: infoFromPath[key].typeNumber,
@@ -74,7 +75,13 @@ export class FilmsComponent implements OnInit, AfterViewInit{
       rating: null,
       sortField: 'votes.kp',
     }
-    //
+    const startParams = this.route.snapshot.queryParams;
+    for (let param in startParams) {
+      // @ts-ignore
+      this.searchParams[param] = startParams[param];
+    }
+    console.log(this.searchParams);
+
     // switch (key) {
     //   case "films": this.cards = mockedMovies
     //     break
@@ -98,22 +105,28 @@ export class FilmsComponent implements OnInit, AfterViewInit{
   }
 
   getGenre(genre: string | null) {
-    console.log(genre);
-    // this.searchParams.genre = genre;
+    this.addQueryParameter('genre', genre);
   }
 
   getYear(year: string | null) {
-    console.log(year);
-    // this.searchParams.year = year;
+    this.addQueryParameter('year', year);
   }
 
   getRating(rating: string | null) {
-    console.log(rating);
-    // this.searchParams.rating = rating;
+    this.addQueryParameter('rating', rating);
   }
 
   getSort(sortField: string) {
-    console.log(sortField);
-    // this.searchParams.sortField = sortField;
+    this.addQueryParameter('sortField', sortField);
+  }
+
+  addQueryParameter(key: string, value: string | null) {
+    this.router.navigate([], {
+      queryParams: { [key]: value },
+      queryParamsHandling: 'merge',
+    })
+    // @ts-ignore
+    this.searchParams[key] = value;
+    console.log(this.searchParams);
   }
 }
