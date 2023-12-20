@@ -8,7 +8,6 @@ import { mockedAnime } from "../../data/mockedAnime";
 
 import {ActivatedRoute} from "@angular/router";
 import {IMovie} from "../../interfaces/IMovie";
-import {MoviesService} from "../../services/movies.service";
 
 const infoFromPath: any = {
   "films": {

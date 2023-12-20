@@ -1,4 +1,8 @@
-export const genres = [
+type Filter = {
+  label: string,
+  value: string,
+}
+export const genres: Filter[] = [
   {
     label: 'Триллер',
     value: 'триллер',
