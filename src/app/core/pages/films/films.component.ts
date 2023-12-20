@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { filters, ratings, sortings, years } from "../../data/filters";
+import { genres, ratings, sortings, years} from "../../data/filters";
 import { mockedMovies } from "../../data/mockedMovies";
 import { mockedSeries } from "../../data/mockedSeries";
 import { mockedCartoons } from "../../data/mockedCartoons";
@@ -44,7 +44,7 @@ export class FilmsComponent implements OnInit, AfterViewInit{
   title!: string;
   cards!: IMovie[];
 
-  genres= filters;
+  genres = genres;
   years = years;
   ratings = ratings;
   sortings = sortings;
@@ -61,7 +61,7 @@ export class FilmsComponent implements OnInit, AfterViewInit{
     rating: string | null,
     sortField: string,
   };
-  constructor(private route: ActivatedRoute, private moviesService: MoviesService) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -75,19 +75,19 @@ export class FilmsComponent implements OnInit, AfterViewInit{
       rating: null,
       sortField: 'votes.kp',
     }
-
-    switch (key) {
-      case "films": this.cards = mockedMovies
-        break
-      case "series": this.cards = mockedSeries
-        break
-      case "cartoons": this.cards = mockedCartoons
-        break
-      case "animated-series": this.cards = mockedAnimatedSeries
-        break
-      case "anime": this.cards = mockedAnime
-        break
-    }
+    //
+    // switch (key) {
+    //   case "films": this.cards = mockedMovies
+    //     break
+    //   case "series": this.cards = mockedSeries
+    //     break
+    //   case "cartoons": this.cards = mockedCartoons
+    //     break
+    //   case "animated-series": this.cards = mockedAnimatedSeries
+    //     break
+    //   case "anime": this.cards = mockedAnime
+    //     break
+    // }
   }
 
   ngAfterViewInit() {
@@ -99,33 +99,22 @@ export class FilmsComponent implements OnInit, AfterViewInit{
   }
 
   getGenre(genre: string | null) {
-    if (this.searchParams.genre !== genre) {
-      this.searchParams.genre = genre;
-    }
+    console.log(genre);
+    // this.searchParams.genre = genre;
   }
 
   getYear(year: string | null) {
-    if (this.searchParams.year !== year) {
-      this.searchParams.year = year;
-      this.getNewCards();
-    }
+    console.log(year);
+    // this.searchParams.year = year;
   }
 
   getRating(rating: string | null) {
-    if (this.searchParams.rating !== rating) {
-      this.searchParams.rating = rating;
-      this.getNewCards();
-    }
+    console.log(rating);
+    // this.searchParams.rating = rating;
   }
 
   getSort(sortField: string) {
-    if (this.searchParams.sortField !== sortField) {
-      this.searchParams.sortField = sortField;
-      this.getNewCards();
-    }
-  }
-
-  getNewCards() {
-
+    console.log(sortField);
+    // this.searchParams.sortField = sortField;
   }
 }
