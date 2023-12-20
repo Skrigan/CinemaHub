@@ -32,7 +32,7 @@ export class AppComponent implements OnInit{
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const url = event.urlAfterRedirects;
-        this.footerVisibility = !['/films', '/series', '/cartoons', '/animated-series', '/anime'].find((item) => item === url);
+        this.footerVisibility = !!['/main'].find((item) => item === url);
       }
     });
   }

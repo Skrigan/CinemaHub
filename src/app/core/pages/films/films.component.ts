@@ -1,14 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { genres, ratings, sortings, years} from "../../data/filters";
-import { mockedMovies } from "../../data/mockedMovies";
-import { mockedSeries } from "../../data/mockedSeries";
-import { mockedCartoons } from "../../data/mockedCartoons";
-import { mockedAnimatedSeries } from "../../data/mockedAnimated-Series";
-import { mockedAnime } from "../../data/mockedAnime";
+import { genres, ratings, sortFields, years} from "../../data/filters";
 
 import {ActivatedRoute, Router} from "@angular/router";
 import {IMovie} from "../../interfaces/IMovie";
-import {HttpParams} from "@angular/common/http";
 
 const infoFromPath: any = {
   "films": {
@@ -47,12 +41,7 @@ export class FilmsComponent implements OnInit, AfterViewInit{
   genres = genres;
   years = years;
   ratings = ratings;
-  sortings = sortings;
-
-  // genre: string | null = null;
-  // year: string | null = null;
-  // rating: string | null = null;
-  // sort: string | null = null;
+  sortFields = sortFields;
 
   searchParams!: {
     typeNumber: number
@@ -65,35 +54,21 @@ export class FilmsComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit() {
-    console.log('init!!')
     const key = this.route.snapshot.routeConfig?.path!;
     this.title = infoFromPath[key].title;
-    this.searchParams = {
-      typeNumber: infoFromPath[key].typeNumber,
-      genre: null,
-      year: null,
-      rating: null,
-      sortField: 'votes.kp',
-    }
-    const startParams = this.route.snapshot.queryParams;
-    for (let param in startParams) {
-      // @ts-ignore
-      this.searchParams[param] = startParams[param];
-    }
-    console.log(this.searchParams);
-
-    // switch (key) {
-    //   case "films": this.cards = mockedMovies
-    //     break
-    //   case "series": this.cards = mockedSeries
-    //     break
-    //   case "cartoons": this.cards = mockedCartoons
-    //     break
-    //   case "animated-series": this.cards = mockedAnimatedSeries
-    //     break
-    //   case "anime": this.cards = mockedAnime
-    //     break
-    // }
+    this.route.queryParams.subscribe((params) => {
+      this.searchParams = {
+        typeNumber: infoFromPath[key].typeNumber,
+        genre: null,
+        year: null,
+        rating: null,
+        sortField: 'votes.kp',
+      }
+      for (let param in params) {
+        // @ts-ignore
+        this.searchParams[param] = params[param];
+      }
+    })
   }
 
   ngAfterViewInit() {
@@ -125,8 +100,5 @@ export class FilmsComponent implements OnInit, AfterViewInit{
       queryParams: { [key]: value },
       queryParamsHandling: 'merge',
     })
-    // @ts-ignore
-    this.searchParams[key] = value;
-    console.log(this.searchParams);
   }
 }

@@ -159,7 +159,7 @@ export const ratings = [
   },
 ];
 
-export const sortings = [
+export const sortFields = [
   {
     label: 'По популярности',
     value: 'votes.kp',

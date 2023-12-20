@@ -1,11 +1,11 @@
 import {
-  AfterContentInit, AfterViewInit,
+  AfterViewChecked,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
   HostListener,
   Input,
-  OnInit,
   Output,
   ViewChild
 } from '@angular/core';
@@ -13,13 +13,14 @@ import {
 @Component({
   selector: 'app-selector',
   templateUrl: './selector.component.html',
-  styleUrl: './selector.component.scss'
+  styleUrl: './selector.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectorComponent implements AfterViewInit {
+export class SelectorComponent implements AfterViewChecked{
   @Input({required: true}) label!: string;
   @Input({required: true}) options!: { label: string, value: any }[];
   @Input() anyOption?: { label: string, value: any };
-  @Input() presetValue?: number;
+  @Input() presetValue?: any;
   @Output() onSelect = new EventEmitter<any>();
 
   @ViewChild('dropdown') dropdown!: ElementRef;
@@ -43,17 +44,37 @@ export class SelectorComponent implements AfterViewInit {
     }
   }
 
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
     const dropdownElement = this.dropdown.nativeElement;
+
     if (this.presetValue === undefined) {
+
       this.selected = dropdownElement.firstElementChild;
       if (this.anyOption === undefined) {
         this.option.nativeElement.textContent = this.selected.textContent;
       }
+
     } else {
-      const index = this.anyOption ? this.presetValue + 1 : this.presetValue;
-      this.selected = dropdownElement.children[index];
-      this.option.nativeElement.textContent = this.selected.textContent;
+
+      let isFounded = false;
+      for (let i = 0; i < this.options.length; i++) {
+        if (this.options[i].value === this.presetValue) {
+          const index = this.anyOption ? i + 1 : i;
+          this.selected = dropdownElement.children[index];
+          this.option.nativeElement.textContent = this.selected.textContent;
+          isFounded = true;
+        }
+      }
+
+      if (!isFounded) {
+        this.selected = dropdownElement.firstElementChild;
+        if (this.anyOption === undefined) {
+          this.option.nativeElement.textContent = this.selected.textContent;
+        } else {
+          this.option.nativeElement.textContent = '';
+        }
+      }
+
     }
     this.selected.classList.add('options__value_selected');
   }
