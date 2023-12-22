@@ -3,12 +3,12 @@
     <p class="title__text">{{title}}</p>
   </h3>
   <div class="filters">
-    <app-selector [label]="'Жанр'" [options]=genres [anyOption]="{label: 'Любой', value: null}" [presetValue]=searchParams.genre (onSelect)="getGenre($event)"></app-selector>
-    <app-selector [label]="'Годы выхода'" [options]=years [anyOption]="{label: 'Любые', value: null}" [presetValue]=searchParams.year (onSelect)="getYear($event)"></app-selector>
-    <app-selector [label]="'Рейтинг'" [options]=ratings [anyOption]="{label: 'Любой', value: null}" [presetValue]=searchParams.rating (onSelect)="getRating($event)"></app-selector>
-    <app-selector [label]="'Сортировать'" [options]=sortFields [presetValue]=searchParams.sortField (onSelect)="getSort($event!)" style="margin: 0 0 0 auto;"></app-selector>
+    <app-selector [label]="'Жанр'" [options]=genres [anyOption]="{label: 'Любой', value: null}" [presetValue]="searchParams['genres.name']" (onSelect)="getGenre($event)"></app-selector>
+    <app-selector [label]="'Годы выхода'" [options]=years [anyOption]="{label: 'Любые', value: null}" [presetValue]="searchParams['year']" (onSelect)="getYear($event)"></app-selector>
+    <app-selector [label]="'Рейтинг'" [options]=ratings [anyOption]="{label: 'Любой', value: null}" [presetValue]="searchParams['rating.kp']" (onSelect)="getRating($event)"></app-selector>
+    <app-selector [label]="'Сортировать'" [options]=sortFields [presetValue]="searchParams['sortField']" (onSelect)="getSort($event!)" style="margin: 0 0 0 auto;"></app-selector>
   </div>
   <div class="films" #films>
-    <app-movie-card *ngFor="let card of cards" [card]="card"></app-movie-card>
+    <app-movie-card *ngFor="let card of shownCards" [card]="card"></app-movie-card>
   </div>
 </section>

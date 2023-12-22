@@ -1,8 +1,10 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { genres, ratings, sortFields, years} from "../../data/filters";
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { genres, ratings, sortFields, years } from "../../data/filters";
 
 import {ActivatedRoute, Router} from "@angular/router";
 import {IMovie} from "../../interfaces/IMovie";
+import {MovieService} from "../../services/movie.service";
+import {Subscription} from "rxjs";
 
 const infoFromPath: any = {
   "films": {
@@ -27,30 +29,35 @@ const infoFromPath: any = {
   }
 }
 
+export type SearchParams = {
+  'typeNumber': number
+  'genres.name': string | null
+  'year': string | null
+  'rating.kp': string | null
+  'sortField': string
+}
+
 @Component({
   selector: 'app-films',
   templateUrl: './films.component.html',
   styleUrl: './films.component.scss'
 })
-export class FilmsComponent implements OnInit, AfterViewInit{
+export class FilmsComponent implements OnInit, OnDestroy {
   @ViewChild('films') films!: ElementRef;
 
   title!: string;
-  cards!: IMovie[];
+  shownCards: IMovie[] = [];
+  cards: IMovie[] = [];
+
+  subscriptions: Subscription[] = [];
 
   genres = genres;
   years = years;
   ratings = ratings;
   sortFields = sortFields;
 
-  searchParams!: {
-    typeNumber: number
-    genre: string | null,
-    year: string | null,
-    rating: string | null,
-    sortField: string,
-  };
-  constructor(private route: ActivatedRoute, private router: Router) {
+  searchParams!: SearchParams
+  constructor(private route: ActivatedRoute, private router: Router, private movieService: MovieService) {
   }
 
   ngOnInit() {
@@ -58,29 +65,28 @@ export class FilmsComponent implements OnInit, AfterViewInit{
     this.title = infoFromPath[key].title;
     this.route.queryParams.subscribe((params) => {
       this.searchParams = {
-        typeNumber: infoFromPath[key].typeNumber,
-        genre: null,
-        year: null,
-        rating: null,
-        sortField: 'votes.kp',
+        'typeNumber': infoFromPath[key].typeNumber,
+        'genres.name': null,
+        'year': null,
+        'rating.kp': null,
+        'sortField': 'votes.kp',
       }
       for (let param in params) {
         // @ts-ignore
         this.searchParams[param] = params[param];
       }
+      this.getMoviesData();
     })
   }
 
-  ngAfterViewInit() {
-    const cards: HTMLElement[] = Array.from(this.films.nativeElement.children);
-    cards.forEach((card) => {
-      card.style.minWidth = `calc((100% - ${(6 - 1)}vw) / 6)`;
-      card.style.width = `calc((100% - ${(6 - 1)}vw) / 6)`;
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
     })
   }
 
   getGenre(genre: string | null) {
-    this.addQueryParameter('genre', genre);
+    this.addQueryParameter('genres.name', genre);
   }
 
   getYear(year: string | null) {
@@ -88,7 +94,7 @@ export class FilmsComponent implements OnInit, AfterViewInit{
   }
 
   getRating(rating: string | null) {
-    this.addQueryParameter('rating', rating);
+    this.addQueryParameter('rating.kp', rating);
   }
 
   getSort(sortField: string) {
@@ -100,5 +106,15 @@ export class FilmsComponent implements OnInit, AfterViewInit{
       queryParams: { [key]: value },
       queryParamsHandling: 'merge',
     })
+  }
+
+  getMoviesData() {
+    this.subscriptions.push(this.movieService.getMoviesData(this.searchParams).subscribe((response) => {
+      this.cards = response.docs.slice();
+      this.shownCards = this.cards.slice(0, 60);
+      // console.log(response);
+      // console.log(this.cards);
+      // console.log(this.shownCards);
+    }));
   }
 }

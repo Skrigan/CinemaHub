@@ -1,31 +1,31 @@
 export type IMovie = {
-  id: number,
-  name: string,
-  year: number,
+  id: number
+  name: string
+  year: number
   poster: {
-    url: string,
+    url: string
     previewUrl: string
   }
   countries: {
     name: string
-  }[],
+  }[]
   genres: {
     name: string
-  }[],
+  }[]
   rating: {
-    kp?: number,
-    imdb?: number,
-    tmdb?: number,
-    filmCritics?: number,
-    russianFilmCritics?: number,
-    await?: number | null,
-  },
+    kp?: number
+    imdb?: number
+    tmdb?: number
+    filmCritics?: number
+    russianFilmCritics?: number
+    await?: number | null
+  }
   votes: {
-    kp?: number,
-    imdb?: number,
-    tmdb?: number,
-    filmCritics?: number,
-    russianFilmCritics?: number,
-    await?: number | null,
-  },
+    kp?: number
+    imdb?: number
+    tmdb?: number
+    filmCritics?: number
+    russianFilmCritics?: number
+    await?: number | null
+  }
 }

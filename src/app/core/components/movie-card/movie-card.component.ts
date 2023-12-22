@@ -9,6 +9,9 @@ import {IMovie} from "../../interfaces/IMovie";
 })
 export class MovieCardComponent implements OnInit {
   @Input({ required: true }) card!: IMovie;
+
+  isImgLoaded = false;
+
   textInfo: string = '';
 
   ngOnInit() {

@@ -1,9 +1,12 @@
 :host {
   position: relative;
   cursor: pointer;
+  width: calc((100% - 5vw) / 6);
+  min-width: calc((100% - 5vw) / 6);
   transition: scale .1s linear;
   &:hover {
     scale: 1.05;
+    z-index: 1;
   }
 }
 

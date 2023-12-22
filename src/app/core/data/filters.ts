@@ -136,7 +136,7 @@ export const years = [
   },
   {
     label: 'до 1960',
-    value: '0-1959',
+    value: '1900-1959',
   },
 ];
 

@@ -16,7 +16,7 @@ import {
   styleUrl: './selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectorComponent implements AfterViewChecked{
+export class SelectorComponent {
   @Input({required: true}) label!: string;
   @Input({required: true}) options!: { label: string, value: any }[];
   @Input() anyOption?: { label: string, value: any };
@@ -44,12 +44,20 @@ export class SelectorComponent implements AfterViewChecked{
     }
   }
 
-  ngAfterViewChecked() {
-    const dropdownElement = this.dropdown.nativeElement;
+  ngAfterViewInit() {
+    const dropdownElement: Element = this.dropdown.nativeElement;
+
+    if (this.selected) {
+      Array.from(dropdownElement.children).forEach((option) => {
+        if (option.classList.contains('options__value_selected') && option !== this.selected) {
+          option.classList.remove('options__value_selected');
+        }
+      })
+    }
 
     if (this.presetValue === undefined) {
 
-      this.selected = dropdownElement.firstElementChild;
+      this.selected = dropdownElement.firstElementChild!;
       if (this.anyOption === undefined) {
         this.option.nativeElement.textContent = this.selected.textContent;
       }
@@ -67,7 +75,7 @@ export class SelectorComponent implements AfterViewChecked{
       }
 
       if (!isFounded) {
-        this.selected = dropdownElement.firstElementChild;
+        this.selected = dropdownElement.firstElementChild!;
         if (this.anyOption === undefined) {
           this.option.nativeElement.textContent = this.selected.textContent;
         } else {
@@ -83,10 +91,11 @@ export class SelectorComponent implements AfterViewChecked{
     const target = <HTMLElement>event.target;
 
     if (target.classList.contains('options__value') && target !== this.selected) {
-
       this.selected.classList.remove('options__value_selected');
       target.classList.add('options__value_selected');
+      console.log('before', JSON.stringify(this.selected.textContent))
       this.selected = target;
+      console.log('after', JSON.stringify(this.selected.textContent))
       const index = target.getAttribute('data-index');
 
       if (index === null) {
