@@ -9,6 +9,7 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-selector',
@@ -21,6 +22,7 @@ export class SelectorComponent {
   @Input({required: true}) options!: { label: string, value: any }[];
   @Input() anyOption?: { label: string, value: any };
   @Input() presetValue?: any;
+
   @Output() onSelect = new EventEmitter<any>();
 
   @ViewChild('dropdown') dropdown!: ElementRef;
@@ -44,16 +46,22 @@ export class SelectorComponent {
     }
   }
 
-  ngAfterViewInit() {
-    const dropdownElement: Element = this.dropdown.nativeElement;
+  constructor(private route: ActivatedRoute) {
+  }
 
-    if (this.selected) {
-      Array.from(dropdownElement.children).forEach((option) => {
-        if (option.classList.contains('options__value_selected') && option !== this.selected) {
-          option.classList.remove('options__value_selected');
-        }
-      })
+  ngOnChanges() {
+    if (this.dropdown && this.placeholder && this.option && this.icon) {
+      this.updateView();
     }
+  }
+
+  ngAfterViewInit() {
+    this.updateView();
+  }
+
+  updateView() {
+    const dropdownElement: Element = this.dropdown.nativeElement;
+    this.selected?.classList.remove('options__value_selected');
 
     if (this.presetValue === undefined) {
 
@@ -84,6 +92,7 @@ export class SelectorComponent {
       }
 
     }
+
     this.selected.classList.add('options__value_selected');
   }
 
@@ -93,9 +102,7 @@ export class SelectorComponent {
     if (target.classList.contains('options__value') && target !== this.selected) {
       this.selected.classList.remove('options__value_selected');
       target.classList.add('options__value_selected');
-      console.log('before', JSON.stringify(this.selected.textContent))
       this.selected = target;
-      console.log('after', JSON.stringify(this.selected.textContent))
       const index = target.getAttribute('data-index');
 
       if (index === null) {

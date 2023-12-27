@@ -19,9 +19,10 @@ export class MovieService {
     };
     const params = {
       'selectFields': ['id', 'name', 'countries', 'genres', 'year', 'votes', 'rating', 'poster'],
-      'limit': 240,
+      'limit': 60,
       'sortType': -1,
-      'votes.kp': '5000-100000000000'
+      'votes.kp': '5000-100000000000',
+      'page': '1',
     }
 
     for (let param in searchParams) {
@@ -35,7 +36,7 @@ export class MovieService {
 
     return this.http.get<{docs: IMovie[], total: number, limit: number, page: number, pages: number}>(url, {
       headers,
-      params
+      params,
     })
   }
 

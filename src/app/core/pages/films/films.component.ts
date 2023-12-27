@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { genres, ratings, sortFields, years } from "../../data/filters";
 
 import {ActivatedRoute, Router} from "@angular/router";
@@ -35,19 +35,38 @@ export type SearchParams = {
   'year': string | null
   'rating.kp': string | null
   'sortField': string
+  'page': string,
 }
 
 @Component({
   selector: 'app-films',
   templateUrl: './films.component.html',
-  styleUrl: './films.component.scss'
+  styleUrl: './films.component.scss',
 })
 export class FilmsComponent implements OnInit, OnDestroy {
+  protected readonly parseInt = parseInt;
+  // @HostListener('window:scroll', ['$event'])
+  // onScroll(event: WheelEvent) {
+  //   const windowHeight = window.innerHeight;
+  //   const scrollHeight = document.documentElement.scrollHeight;
+  //   const currentScroll = document.documentElement.scrollTop + windowHeight;
+  //
+  //   const shownCardsLength = this.shownCards.length;
+  //   const cardsLength = this.cards.length;
+  //   if (currentScroll >= scrollHeight && shownCardsLength < cardsLength) {
+  //     console.log('scrolled!');
+  //     const lengthDiff = cardsLength - shownCardsLength;
+  //     console.log(`slice(${shownCardsLength}, ${lengthDiff >= 60 ? shownCardsLength + 60 : shownCardsLength + lengthDiff})`);
+  //     this.shownCards.push(...this.cards.slice(shownCardsLength, lengthDiff >= 60 ? shownCardsLength + 60 : shownCardsLength + lengthDiff));
+  //   }
+  // }
+
   @ViewChild('films') films!: ElementRef;
 
   title!: string;
-  shownCards: IMovie[] = [];
+  //!!! убрать нахуй
   cards: IMovie[] = [];
+  lastPage: number = 0;
 
   subscriptions: Subscription[] = [];
 
@@ -63,6 +82,7 @@ export class FilmsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const key = this.route.snapshot.routeConfig?.path!;
     this.title = infoFromPath[key].title;
+
     this.route.queryParams.subscribe((params) => {
       this.searchParams = {
         'typeNumber': infoFromPath[key].typeNumber,
@@ -70,6 +90,7 @@ export class FilmsComponent implements OnInit, OnDestroy {
         'year': null,
         'rating.kp': null,
         'sortField': 'votes.kp',
+        'page': '1',
       }
       for (let param in params) {
         // @ts-ignore
@@ -85,36 +106,62 @@ export class FilmsComponent implements OnInit, OnDestroy {
     })
   }
 
+  changePage(page: number) {
+    const params = {
+      'page': page.toString()
+    }
+    this.changeQueryParams(params)
+  }
+
   getGenre(genre: string | null) {
-    this.addQueryParameter('genres.name', genre);
+    const params = {
+      'genres.name': genre,
+      'page': null
+    }
+    this.changeQueryParams(params);
   }
 
   getYear(year: string | null) {
-    this.addQueryParameter('year', year);
+    const params = {
+      'year': year,
+      'page': null
+    }
+    this.changeQueryParams(params);
   }
 
   getRating(rating: string | null) {
-    this.addQueryParameter('rating.kp', rating);
+    const params = {
+      'rating.kp': rating,
+      'page': null
+    }
+    this.changeQueryParams(params);
   }
 
   getSort(sortField: string) {
-    this.addQueryParameter('sortField', sortField);
+    const params = {
+      'sortField': sortField,
+      'page': null
+    }
+    this.changeQueryParams(params);
   }
 
-  addQueryParameter(key: string, value: string | null) {
+  changeQueryParams(params: {[key: string]: string | null}) {
+    this.cards.length = 0;
+    this.lastPage = 0;
     this.router.navigate([], {
-      queryParams: { [key]: value },
+      queryParams: params,
       queryParamsHandling: 'merge',
     })
   }
 
   getMoviesData() {
     this.subscriptions.push(this.movieService.getMoviesData(this.searchParams).subscribe((response) => {
-      this.cards = response.docs.slice();
-      this.shownCards = this.cards.slice(0, 60);
-      // console.log(response);
-      // console.log(this.cards);
-      // console.log(this.shownCards);
+      if (response.total > 0) {
+        this.cards = response.docs;
+        this.lastPage = response.pages;
+      } else {
+        ///???
+      }
     }));
   }
 }

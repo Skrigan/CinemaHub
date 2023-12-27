@@ -13,6 +13,7 @@ import { ReleaseCardComponent } from './core/components/release-card/release-car
 import { MainComponent } from './core/pages/main/main.component';
 import { FilmsComponent } from './core/pages/films/films.component';
 import { SelectorComponent } from './core/components/selector/selector.component';
+import { PaginatorComponent } from './core/components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SelectorComponent } from './core/components/selector/selector.component
     MainComponent,
     FilmsComponent,
     SelectorComponent,
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,
