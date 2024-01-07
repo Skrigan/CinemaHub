@@ -170,7 +170,7 @@ export const sortFields = [
   },
   {
     label: 'По дате добавления',
-    value: '????',
+    value: 'year',
   },
 ];
 

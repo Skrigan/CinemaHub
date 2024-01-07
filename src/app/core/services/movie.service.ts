@@ -40,4 +40,15 @@ export class MovieService {
     })
   }
 
+  getMovieById(id: number) {
+    const url = `https://api.kinopoisk.dev/v1.4/movie/${id}`;
+    const headers = {
+      "X-API-KEY": "ZFDKM2M-ZK5MR14-QZEWNKN-5ES2KGB"
+    };
+
+    return this.http.get<any>(url, {
+      headers
+    })
+  }
+
 }

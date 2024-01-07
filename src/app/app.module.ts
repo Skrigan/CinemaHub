@@ -14,6 +14,8 @@ import { MainComponent } from './core/pages/main/main.component';
 import { FilmsComponent } from './core/pages/films/films.component';
 import { SelectorComponent } from './core/components/selector/selector.component';
 import { PaginatorComponent } from './core/components/paginator/paginator.component';
+import { MovieComponent } from './core/pages/movie/movie.component';
+import { MinutesToHoursPipe } from './core/pipes/minutes-to-hours.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { PaginatorComponent } from './core/components/paginator/paginator.compon
     FilmsComponent,
     SelectorComponent,
     PaginatorComponent,
+    MovieComponent,
+    MinutesToHoursPipe,
   ],
   imports: [
     BrowserModule,

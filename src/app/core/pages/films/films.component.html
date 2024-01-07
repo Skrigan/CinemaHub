@@ -8,8 +8,8 @@
     <app-selector [label]="'Рейтинг'" [options]=ratings [anyOption]="{label: 'Любой', value: null}" [presetValue]="searchParams['rating.kp']" (onSelect)="getRating($event)"></app-selector>
     <app-selector [label]="'Сортировать'" [options]=sortFields [presetValue]="searchParams['sortField']" (onSelect)="getSort($event!)" style="margin: 0 0 0 auto;"></app-selector>
   </div>
-  <div class="films" #films *ngIf="cards.length">
-    <app-movie-card *ngFor="let card of cards" [card]="card"></app-movie-card>
+  <div class="films" #films *ngIf="cards.length" (click)="onMovieChoice($event)">
+    <app-movie-card class="films__card" *ngFor="let card of cards" [card]="card" [attr.data-id]="card.id"></app-movie-card>
   </div>
   <app-paginator *ngIf="lastPage > 1" [page]="parseInt(searchParams['page'])" [lastPage]="lastPage" (onChangePage)="changePage($event)"></app-paginator>
 </section>

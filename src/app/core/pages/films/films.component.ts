@@ -19,14 +19,14 @@ const infoFromPath: any = {
     "title": "Мультфильмы",
     "typeNumber": 3
   },
+  "anime": {
+    "title": "Аниме",
+    "typeNumber": 4
+  },
   "animated-series": {
     "title": "Мультсериалы",
     "typeNumber": 5
   },
-  "anime": {
-    "title": "Аниме",
-    "typeNumber": 4
-  }
 }
 
 export type SearchParams = {
@@ -135,6 +135,16 @@ export class FilmsComponent implements OnInit, OnDestroy {
       'page': null
     }
     this.changeQueryParams(params);
+  }
+
+  onMovieChoice(event: MouseEvent) {
+    const target = <HTMLElement>event.target;
+    const movieCard = target.closest('.films__card');
+
+    if (movieCard !== null) {
+     const id = movieCard.getAttribute('data-id')!;
+     this.router.navigate(['/movie', id]);
+    }
   }
 
   getSort(sortField: string) {
