@@ -1,6 +1,6 @@
 <section class="about-movie" *ngIf="movie" [style.background-image]="'url('+ movie.backdrop.url+')'">
   <div class="content">
-    <img class="name" [hidden]="!isImgLoaded" [src]="'https://avatars.mds.yandex.net/get-ott/1531675/2a0000017f0262661cde61dc260cb86f7830/orig'" (load)="isImgLoaded = true" >
+    <img class="name" [hidden]="!isImgLoaded" [src]="movie['logo']['url']" (load)="isImgLoaded = true">
     <div class="title">
       <span class="rating">{{movie['rating']['kp'] | number: '1.1-1'}}</span>
       <span class="year">{{movie['year']}},</span>
@@ -10,29 +10,37 @@
       <span class="age-rating">{{movie['ageRating']}}+</span>
     </div>
     <div class="short-description">{{movie['shortDescription']}}</div>
-<!--    <div class="director">Режиссёр: <span class="person">{{directors[0].name}}</span></div>-->
-<!--    <div class="actors">Актёры: <span *ngFor="let actor of actors.slice(0, 3)" class="person">{{actor.name}}</span></div>-->
+    <!--    <div class="director">Режиссёр: <span class="person">{{directors[0].name}}</span></div>-->
+    <!--    <div class="actors">Актёры: <span *ngFor="let actor of actors.slice(0, 3)" class="person">{{actor.name}}</span></div>-->
     <div class="buttons">
       <button class="watch-movie">Смотреть {{movieType}}</button>
       <button class="watch-movie">Трейлер</button>
     </div>
   </div>
 </section>
-<section class="details">
-  <div class="details__container">
-    <p class="votes">{{movie['votes']['kp']}} оценки</p>
-    <p class="description">{{movie['description']}}</p>
+<section *ngIf="movie" class="details">
+  <h3>Детали</h3>
+  <div class="content">
+    <div class="content__container">
+      <p class="description">{{movie['description']}}</p>
+    </div>
+    <div class="content__container">
+      <h4 class="content__title">В главных ролях</h4>
+      <ul class="content__ul">
+        <li *ngFor="let actor of actors">{{actor.name}}</li>
+      </ul>
+    </div>
+    <div class="content__container">
+      <h4 class="content__title">Режиссеры</h4>
+      <ul class="content__ul">
+        <li *ngFor="let director of directors">{{director.name}}</li>
+      </ul>
+    </div>
   </div>
-  <div class="details__container">
-    <h4>В главных ролях</h4>
-    <ul>
-      <li *ngFor="let actor of actors">{{actor.name}}</li>
-    </ul>
-  </div>
-  <div class="details__container">
-    <h4>Режиссеры</h4>
-    <ul>
-      <li *ngFor="let director of directors">{{director.name}}</li>
-    </ul>
-  </div>
+</section>
+<section *ngIf="movie" class="similar">
+  <h3>Похожее</h3>
+  <app-slider class="films" (click)="onMovieChoice($event)">
+    <app-movie-card class="films__card" *ngFor="let similarMovie of movie.similarMovies" [card]="similarMovie" [attr.data-id]="similarMovie.id"></app-movie-card>
+  </app-slider>
 </section>

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {MovieService} from "../../services/movie.service";
 import {Subscription} from "rxjs";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {getMovieType} from "../../utils";
 
 @Component({
@@ -17,48 +17,47 @@ export class MovieComponent {
   movieType!: string;
 
   isImgLoaded = false;
-  constructor(private movieService: MovieService, private route: ActivatedRoute) {
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) {
+  }
+
+  ngOnInit() {
+    this.subscriptions.push(
+      this.route.params.subscribe((params: Params) => {
+        if (params.hasOwnProperty('id')) {
+          this.getMovieById(params['id']);
+        }
+      })
+    )
   }
 
   getMovieById(id: number) {
     this.subscriptions.push(
       this.movieService.getMovieById(id).subscribe((movie) => {
         this.movie = movie;
-        console.log('movie: ', movie);
+
+        const persons = this.movie.persons;
+        this.actors = persons.filter((person: any) => {
+          return person.enProfession === 'actor';
+        });
+
+        this.directors = persons.filter((person: any) => {
+          return person.enProfession === 'director';
+        });
+
+        this.movieType = getMovieType(this.movie.typeNumber);
       }
     ))
   }
 
-  getDirector(persons: any[]) {
-    return persons.find((person) => {
-      return person.enProfession === 'director';
-    });
-  }
+  onMovieChoice(event: MouseEvent) {
+    const target = <HTMLElement>event.target;
+    const movieCard = target.closest('.films__card');
 
-  getActors(persons: any[]): any[] {
-    return persons.filter((person) => {
-      return person.enProfession === 'actor';
-    });
-  }
-
-  ngOnInit() {
-    const persons = this.movie.persons;
-    this.actors = persons.filter((person: any) => {
-      return person.enProfession === 'actor';
-    });
-
-    this.directors = persons.filter((person: any) => {
-      return person.enProfession === 'director';
-    });
-
-    this.movieType = getMovieType(this.movie.typeNumber);
-    // this.subscriptions.push(
-    //   this.route.params.subscribe((params: Params) => {
-    //     if (params.hasOwnProperty('id')) {
-    //       this.getMovieById(params['id']);
-    //     }
-    //   })
-    // )
+    if (movieCard !== null) {
+      const id = movieCard.getAttribute('data-id')!;
+      this.movie = undefined;
+      this.router.navigate(['/movie', id]);
+    }
   }
 
   ngOnDestroy() {
@@ -68,7 +67,7 @@ export class MovieComponent {
   }
 
 
-  movie = {
+  movie: any = {
     "fees": {
       "world": {
         "value": 426588510,

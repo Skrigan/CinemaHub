@@ -8,7 +8,7 @@ import {IMovie} from "../../interfaces/IMovie";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MovieCardComponent implements OnInit {
-  @Input({ required: true }) card!: IMovie;
+  @Input({ required: true }) card!: any;
 
   isImgLoaded = false;
 
