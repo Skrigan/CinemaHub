@@ -31,10 +31,6 @@ const routes: Routes = [
     component: FilmsComponent,
   },
   {
-    path: 'animated-series',
-    component: FilmsComponent,
-  },
-  {
     path: 'anime',
     component: FilmsComponent,
   },

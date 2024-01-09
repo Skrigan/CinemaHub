@@ -6,7 +6,7 @@ import {IMovie} from "../../interfaces/IMovie";
 import {MovieService} from "../../services/movie.service";
 import {Subscription} from "rxjs";
 
-const infoFromPath: any = {
+const typeFromPath: any = {
   "films": {
     "title": "Фильмы",
     "typeNumber": 1
@@ -17,15 +17,11 @@ const infoFromPath: any = {
   },
   "cartoons": {
     "title": "Мультфильмы",
-    "typeNumber": 3
+    "typeNumber": [3, 5]
   },
   "anime": {
     "title": "Аниме",
     "typeNumber": 4
-  },
-  "animated-series": {
-    "title": "Мультсериалы",
-    "typeNumber": 5
   },
 }
 
@@ -64,7 +60,6 @@ export class FilmsComponent implements OnInit, OnDestroy {
   @ViewChild('films') films!: ElementRef;
 
   title!: string;
-  //!!! убрать нахуй
   cards: IMovie[] = [];
   lastPage: number = 0;
 
@@ -81,11 +76,11 @@ export class FilmsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const key = this.route.snapshot.routeConfig?.path!;
-    this.title = infoFromPath[key].title;
+    this.title = typeFromPath[key].title;
 
     this.route.queryParams.subscribe((params) => {
       this.searchParams = {
-        'typeNumber': infoFromPath[key].typeNumber,
+        'typeNumber': typeFromPath[key].typeNumber,
         'genres.name': null,
         'year': null,
         'rating.kp': null,
