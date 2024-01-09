@@ -1,9 +1,7 @@
-<!--<img class="img" [src]="card.poster.previewUrl" alt="failed to load poster image">-->
-
 <img class="img" *ngIf="!isImgLoaded" src="/assets/placeholder.png" >
 <img class="img" [hidden]="!isImgLoaded" [src]="card.poster.previewUrl" (load)="isImgLoaded = true" >
 <div class="text">
   <h4 class="text__title">{{card.name}}</h4>
   <p class="text__info">{{textInfo}}</p>
 </div>
-<div class="rating">{{card.rating.kp | number: '1.1-1'}}</div>
+<div *ngIf="card.rating" class="rating">{{card.rating.kp | number: '1.1-1'}}</div>

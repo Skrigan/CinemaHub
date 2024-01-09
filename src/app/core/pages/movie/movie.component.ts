@@ -10,7 +10,569 @@ import {getMovieType} from "../../utils";
   styleUrl: './movie.component.scss'
 })
 export class MovieComponent {
-  // movie: any;
+  movie: any = {
+    "fees": {
+      "world": {
+        "value": 4180000,
+        "currency": "$"
+      },
+      "russia": {
+        "value": 4180000,
+        "currency": "$"
+      }
+    },
+    "status": null,
+    "externalId": {
+      "tmdb": 20994,
+      "imdb": "tt0420982"
+    },
+    "rating": {
+      "kp": 7.232,
+      "imdb": 7.2,
+      "filmCritics": 0,
+      "russianFilmCritics": 0,
+      "await": null
+    },
+    "votes": {
+      "kp": 378839,
+      "imdb": 8620,
+      "filmCritics": 0,
+      "russianFilmCritics": 2,
+      "await": 0
+    },
+    "backdrop": {
+      "url": "https://imagetmdb.com/t/p/original/3HypwT6ccX45yG1NmMyLQP7tJeb.jpg",
+      "previewUrl": "https://imagetmdb.com/t/p/w500/3HypwT6ccX45yG1NmMyLQP7tJeb.jpg"
+    },
+    "movieLength": 111,
+    "images": {
+      "framesCount": 47
+    },
+    "productionCompanies": [
+      {
+        "name": "CTB Film Company",
+        "url": "https://www.themoviedb.org/t/p/original/q0UG4oZERwIywJdDPF4lRlvdYGW.png",
+        "previewUrl": "https://www.themoviedb.org/t/p/w500/q0UG4oZERwIywJdDPF4lRlvdYGW.png"
+      }
+    ],
+    "spokenLanguages": [
+      {
+        "name": "English",
+        "nameEn": "English"
+      },
+      {
+        "name": "Pусский",
+        "nameEn": "Russian"
+      }
+    ],
+    "id": 84830,
+    "type": "movie",
+    "name": "Жмурки",
+    "description": "Жмурки — старинная русская игра: водящий, с завязанными глазами, ловит остальных играющих. К середине 1990-х правила игры изменились: выигрывает тот, кто останется в живых, сделав жмуриками остальных. \n\nНижний Новгород. Два мелких бандита Серега и Саймон работают на крупного бандюгана Сергея Михайловича. Только вот очередное его поручение парни провалили: он велел привезти химика, колдовавшего над созданием новой порции белого порошка, а Серега и Саймон устроили в лаборатории бойню. \n\nСергей Михайлович сильно рассердился, но ограничился устным внушением, после чего дал парням другое поручение: съездить в адвокатскую контору и обменять чемоданчик с деньгами на чемоданчик с героином. Но и тут Сереге и Саймону не повезло. Обмен состоялся, только на выходе из конторы их встретили три бандита Корон, Бала и Баклажан, которых нанял старший лейтенант милиции Степан — «оборотень в погонах», мечтающий кинуть Сергея Михайловича по-крупному.",
+    "distributors": {
+      "distributor": "Наше Кино",
+      "distributorRelease": "Монолит, Союз-Видео"
+    },
+    "premiere": {
+      "world": "2005-05-27T00:00:00.000Z",
+      "russia": "2005-05-26T00:00:00.000Z",
+      "bluray": "2009-07-09T00:00:00.000Z",
+      "dvd": "2009-06-18T00:00:00.000Z"
+    },
+    "slogan": "Для тех, кто выжил в 90-е",
+    "year": 2005,
+    "poster": {
+      "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/3aa869c1-2f77-4f8c-a614-b13f80cca687/orig",
+      "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/3aa869c1-2f77-4f8c-a614-b13f80cca687/x1000"
+    },
+    "facts": [
+      {
+        "value": "Большинство актёров были утверждены на свои роли без всяких проб.",
+        "type": "FACT",
+        "spoiler": false
+      },
+      {
+        "value": "В ранней версии сценария фильма было 18 трупов.",
+        "type": "FACT",
+        "spoiler": false
+      },
+      {
+        "value": "В ходе съёмок было израсходовано 50 литров фальшивой крови.",
+        "type": "FACT",
+        "spoiler": false
+      },
+      {
+        "value": "В фильме есть персонаж по имени Кабан, взятый из сериала &#171;<a href=\"/film/77039/\" class=\"all\">Бригада</a>&#187; (2002), где о нём только упоминается.",
+        "type": "FACT",
+        "spoiler": false
+      },
+      {
+        "value": "Хотя фильм снимался в Нижнем Новгороде, на автомобиле Михалыча видны санкт-петербургские номера.",
+        "type": "FACT",
+        "spoiler": false
+      },
+      {
+        "value": "Рабочее название фильма — &laquo;Кавардак&raquo;.",
+        "type": "FACT",
+        "spoiler": false
+      },
+      {
+        "value": "На МКФ в Хельсинки (Финляндия) фильм был представлен под названием &laquo;Блеф мертвеца&raquo;.",
+        "type": "FACT",
+        "spoiler": false
+      },
+      {
+        "value": "В США фильм демонстрировался под прокатным названием &laquo;Блеф слепца&raquo;.",
+        "type": "FACT",
+        "spoiler": false
+      }
+    ],
+    "genres": [
+      {
+        "name": "комедия"
+      },
+      {
+        "name": "криминал"
+      }
+    ],
+    "countries": [
+      {
+        "name": "Россия"
+      }
+    ],
+    "seasonsInfo": [],
+    "persons": [
+      {
+        "id": 231399,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_231399.jpg",
+        "name": "Алексей Панин",
+        "enName": null,
+        "description": "Сергей",
+        "profession": "актеры",
+        "enProfession": "actor"
+      },
+      {
+        "id": 539454,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_539454.jpg",
+        "name": "Дмитрий Дюжев",
+        "enName": null,
+        "description": "Саймон",
+        "profession": "актеры",
+        "enProfession": "actor"
+      },
+      {
+        "id": 101749,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_101749.jpg",
+        "name": "Никита Михалков",
+        "enName": null,
+        "description": "Сергей Михайлович (Михалыч)",
+        "profession": "актеры",
+        "enProfession": "actor"
+      },
+      {
+        "id": 64250,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_64250.jpg",
+        "name": "Сергей Маковецкий",
+        "enName": null,
+        "description": "Корон",
+        "profession": "актеры",
+        "enProfession": "actor"
+      },
+      {
+        "id": 64253,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_64253.jpg",
+        "name": "Виктор Сухоруков",
+        "enName": null,
+        "description": "Степан",
+        "profession": "актеры",
+        "enProfession": "actor"
+      },
+      {
+        "id": 231196,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_231196.jpg",
+        "name": "Григорий Сиятвинда",
+        "enName": null,
+        "description": "Баклажан",
+        "profession": "актеры",
+        "enProfession": "actor"
+      },
+      {
+        "id": 40174,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_40174.jpg",
+        "name": "Анатолий Журавлев",
+        "enName": null,
+        "description": "Бала",
+        "profession": "актеры",
+        "enProfession": "actor"
+      },
+      {
+        "id": 261693,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_261693.jpg",
+        "name": "Гарик Сукачев",
+        "enName": null,
+        "description": "Мозг",
+        "profession": "актеры",
+        "enProfession": "actor"
+      },
+      {
+        "id": 251184,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_251184.jpg",
+        "name": "Алексей Серебряков",
+        "enName": null,
+        "description": "доктор",
+        "profession": "актеры",
+        "enProfession": "actor"
+      },
+      {
+        "id": 224368,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_224368.jpg",
+        "name": "Андрей Панин",
+        "enName": null,
+        "description": "Архитектор",
+        "profession": "актеры",
+        "enProfession": "actor"
+      },
+      {
+        "id": 75867,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_75867.jpg",
+        "name": "Вячеслав Бутусов",
+        "enName": null,
+        "description": null,
+        "profession": "композиторы",
+        "enProfession": "composer"
+      },
+      {
+        "id": 2004911,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_2004911.jpg",
+        "name": "Татьяна Патрахальцева",
+        "enName": null,
+        "description": null,
+        "profession": "художники",
+        "enProfession": "designer"
+      },
+      {
+        "id": 2008028,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_2008028.jpg",
+        "name": "Константин Пахотин",
+        "enName": null,
+        "description": null,
+        "profession": "художники",
+        "enProfession": "designer"
+      },
+      {
+        "id": 64249,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_64249.jpg",
+        "name": "Алексей Балабанов",
+        "enName": null,
+        "description": null,
+        "profession": "режиссеры",
+        "enProfession": "director"
+      },
+      {
+        "id": 2009692,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_2009692.jpg",
+        "name": "Татьяна Кузьмичева",
+        "enName": null,
+        "description": null,
+        "profession": "монтажеры",
+        "enProfession": "editor"
+      },
+      {
+        "id": 676835,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_676835.jpg",
+        "name": "Евгений Привин",
+        "enName": null,
+        "description": null,
+        "profession": "операторы",
+        "enProfession": "operator"
+      },
+      {
+        "id": 674220,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_674220.jpg",
+        "name": "Сергей Долгошеин",
+        "enName": null,
+        "description": null,
+        "profession": "продюсеры",
+        "enProfession": "producer"
+      },
+      {
+        "id": 39446,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_39446.jpg",
+        "name": "Сергей Сельянов",
+        "enName": null,
+        "description": null,
+        "profession": "продюсеры",
+        "enProfession": "producer"
+      },
+      {
+        "id": 64265,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_64265.jpg",
+        "name": "Юрий Гальцев",
+        "enName": null,
+        "description": null,
+        "profession": "актеры дубляжа",
+        "enProfession": "voice_actor"
+      },
+      {
+        "id": 231399,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_231399.jpg",
+        "name": "Алексей Панин",
+        "enName": null,
+        "description": null,
+        "profession": "актеры дубляжа",
+        "enProfession": "voice_actor"
+      },
+      {
+        "id": 64249,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_64249.jpg",
+        "name": "Алексей Балабанов",
+        "enName": null,
+        "description": null,
+        "profession": "редакторы",
+        "enProfession": "writer"
+      },
+      {
+        "id": 603923,
+        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_603923.jpg",
+        "name": "Стас Мохначев",
+        "enName": null,
+        "description": null,
+        "profession": "редакторы",
+        "enProfession": "writer"
+      }
+    ],
+    "lists": [
+      "popular-films",
+      "hd"
+    ],
+    "typeNumber": 1,
+    "alternativeName": null,
+    "enName": "Blind Man's Bluff",
+    "names": [
+      {
+        "name": "Жмурки"
+      },
+      {
+        "name": "Zhmurki",
+        "language": "RU",
+        "type": "transliteration"
+      },
+      {
+        "name": "Blind Man's Bluff",
+        "language": "US",
+        "type": null
+      }
+    ],
+    "ageRating": 18,
+    "budget": {},
+    "ratingMpaa": null,
+    "updateDates": [
+      "2021-09-27T19:54:27.000Z",
+      "2021-09-29T16:27:38.000Z"
+    ],
+    "sequelsAndPrequels": [],
+    "updatedAt": "2024-01-09T01:00:07.798Z",
+    "similarMovies": [
+      {
+        "id": 522,
+        "name": "Карты, деньги, два ствола",
+        "enName": null,
+        "alternativeName": "Lock, Stock and Two Smoking Barrels",
+        "type": "movie",
+        "poster": {
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/6492653f-11d5-4087-a1d2-ec7a74f161d3/orig",
+          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/6492653f-11d5-4087-a1d2-ec7a74f161d3/x1000"
+        }
+      },
+      {
+        "id": 41519,
+        "name": "Брат",
+        "enName": null,
+        "alternativeName": null,
+        "type": "movie",
+        "poster": {
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/e9008e2f-433f-43b0-b9b8-2ea8e3fb6c9b/orig",
+          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/e9008e2f-433f-43b0-b9b8-2ea8e3fb6c9b/x1000"
+        }
+      },
+      {
+        "id": 77039,
+        "name": "Бригада",
+        "enName": null,
+        "alternativeName": null,
+        "type": "tv-series",
+        "poster": {
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/2b1296bf-c7d7-4bf3-bcc6-8b2505cc8cc7/orig",
+          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/2b1296bf-c7d7-4bf3-bcc6-8b2505cc8cc7/x1000"
+        }
+      },
+      {
+        "id": 57166,
+        "name": "Бумер",
+        "enName": null,
+        "alternativeName": null,
+        "type": "movie",
+        "poster": {
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/06488fb4-6135-46a1-8850-321fba3f9af7/orig",
+          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/06488fb4-6135-46a1-8850-321fba3f9af7/x1000"
+        }
+      },
+      {
+        "id": 342,
+        "name": "Криминальное чтиво",
+        "enName": null,
+        "alternativeName": "Pulp Fiction",
+        "type": "movie",
+        "poster": {
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/87b5659d-a159-4224-9bff-d5a5d109a53b/orig",
+          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/87b5659d-a159-4224-9bff-d5a5d109a53b/x1000"
+        }
+      },
+      {
+        "id": 526,
+        "name": "Большой куш",
+        "enName": null,
+        "alternativeName": "Snatch",
+        "type": "movie",
+        "poster": {
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/47fe48f6-ff17-4411-a12f-d337bea2639d/orig",
+          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/47fe48f6-ff17-4411-a12f-d337bea2639d/x1000"
+        }
+      },
+      {
+        "id": 679554,
+        "name": "Всё и сразу",
+        "enName": null,
+        "alternativeName": null,
+        "type": "movie",
+        "poster": {
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/70b94b27-d742-42d9-ac43-3e28b2cf5969/orig",
+          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/70b94b27-d742-42d9-ac43-3e28b2cf5969/x1000"
+        }
+      },
+      {
+        "id": 542574,
+        "name": "Бабло",
+        "enName": null,
+        "alternativeName": null,
+        "type": "movie",
+        "poster": {
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/8c415eb5-e371-41e6-ad7a-7caaec6e962d/orig",
+          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/8c415eb5-e371-41e6-ad7a-7caaec6e962d/x1000"
+        }
+      },
+      {
+        "id": 491889,
+        "name": "Чужая",
+        "enName": null,
+        "alternativeName": null,
+        "type": "movie",
+        "poster": {
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/f6ba67a9-f5a8-49ed-929a-720ca624087a/orig",
+          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/f6ba67a9-f5a8-49ed-929a-720ca624087a/x1000"
+        }
+      },
+      {
+        "id": 41520,
+        "name": "Брат 2",
+        "enName": null,
+        "alternativeName": null,
+        "type": "movie",
+        "poster": {
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/80eab631-346c-4c29-b14d-1fa1438158f9/orig",
+          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/80eab631-346c-4c29-b14d-1fa1438158f9/x1000"
+        }
+      }
+    ],
+    "shortDescription": "Бандиты, черный юмор и много крови. Алексей Балабанов примеряет стиль Квентина Тарантино на Россию 1990-х",
+    "technology": {
+      "hasImax": false,
+      "has3D": false
+    },
+    "ticketsOnSale": false,
+    "imagesInfo": {
+      "framesCount": 47
+    },
+    "logo": {
+      "url": "https://avatars.mds.yandex.net/get-ott/1652588/2a0000017f889317c12a492b74af8ca6b314/orig"
+    },
+    "watchability": {
+      "items": [
+        {
+          "name": "Kinopoisk HD",
+          "logo": {
+            "url": "https://yastatic.net/s3/kinopoisk-frontend/hd-www/release/apple-touch-icon-180x180.png"
+          },
+          "url": "https://hd.kinopoisk.ru/?rt=4ccbc7ac051d733ba196813999198b58"
+        },
+        {
+          "name": "Okko",
+          "logo": {
+            "url": "https://avatars.mds.yandex.net/get-ott/239697/7713e586-17d1-42d1-ac62-53e9ef1e70c3/orig"
+          },
+          "url": "https://okko.tv/movie/zhmurki?utm_medium=referral&utm_source=yandex_search&utm_campaign=new_search_feed"
+        },
+        {
+          "name": "Иви",
+          "logo": {
+            "url": "https://avatars.mds.yandex.net/get-ott/2419418/0dfd1724-848f-4725-9160-abc571f41c11/orig"
+          },
+          "url": "https://www.ivi.ru/watch/33509?utm_source=yandex&utm_medium=wizard"
+        },
+        {
+          "name": "KION",
+          "logo": {
+            "url": "https://avatars.mds.yandex.net/get-ott/239697/daeb142e-3ecc-4bb2-9bff-4827996643ab/orig"
+          },
+          "url": "https://kion.ru/video/movie/278952135?utm_source=yandex&utm_medium=organic&utm_campaign=wizard"
+        },
+        {
+          "name": "PREMIER",
+          "logo": {
+            "url": "https://avatars.mds.yandex.net/get-ott/239697/0f86e907-9531-47e9-87bd-5101a08d4e30/orig"
+          },
+          "url": "https://premier.one/show/9718?utm_source=yandex&utm_medium=yandex_feed_search&utm_campaign=yandex_feed"
+        },
+        {
+          "name": "Wink",
+          "logo": {
+            "url": "https://avatars.mds.yandex.net/get-ott/1672343/54096cbe-cc3b-41c9-8e44-990ebbca8d61/orig"
+          },
+          "url": "https://wink.ru/media_items/70751004?utm_source=yandex&utm_medium=koldunschick&utm_content=name"
+        },
+        {
+          "name": "viju",
+          "logo": {
+            "url": "https://avatars.mds.yandex.net/get-ott/224348/8b10c84b-e1bb-4493-9bc4-6ee56554403a/orig"
+          },
+          "url": "https://viju.ru/filmy/zhmurki?utm_campaign=yandex_content_integration&utm_medium=affiliate&utm_source=yandex"
+        }
+      ]
+    },
+    "top10": null,
+    "top250": null,
+    "deletedAt": null,
+    "isSeries": false,
+    "seriesLength": null,
+    "totalSeriesLength": null,
+    "networks": null,
+    "videos": {
+      "trailers": [
+        {
+          "url": "https://www.youtube.com/embed/YNQAE14f_Fg",
+          "name": "Жмурки - Trailer",
+          "site": "youtube",
+          "type": "TRAILER"
+        },
+        {
+          "url": "https://www.youtube.com/embed/YNQAE14f_Fg",
+          "name": "Жмурки - Trailer",
+          "site": "youtube",
+          "type": "TRAILER"
+        }
+      ]
+    }
+  };
   subscriptions: Subscription[] = [];
   directors!: any[];
   actors!: any[];
@@ -21,13 +583,13 @@ export class MovieComponent {
   }
 
   ngOnInit() {
-    this.subscriptions.push(
-      this.route.params.subscribe((params: Params) => {
-        if (params.hasOwnProperty('id')) {
-          this.getMovieById(params['id']);
-        }
-      })
-    )
+    // this.subscriptions.push(
+    //   this.route.params.subscribe((params: Params) => {
+    //     if (params.hasOwnProperty('id')) {
+    //       this.getMovieById(params['id']);
+    //     }
+    //   })
+    // )
   }
 
   getMovieById(id: number) {
@@ -64,900 +626,5 @@ export class MovieComponent {
     this.subscriptions.forEach((sub) => {
       sub.unsubscribe();
     })
-  }
-
-
-  movie: any = {
-    "fees": {
-      "world": {
-        "value": 426588510,
-        "currency": "$"
-      },
-      "russia": {
-        "value": 1725813,
-        "currency": "$"
-      },
-      "usa": {
-        "value": 10198820,
-        "currency": "$"
-      }
-    },
-    "status": null,
-    "externalId": {
-      "tmdb": 77338,
-      "imdb": "tt1675434"
-    },
-    "rating": {
-      "kp": 8.818,
-      "imdb": 8.5,
-      "filmCritics": 6.8,
-      "russianFilmCritics": 100,
-      "await": null
-    },
-    "votes": {
-      "kp": 1888124,
-      "imdb": 909555,
-      "filmCritics": 129,
-      "russianFilmCritics": 12,
-      "await": 15
-    },
-    "backdrop": {
-      "url": "https://imagetmdb.com/t/p/original/bGksau9GGu0uJ8DJQ8DYc9JW5LM.jpg",
-      "previewUrl": "https://imagetmdb.com/t/p/w500/bGksau9GGu0uJ8DJQ8DYc9JW5LM.jpg"
-    },
-    "movieLength": 112,
-    "images": {
-      "postersCount": 40,
-      "backdropsCount": 10,
-      "framesCount": 40
-    },
-    "productionCompanies": [
-      {
-        "name": "Gaumont",
-        "url": "https://www.themoviedb.org/t/p/original/nda3dTUYdDrJ6rZqBpYvY865aDv.png",
-        "previewUrl": "https://www.themoviedb.org/t/p/w500/nda3dTUYdDrJ6rZqBpYvY865aDv.png"
-      },
-      {
-        "name": "CinéCinéma",
-        "url": "https://www.themoviedb.org/t/p/original/jma8ZaHq1KAzlXW3v0RswVOWSdn.png",
-        "previewUrl": "https://www.themoviedb.org/t/p/w500/jma8ZaHq1KAzlXW3v0RswVOWSdn.png"
-      },
-      {
-        "name": "Quad Productions",
-        "url": "https://www.themoviedb.org/t/p/original/9YDo78sKAy6xxqBwVBT2Vi9FSZl.png",
-        "previewUrl": "https://www.themoviedb.org/t/p/w500/9YDo78sKAy6xxqBwVBT2Vi9FSZl.png"
-      },
-      {
-        "name": "Chaocorp",
-        "url": null,
-        "previewUrl": null
-      },
-      {
-        "name": "Ten Films",
-        "url": null,
-        "previewUrl": null
-      },
-      {
-        "name": "TF1",
-        "url": "https://www.themoviedb.org/t/p/original/zPTy6QDAlCKGeAALZoFEL3QAlut.png",
-        "previewUrl": "https://www.themoviedb.org/t/p/w500/zPTy6QDAlCKGeAALZoFEL3QAlut.png"
-      },
-      {
-        "name": "Canal+",
-        "url": "https://www.themoviedb.org/t/p/original/9aotxauvc9685tq9pTcRJszuT06.png",
-        "previewUrl": "https://www.themoviedb.org/t/p/w500/9aotxauvc9685tq9pTcRJszuT06.png"
-      },
-      {
-        "name": "TF1 Films Production",
-        "url": "https://www.themoviedb.org/t/p/original/9tW5wZEGotn1Ei5pErA88m47XiD.png",
-        "previewUrl": "https://www.themoviedb.org/t/p/w500/9tW5wZEGotn1Ei5pErA88m47XiD.png"
-      }
-    ],
-    "spokenLanguages": [
-      {
-        "name": "English",
-        "nameEn": "English"
-      },
-      {
-        "name": "Français",
-        "nameEn": "French"
-      }
-    ],
-    "id": 535341,
-    "type": "movie",
-    "name": "1+1",
-    "description": "Пострадав в результате несчастного случая, богатый аристократ Филипп нанимает в помощники человека, который менее всего подходит для этой работы, – молодого жителя предместья Дрисса, только что освободившегося из тюрьмы. Несмотря на то, что Филипп прикован к инвалидному креслу, Дриссу удается привнести в размеренную жизнь аристократа дух приключений.",
-    "distributors": {
-      "distributor": "Каскад фильм",
-      "distributorRelease": "Новый Диск"
-    },
-    "premiere": {
-      "world": "2011-09-23T00:00:00.000Z",
-      "russia": "2012-04-26T00:00:00.000Z",
-      "bluray": "2012-06-25T00:00:00.000Z",
-      "dvd": "2012-05-28T00:00:00.000Z"
-    },
-    "slogan": "Sometimes you have to reach into someone else's world to find out what's missing in your own.",
-    "year": 2011,
-    "budget": {
-      "value": 9500000,
-      "currency": "€"
-    },
-    "poster": {
-      "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/bf93b465-1189-4155-9dd1-cb9fb5cb1bb5/orig",
-      "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/bf93b465-1189-4155-9dd1-cb9fb5cb1bb5/x1000"
-    },
-    "facts": [
-      {
-        "value": "На создание картины режиссёрский дуэт вдохновила увиденная ими в 2004 году документальная лента, в которой рассказывалось о том, как молодой житель предместья был нанят присматривать за парализованным инвалидом <a href=\"/name/3152842/\" class=\"all\">Филиппом Поццо ди Борго</a>, который остался парализованным после несчастного случая 27 июля 1993 года.",
-        "type": "FACT",
-        "spoiler": false
-      },
-      {
-        "value": "Первоначальным выбором на роль <a href=\"/name/3152842/\" class=\"all\">Филиппа Поццо ди Борго</a> был <a href=\"/name/11670/\" class=\"all\">Даниель Отой</a>.",
-        "type": "FACT",
-        "spoiler": false
-      },
-      {
-        "value": "Несмотря на то, что ему пришлось играть совершенно обычного человека, <a href=\"/name/41644/\" class=\"all\">Омар Си</a> сбросил при подготовке к съёмкам почти пять килограммов веса. Актёр посчитал, что стандартный житель предместья с такой предысторией должен обладать более атлетическим телосложением.",
-        "type": "FACT",
-        "spoiler": false
-      },
-      {
-        "value": "Перед началом работы над проектом режиссёры <a href=\"/name/382906/\" class=\"all\">Оливье Накаш</a> и <a href=\"/name/426346/\" class=\"all\">Эрик Толедано</a> лично посетили живущего в Марокко <a href=\"/name/3152842/\" class=\"all\">Филиппа Поццо ди Борго</a>. Знакомство с ним и произнесенная им речь многократно увеличили их желание поставить фильм на основе его истории. Сам <a href=\"/name/3152842/\" class=\"all\">Филипп Поццо ди Борго</a> дал им огромное количество информации и советов практически по каждой сцене картины.",
-        "type": "FACT",
-        "spoiler": false
-      },
-      {
-        "value": "На том, чтобы в первую очередь сделать фильм комедией, а не драмой усиленно настаивал сам <a href=\"/name/3152842/\" class=\"all\">Филипп Поццо ди Борго</a>. Он не хотел, чтобы основанный на его жизни фильм стал историей сострадания и жалости.",
-        "type": "FACT",
-        "spoiler": false
-      },
-      {
-        "value": "<a href=\"/name/41644/\" class=\"all\">Омар Си</a> был приглашён сыграть в фильме ещё до того, как был написан сценарий.",
-        "type": "FACT",
-        "spoiler": false
-      },
-      {
-        "value": "Когда Дрисс и Филипп были в галерее, то у Дрисса провод от наушников сначала был с правой стороны, а в следующем кадре с левой.",
-        "type": "BLOOPER",
-        "spoiler": true
-      },
-      {
-        "value": "В сцене, когда главные герои находятся в картинной галерее, Филипп просит конфету. Дрис протягивает руку с зеленой конфетой, а в следующем кадре он кладет Филиппу в рот уже желтую.",
-        "type": "BLOOPER",
-        "spoiler": true
-      },
-      {
-        "value": "Когда Дрисс устраивается на работу курьером, девушка упоминает, что он получил права месяц назад. При этом Филипп в сцене погони сетует на то, что Дриссу не мешало бы получить права, хотя эта сцена происходит позже во времени.",
-        "type": "BLOOPER",
-        "spoiler": true
-      },
-      {
-        "value": "В сцене, когда Дрис бреет Филиппа, мокрые волосы Филиппа при переходах между ракурсами становятся то сухими, то снова мокрыми.",
-        "type": "BLOOPER",
-        "spoiler": true
-      },
-      {
-        "value": "Во время танца Дрисса скрипач сначала играет, а в следующем кадре уже просто сидит.",
-        "type": "BLOOPER",
-        "spoiler": true
-      },
-      {
-        "value": "В фильме используются два автомобиля Мазерати. В первой сцене Maserati Quattroporte GTS 4.2 (0:01:28), а в сцене с эскортом из полицейских машин уже Maserati Quattroporte 4.7 ((0:06:21), (0:06:41)). Разглядеть данное различие можно так: в Maserati Quattroporte GTS 4.2 4 выхлопных трубы и радиаторная решетка-сетка, а в Maserati Quattroporte 4.7 &#8211; две больших выхлопных трубы и радиаторная решетка с вертикальными спицами.",
-        "type": "BLOOPER",
-        "spoiler": true
-      },
-      {
-        "value": "На 15 минуте фильма, когда Дрисс сидит около стола, яйцо и стакан, находящиеся на этом столе в разных кадрах находятся на разном расстоянии друг от друга.",
-        "type": "BLOOPER",
-        "spoiler": true
-      },
-      {
-        "value": "В сцене, где тетя Дрисса ругается на него, шарфик на ее шее при каждой смене кадра лежит по-разному. Также, судя по цветным полоскам на ее шарфе, он у нее затянут то туже, то слабее.",
-        "type": "BLOOPER",
-        "spoiler": true
-      },
-      {
-        "value": "В сцене, где Дрисс приходит к Филиппу, возле ворот во внутренний двор висит знак, запрещающий парковку. Но он отличается от того, который висит там же в сцене, где Дрисс набрасывается на мужчину, припарковавшегося напротив этих ворот.",
-        "type": "BLOOPER",
-        "spoiler": true
-      },
-      {
-        "value": "В одной из сцен, где зрителям показывают, как Дрисс и Филипп проводят время, отчетливо видно, как Филипп, сидя в инвалидном кресле, шевелит ступнями обеих ног, хотя по сценарию он парализован.",
-        "type": "BLOOPER",
-        "spoiler": true
-      }
-    ],
-    "genres": [
-      {
-        "name": "драма"
-      },
-      {
-        "name": "комедия"
-      },
-      {
-        "name": "биография"
-      }
-    ],
-    "countries": [
-      {
-        "name": "Франция"
-      }
-    ],
-    "videos": {
-      "trailers": [
-        {
-          "url": "https://www.youtube.com/embed/0RqDiYnFxTk",
-          "name": "The Intouchables / Intouchables (2011) - Trailer (English subtitles)",
-          "site": "youtube",
-          "type": "TRAILER"
-        },
-        {
-          "url": "https://www.youtube.com/embed/34WIbmXkewU",
-          "name": "The Intouchables Official Trailer #1 (2012) HD Movie",
-          "site": "youtube",
-          "type": "TRAILER"
-        },
-        {
-          "url": "https://www.youtube.com/embed/0RqDiYnFxTk",
-          "name": "The Intouchables / Intouchables (2011) - Trailer (English subtitles)",
-          "site": "youtube",
-          "type": "TRAILER"
-        },
-        {
-          "url": "https://www.youtube.com/embed/34WIbmXkewU",
-          "name": "The Intouchables Official Trailer #1 (2012) HD Movie",
-          "site": "youtube",
-          "type": "TRAILER"
-        }
-      ]
-    },
-    "seasonsInfo": [],
-    "persons": [
-      {
-        "id": 71427,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_71427.jpg",
-        "name": "Франсуа Клюзе",
-        "enName": "François Cluzet",
-        "description": "Philippe",
-        "profession": "актеры",
-        "enProfession": "actor"
-      },
-      {
-        "id": 41644,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_41644.jpg",
-        "name": "Омар Си",
-        "enName": "Omar Sy",
-        "description": "Driss",
-        "profession": "актеры",
-        "enProfession": "actor"
-      },
-      {
-        "id": 57174,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_57174.jpg",
-        "name": "Анн Ле Ни",
-        "enName": "Anne Le Ny",
-        "description": "Yvonne",
-        "profession": "актеры",
-        "enProfession": "actor"
-      },
-      {
-        "id": 868557,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_868557.jpg",
-        "name": "Одри Флёро",
-        "enName": "Audrey Fleurot",
-        "description": "Magalie",
-        "profession": "актеры",
-        "enProfession": "actor"
-      },
-      {
-        "id": 541041,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_541041.jpg",
-        "name": "Жозефин де Мо",
-        "enName": "Joséphine de Meaux",
-        "description": "La DRH société de courses",
-        "profession": "актеры",
-        "enProfession": "actor"
-      },
-      {
-        "id": 445,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_445.jpg",
-        "name": "Клотильд Молле",
-        "enName": "Clotilde Mollet",
-        "description": "Marcelle",
-        "profession": "актеры",
-        "enProfession": "actor"
-      },
-      {
-        "id": 964574,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_964574.jpg",
-        "name": "Альба Гайя Крагеде Беллуджи",
-        "enName": "Alba Gaïa Bellugi",
-        "description": "Elisa",
-        "profession": "актеры",
-        "enProfession": "actor"
-      },
-      {
-        "id": 2237576,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_2237576.jpg",
-        "name": "Сирил Менди",
-        "enName": "Cyril Mendy",
-        "description": null,
-        "profession": "актеры",
-        "enProfession": "actor"
-      },
-      {
-        "id": 3084679,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_3084679.jpg",
-        "name": "Салимата Камате",
-        "enName": "Salimata Kamate",
-        "description": "Fatou",
-        "profession": "актеры",
-        "enProfession": "actor"
-      },
-      {
-        "id": 3084680,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_3084680.jpg",
-        "name": "Абса Дьяту Тур",
-        "enName": "Absa Diatou Toure",
-        "description": null,
-        "profession": "актеры",
-        "enProfession": "actor"
-      },
-      {
-        "id": 590648,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_590648.jpg",
-        "name": "Людовико Эйнауди",
-        "enName": "Ludovico Einaudi",
-        "description": null,
-        "profession": "композиторы",
-        "enProfession": "composer"
-      },
-      {
-        "id": 634036,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_634036.jpg",
-        "name": "Матьё Вадпьед",
-        "enName": "Mathieu Vadepied",
-        "description": null,
-        "profession": "художники",
-        "enProfession": "designer"
-      },
-      {
-        "id": 1998619,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1998619.jpg",
-        "name": "Изабель Паннетье",
-        "enName": "Isabelle Pannetier",
-        "description": null,
-        "profession": "художники",
-        "enProfession": "designer"
-      },
-      {
-        "id": 2004628,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_2004628.jpg",
-        "name": "Оливия Блох-Лене",
-        "enName": "Olivia Bloch-Lainé",
-        "description": null,
-        "profession": "художники",
-        "enProfession": "designer"
-      },
-      {
-        "id": 382906,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
-        "name": "Оливье Накаш",
-        "enName": "Olivier Nakache",
-        "description": null,
-        "profession": "режиссеры",
-        "enProfession": "director"
-      },
-      {
-        "id": 426346,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_426346.jpg",
-        "name": "Эрик Толедано",
-        "enName": "Éric Toledano",
-        "description": null,
-        "profession": "режиссеры",
-        "enProfession": "director"
-      },
-      {
-        "id": 1987674,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1987674.jpg",
-        "name": "Дориан Ригаль-Ансу",
-        "enName": "Dorian Rigal-Ansous",
-        "description": null,
-        "profession": "монтажеры",
-        "enProfession": "editor"
-      },
-      {
-        "id": 634036,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_634036.jpg",
-        "name": "Матьё Вадпьед",
-        "enName": "Mathieu Vadepied",
-        "description": null,
-        "profession": "операторы",
-        "enProfession": "operator"
-      },
-      {
-        "id": 2402288,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_2402288.jpg",
-        "name": "Арно Бертран",
-        "enName": "Arnaud Bertrand",
-        "description": null,
-        "profession": "продюсеры",
-        "enProfession": "producer"
-      },
-      {
-        "id": 884847,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_884847.jpg",
-        "name": "Доминик Бутонна",
-        "enName": "Dominique Boutonnat",
-        "description": null,
-        "profession": "продюсеры",
-        "enProfession": "producer"
-      },
-      {
-        "id": 2659794,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_2659794.jpg",
-        "name": "Юбер Кайлар",
-        "enName": "Hubert Caillard",
-        "description": null,
-        "profession": "продюсеры",
-        "enProfession": "producer"
-      },
-      {
-        "id": 676553,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_676553.jpg",
-        "name": "Николя Дюваль-Адассовски",
-        "enName": "Nicolas Duval Adassovsky",
-        "description": null,
-        "profession": "продюсеры",
-        "enProfession": "producer"
-      },
-      {
-        "id": 256836,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_256836.jpg",
-        "name": "Владимир Зайцев",
-        "enName": null,
-        "description": null,
-        "profession": "актеры дубляжа",
-        "enProfession": "voice_actor"
-      },
-      {
-        "id": 1179681,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1179681.jpg",
-        "name": "Илья Исаев",
-        "enName": null,
-        "description": null,
-        "profession": "актеры дубляжа",
-        "enProfession": "voice_actor"
-      },
-      {
-        "id": 1654400,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1654400.jpg",
-        "name": "Елена Соловьева",
-        "enName": null,
-        "description": null,
-        "profession": "актеры дубляжа",
-        "enProfession": "voice_actor"
-      },
-      {
-        "id": 1624192,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1624192.jpg",
-        "name": "Рамиля Искандер",
-        "enName": null,
-        "description": null,
-        "profession": "актеры дубляжа",
-        "enProfession": "voice_actor"
-      },
-      {
-        "id": 1643982,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1643982.jpg",
-        "name": "Лина Иванова",
-        "enName": null,
-        "description": null,
-        "profession": "актеры дубляжа",
-        "enProfession": "voice_actor"
-      },
-      {
-        "id": 382906,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_382906.jpg",
-        "name": "Оливье Накаш",
-        "enName": "Olivier Nakache",
-        "description": null,
-        "profession": "редакторы",
-        "enProfession": "writer"
-      },
-      {
-        "id": 426346,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_426346.jpg",
-        "name": "Эрик Толедано",
-        "enName": "Éric Toledano",
-        "description": null,
-        "profession": "редакторы",
-        "enProfession": "writer"
-      },
-      {
-        "id": 3152842,
-        "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_3152842.jpg",
-        "name": "Филипп Поццо ди Борго",
-        "enName": "Philippe Pozzo di Borgo",
-        "description": null,
-        "profession": "редакторы",
-        "enProfession": "writer"
-      }
-    ],
-    "lists": [
-      "popular-films",
-      "hd-revise",
-      "box-world-not-usa",
-      "box-total",
-      "hearing_impairment",
-      "100_greatest_movies_XXI",
-      "top250",
-      "top500",
-      "hd"
-    ],
-    "typeNumber": 1,
-    "alternativeName": "Intouchables",
-    "enName": "Intouchables",
-    "names": [
-      {
-        "name": "1+1"
-      },
-      {
-        "name": "Intouchables"
-      },
-      {
-        "name": "不可触碰",
-        "language": "CN",
-        "type": null
-      },
-      {
-        "name": "最佳拍档",
-        "language": "CN",
-        "type": null
-      },
-      {
-        "name": "无法触碰",
-        "language": "CN",
-        "type": null
-      },
-      {
-        "name": "Untouchable",
-        "language": "GB",
-        "type": null
-      },
-      {
-        "name": "不可触摸",
-        "language": "CN",
-        "type": null
-      },
-      {
-        "name": "Неприкасаемые",
-        "language": "RU",
-        "type": "Literal"
-      },
-      {
-        "name": "1+1 [Intouchables]",
-        "language": "RU",
-        "type": null
-      },
-      {
-        "name": "Saikyô no futari",
-        "language": "JP",
-        "type": null
-      },
-      {
-        "name": "Amigos",
-        "language": "CL",
-        "type": null
-      },
-      {
-        "name": "Mehubarim la'hayim",
-        "language": "IL",
-        "type": "Hebrew title"
-      },
-      {
-        "name": "Amigos para siempre",
-        "language": "VE",
-        "type": null
-      },
-      {
-        "name": "Prijatelja",
-        "language": "SI",
-        "type": null
-      },
-      {
-        "name": "En oväntad vänskap",
-        "language": "SE",
-        "type": null
-      },
-      {
-        "name": "Intocáveis",
-        "language": "BR",
-        "type": null
-      },
-      {
-        "name": "Intouchables – Ziemlich beste Freunde",
-        "language": "DE",
-        "type": null
-      },
-      {
-        "name": "언터처블 1%의 우정",
-        "language": "KR",
-        "type": null
-      },
-      {
-        "name": "De Uroerlige",
-        "language": "DK",
-        "type": null
-      },
-      {
-        "name": "Intocable",
-        "language": "ES",
-        "type": null
-      }
-    ],
-    "similarMovies": [
-      {
-        "id": 32898,
-        "name": "Достучаться до небес",
-        "enName": null,
-        "alternativeName": "Knockin' on Heaven's Door",
-        "type": "movie",
-        "poster": {
-          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/4483445/df6c9527-c2cb-4a17-b4bd-1ed05d2e733d/orig",
-          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/4483445/df6c9527-c2cb-4a17-b4bd-1ed05d2e733d/x1000"
-        },
-        "year": 1997,
-        "rating": {
-          "kp": 8.638,
-          "imdb": 7.8,
-          "filmCritics": 0,
-          "russianFilmCritics": 100,
-          "await": null
-        }
-      },
-      {
-        "id": 84014,
-        "name": "…А в душе я танцую",
-        "enName": null,
-        "alternativeName": "Inside I'm Dancing",
-        "type": "movie",
-        "poster": {
-          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/3623db7c-3c94-4cff-841a-bb2f2d30b9ea/orig",
-          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/3623db7c-3c94-4cff-841a-bb2f2d30b9ea/x1000"
-        },
-        "year": 2004,
-        "rating": {
-          "kp": 8.106,
-          "imdb": 7.7,
-          "filmCritics": 5.8,
-          "russianFilmCritics": 0,
-          "await": null
-        }
-      },
-      {
-        "id": 4871,
-        "name": "Запах женщины",
-        "enName": null,
-        "alternativeName": "Scent of a Woman",
-        "type": "movie",
-        "poster": {
-          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/378890fe-a68d-45ba-a87e-9108ae0e4574/orig",
-          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/378890fe-a68d-45ba-a87e-9108ae0e4574/x1000"
-        },
-        "year": 1992,
-        "rating": {
-          "kp": 8.448,
-          "imdb": 8,
-          "filmCritics": 7,
-          "russianFilmCritics": 0,
-          "await": null
-        }
-      },
-      {
-        "id": 258885,
-        "name": "Пока не сыграл в ящик",
-        "enName": null,
-        "alternativeName": "The Bucket List",
-        "type": "movie",
-        "poster": {
-          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/7155a924-ac60-4a34-8b0f-56dff6a012f6/orig",
-          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/7155a924-ac60-4a34-8b0f-56dff6a012f6/x1000"
-        },
-        "year": 2007,
-        "rating": {
-          "kp": 8.049,
-          "imdb": 7.4,
-          "filmCritics": 5.2,
-          "russianFilmCritics": 0,
-          "await": null
-        }
-      },
-      {
-        "id": 519,
-        "name": "Человек дождя",
-        "enName": null,
-        "alternativeName": "Rain Man",
-        "type": "movie",
-        "poster": {
-          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/74259ac0-8003-4282-b0c9-ffe915ccd6fb/orig",
-          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/74259ac0-8003-4282-b0c9-ffe915ccd6fb/x1000"
-        },
-        "year": 1988,
-        "rating": {
-          "kp": 8.243,
-          "imdb": 8,
-          "filmCritics": 8.1,
-          "russianFilmCritics": 0,
-          "await": null
-        }
-      },
-      {
-        "id": 77435,
-        "name": "Скафандр и бабочка",
-        "enName": null,
-        "alternativeName": "Le scaphandre et le papillon",
-        "type": "movie",
-        "poster": {
-          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1777765/2df74ce4-1542-41b5-a302-39aa7426e65c/orig",
-          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1777765/2df74ce4-1542-41b5-a302-39aa7426e65c/x1000"
-        },
-        "year": 2007,
-        "rating": {
-          "kp": 7.699,
-          "imdb": 8,
-          "filmCritics": 8.3,
-          "russianFilmCritics": 0,
-          "await": null
-        }
-      },
-      {
-        "id": 1108577,
-        "name": "Зеленая книга",
-        "enName": null,
-        "alternativeName": "Green Book",
-        "type": "movie",
-        "poster": {
-          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/4b27e219-a8a5-4d85-9874-57d6016e0837/orig",
-          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/4b27e219-a8a5-4d85-9874-57d6016e0837/x1000"
-        },
-        "year": 2018,
-        "rating": {
-          "kp": 8.434,
-          "imdb": 8.2,
-          "filmCritics": 7.2,
-          "russianFilmCritics": 93.75,
-          "await": null
-        }
-      },
-      {
-        "id": 807318,
-        "name": "До встречи с тобой",
-        "enName": null,
-        "alternativeName": "Me Before You",
-        "type": "movie",
-        "poster": {
-          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/833bf19b-d1e6-4ce2-80c8-eb5971e61ab0/orig",
-          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/833bf19b-d1e6-4ce2-80c8-eb5971e61ab0/x1000"
-        },
-        "year": 2016,
-        "rating": {
-          "kp": 7.273,
-          "imdb": 7.4,
-          "filmCritics": 5.5,
-          "russianFilmCritics": 80,
-          "await": null
-        }
-      },
-      {
-        "id": 462515,
-        "name": "Жизнь прекрасна",
-        "enName": null,
-        "alternativeName": "50/50",
-        "type": "movie",
-        "poster": {
-          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/2b5e57a6-535f-4461-a534-6bb811d28233/orig",
-          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/2b5e57a6-535f-4461-a534-6bb811d28233/x1000"
-        },
-        "year": 2011,
-        "rating": {
-          "kp": 7.534,
-          "imdb": 7.6,
-          "filmCritics": 7.7,
-          "russianFilmCritics": 0,
-          "await": null
-        }
-      },
-      {
-        "id": 2950,
-        "name": "Пробуждение",
-        "enName": null,
-        "alternativeName": "Awakenings",
-        "type": "movie",
-        "poster": {
-          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/42ad912d-cee7-45ad-b5f7-6a6df3ded047/orig",
-          "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/42ad912d-cee7-45ad-b5f7-6a6df3ded047/x1000"
-        },
-        "year": 1990,
-        "rating": {
-          "kp": 8.424,
-          "imdb": 7.8,
-          "filmCritics": 6.6,
-          "russianFilmCritics": 0,
-          "await": null
-        }
-      }
-    ],
-    "updatedAt": "2023-12-26T12:46:15.613Z",
-    "imagesInfo": {
-      "framesCount": 0
-    },
-    "sequelsAndPrequels": [],
-    "ratingMpaa": "r",
-    "shortDescription": "Аристократ на коляске нанимает в сиделки бывшего заключенного. Искрометная французская комедия с Омаром Си",
-    "technology": {
-      "hasImax": false,
-      "has3D": false
-    },
-    "ticketsOnSale": false,
-    "ageRating": 18,
-    "logo": {
-      "url": "https://avatars.mds.yandex.net/get-ott/1531675/2a0000017f0262661cde61dc260cb86f7830/orig"
-    },
-    "watchability": {
-      "items": [
-        {
-          "name": "Kinopoisk HD",
-          "logo": {
-            "url": "https://yastatic.net/s3/kinopoisk-frontend/hd-www/release/apple-touch-icon-180x180.png"
-          },
-          "url": "https://hd.kinopoisk.ru/?rt=4127663ed234fa8584aeb969ceb02cd8"
-        },
-        {
-          "name": "Okko",
-          "logo": {
-            "url": "https://avatars.mds.yandex.net/get-ott/239697/7713e586-17d1-42d1-ac62-53e9ef1e70c3/orig"
-          },
-          "url": "https://okko.tv/movie/intouchables?utm_medium=referral&utm_source=yandex_search&utm_campaign=new_search_feed"
-        },
-        {
-          "name": "Иви",
-          "logo": {
-            "url": "https://avatars.mds.yandex.net/get-ott/2419418/0dfd1724-848f-4725-9160-abc571f41c11/orig"
-          },
-          "url": "https://www.ivi.ru/watch/109726?utm_source=yandex&utm_medium=wizard"
-        },
-        {
-          "name": "START",
-          "logo": {
-            "url": "https://avatars.mds.yandex.net/get-ott/239697/1a632675-0d99-4268-bd5e-d5f3dd800174/orig"
-          },
-          "url": "https://start.ru/watch/1-1?utm_source=kinopoisk&utm_medium=feed_watch&utm_campaign=1-1"
-        }
-      ]
-    },
-    "top10": null,
-    "top250": 3,
-    "audience": [
-      {
-        "count": 19440920,
-        "country": "Франция"
-      },
-      {
-        "count": 9108101,
-        "country": "Германия"
-      },
-      {
-        "count": 2582237,
-        "country": "Испания"
-      }
-    ],
-    "deletedAt": null,
-    "isSeries": false,
-    "seriesLength": null,
-    "totalSeriesLength": null,
-    "networks": null
   }
 }
