@@ -1,6 +1,7 @@
 <section class="about-movie" *ngIf="movie" [style.background-image]="'url('+ movie.backdrop.url+')'">
   <div class="content">
     <img class="name" *ngIf="movie['logo']" [hidden]="!isImgLoaded" [src]="movie['logo']['url']" (load)="isImgLoaded = true">
+    <p class="name" *ngIf="!movie['logo']">{{movie['name']}}</p>
     <div class="title">
       <span class="rating">{{movie['rating']['kp'] | number: '1.1-1'}}</span>
       <span class="year">{{movie['year']}},</span>
@@ -38,7 +39,7 @@
     </div>
   </div>
 </section>
-<section *ngIf="movie" class="similar">
+<section *ngIf="movie['similarMovies']" class="similar">
   <h3>Похожее</h3>
   <app-slider class="films" [displayedImages]="5" (click)="onMovieChoice($event)">
     <app-movie-card class="films__card" *ngFor="let similarMovie of movie.similarMovies" [card]="similarMovie" [attr.data-id]="similarMovie.id"></app-movie-card>

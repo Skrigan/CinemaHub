@@ -27,28 +27,12 @@ export class SliderComponent implements OnInit, AfterContentInit {
   protected currentSlide = 0;
   protected cardMinWidth = '';
 
-  // constructor(private http: HttpClient) {
-  // }
-
   ngOnInit() {
     this.cardMinWidth = `calc((100% - ${(this.displayedImages - 1)}vw) / ${this.displayedImages})`;
-    // const trash = Array.from(this.cardsRef.nativeElement.children);
-    // this.http.get<any>('https://kinopoiskapiunofficial.tech/api/v2.1/films/releases', {
-    //   headers: {
-    //     'X-API-KEY': 'e4ef3242-e2cc-4ea4-933e-d4f1b854cafd',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   params: {
-    //     year: 2023,
-    //     month: 'DECEMBER',
-    //     page: 1
-    // }
-    // }).subscribe(releases => {
-    //   this.cards = releases.releases;
-    // });
   }
 
   ngAfterContentInit() {
+    console.log('ngAfterContentInit');
     this.cards = Array.from(this.cardsRef.nativeElement.children);
     this.cards.forEach((item: HTMLElement) => {
         item.style.minWidth = this.cardMinWidth;
