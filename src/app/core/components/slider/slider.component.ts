@@ -1,5 +1,6 @@
 import {
-  AfterContentInit,
+  AfterContentChecked,
+  AfterContentInit, AfterViewChecked,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -16,7 +17,7 @@ import {HttpClient} from "@angular/common/http";
   styleUrl: './slider.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SliderComponent implements OnInit, AfterContentInit {
+export class SliderComponent implements AfterContentChecked {
   @Input() displayedImages: number = 3;
 
   @ViewChild('controlLeft', { static: true }) controlLeft!: ElementRef;
@@ -24,6 +25,7 @@ export class SliderComponent implements OnInit, AfterContentInit {
   @ViewChild('cardsRef', { static: true }) cardsRef!: ElementRef;
 
   protected cards: HTMLElement[] = [];
+  protected cardsLength?: number;
   protected currentSlide = 0;
   protected cardMinWidth = '';
 
@@ -31,12 +33,20 @@ export class SliderComponent implements OnInit, AfterContentInit {
     this.cardMinWidth = `calc((100% - ${(this.displayedImages - 1)}vw) / ${this.displayedImages})`;
   }
 
-  ngAfterContentInit() {
-    console.log('ngAfterContentInit');
+  ngAfterContentChecked() {
     this.cards = Array.from(this.cardsRef.nativeElement.children);
     this.cards.forEach((item: HTMLElement) => {
-        item.style.minWidth = this.cardMinWidth;
+      item.style.minWidth = this.cardMinWidth;
     })
+
+    if (this.cardsLength === undefined || this.cardsLength !== this.cards.length) {
+      this.cardsLength = this.cards.length;
+      if (this.cards.length <= this.displayedImages) {
+        this.controlRight.nativeElement.style.visibility = 'hidden'
+      } else {
+        this.controlRight.nativeElement.style.visibility = 'visible'
+      }
+    }
   }
 
   moveLeft(event: MouseEvent) {

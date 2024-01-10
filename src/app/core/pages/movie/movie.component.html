@@ -39,7 +39,7 @@
     </div>
   </div>
 </section>
-<section *ngIf="movie['similarMovies']" class="similar">
+<section *ngIf="movie?.similarMovies.length" class="similar">
   <h3>Похожее</h3>
   <app-slider class="films" [displayedImages]="5" (click)="onMovieChoice($event)">
     <app-movie-card class="films__card" *ngFor="let similarMovie of movie.similarMovies" [card]="similarMovie" [attr.data-id]="similarMovie.id"></app-movie-card>
