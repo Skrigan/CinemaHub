@@ -135,3 +135,26 @@ ul {
 .similar {
   padding-bottom: 3vw;
 }
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: green;
+  opacity: 0.2;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal {
+  border: 0;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  position: absolute;
+  //width: 50vw;
+  //height: 60vh;
+  background-color: red;
+  z-index: 6;
+}
