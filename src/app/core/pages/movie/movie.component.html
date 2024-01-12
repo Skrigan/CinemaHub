@@ -14,8 +14,8 @@
     <!--    <div class="director">Режиссёр: <span class="person">{{directors[0].name}}</span></div>-->
     <!--    <div class="actors">Актёры: <span *ngFor="let actor of actors.slice(0, 3)" class="person">{{actor.name}}</span></div>-->
     <div class="buttons">
-      <button class="watch-movie">Смотреть {{movieType}}</button>
-      <button class="watch-movie">Трейлер</button>
+      <button class="watch-movie" (click)="getVoidBoostLink()">Смотреть {{movieType}}</button>
+      <button *ngIf="movie?.videos?.trailers?.length" class="watch-movie" (click)="getTrailer()">Трейлер</button>
     </div>
   </div>
 </section>
@@ -39,14 +39,18 @@
     </div>
   </div>
 </section>
-<section *ngIf="movie?.similarMovies.length" class="similar">
+<section *ngIf="movie?.similarMovies?.length" class="similar">
   <h3>Похожее</h3>
   <app-slider class="films" [displayedImages]="5" (click)="onMovieChoice($event)">
     <app-movie-card class="films__card" *ngFor="let similarMovie of movie.similarMovies" [card]="similarMovie" [attr.data-id]="similarMovie.id"></app-movie-card>
   </app-slider>
 </section>
-<div class="backdrop"></div>
-<!--<iframe width="1280" height="720" allow="accelerometer; autoplay; clipboard-write; encrypted-media;-->
-<!--   gyroscope; picture-in-picture; web-share" allowfullscreen="" title="Трейлер"-->
-<!--        class="modal modal_trailer" src="https://www.youtube.com/embed/RcNhbJndBv8?autoplay=1">-->
-<!--</iframe>-->
+<div *ngIf="trailerOrMovie" class="backdrop" (click)="removeTrailerOrMovie()"></div>
+<div *ngIf="trailerOrMovie" class="modal modal_trailer">
+  <iframe *ngIf="trailerOrMovie" width="1280" height="720" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+   gyroscope; picture-in-picture; web-share" allowfullscreen="" title="Трейлер"
+   [src]="trailerOrMovie">
+  </iframe>
+  <div class="close-modal" (click)="removeTrailerOrMovie()"></div>
+</div>
+

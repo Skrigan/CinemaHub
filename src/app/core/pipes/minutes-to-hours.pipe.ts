@@ -9,9 +9,16 @@ export class MinutesToHoursPipe implements PipeTransform {
     if (typeof minutes === "string") {
       minutes = parseInt(minutes);
     }
+
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
-    return `${hours} ч ${remainingMinutes} мин`;
-  }
 
+    if (hours === 0) {
+      return `${remainingMinutes} мин`;
+    } else if (remainingMinutes === 0) {
+      return `${hours} ч`;
+    } else {
+      return `${hours} ч ${remainingMinutes} мин`;
+    }
+  }
 }
