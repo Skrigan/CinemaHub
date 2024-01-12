@@ -1,18 +1,17 @@
 <section class="about-movie" *ngIf="movie" [style.background-image]="'url('+ movie.backdrop.url+')'">
   <div class="content">
-    <img class="name" *ngIf="movie['logo']" [hidden]="!isImgLoaded" [src]="movie['logo']['url']" (load)="isImgLoaded = true">
-    <p class="name" *ngIf="!movie['logo']">{{movie['name']}}</p>
+    <img class="name" *ngIf="movie?.logo?.url" [hidden]="!isImgLoaded" [src]="movie['logo']['url']" (load)="isImgLoaded = true">
+    <p class="name" *ngIf="!movie?.logo?.url">{{movie['name']}}</p>
     <div class="title">
       <span class="rating">{{movie['rating']['kp'] | number: '1.1-1'}}</span>
-      <span class="year">{{movie['year']}},</span>
-      <span class="genre">{{movie.genres[0]['name']}},</span>
-      <span class="country">{{movie.countries[0]['name']}},</span>
-      <span class="movie-length">{{movie['movieLength'] | minutesToHours}},</span>
-      <span class="age-rating">{{movie['ageRating']}}+</span>
+      <span class="year">{{movie['year']}}</span>
+      <span class="genre">{{movie.genres[0]['name']}}</span>
+      <span class="country">{{movie.countries[0]['name']}}</span>
+      <span *ngIf="movie.movieLength" class="movie-length">{{movie['movieLength'] | minutesToHours}}</span>
+      <span *ngIf="movie?.seasonsInfo?.length" class="country">{{seasonsNumber}}</span>
+      <span *ngIf="movie.ageRating" class="age-rating">{{movie['ageRating']}}+</span>
     </div>
     <div class="short-description">{{movie['shortDescription']}}</div>
-    <!--    <div class="director">Режиссёр: <span class="person">{{directors[0].name}}</span></div>-->
-    <!--    <div class="actors">Актёры: <span *ngFor="let actor of actors.slice(0, 3)" class="person">{{actor.name}}</span></div>-->
     <div class="buttons">
       <button class="watch-movie" (click)="getVoidBoostLink()">Смотреть {{movieType}}</button>
       <button *ngIf="movie?.videos?.trailers?.length" class="watch-movie" (click)="getTrailer()">Трейлер</button>
@@ -25,13 +24,13 @@
     <div class="content__container">
       <p class="description">{{movie['description']}}</p>
     </div>
-    <div class="content__container">
+    <div *ngIf="actors.length" class="content__container">
       <h4 class="content__title">В главных ролях</h4>
       <ul class="content__ul">
         <li *ngFor="let actor of actors">{{actor.name}}</li>
       </ul>
     </div>
-    <div class="content__container">
+    <div *ngIf="directors.length"  class="content__container">
       <h4 class="content__title">Режиссеры</h4>
       <ul class="content__ul">
         <li *ngFor="let director of directors">{{director.name}}</li>

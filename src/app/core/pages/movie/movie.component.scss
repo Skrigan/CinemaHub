@@ -42,6 +42,10 @@
   gap: .5vw;
   font-size: 1vw;
   margin-bottom: 1vw;
+
+  span:not(:first-child):not(:last-child):after {
+    content: ',';
+  }
 }
 
 .rating {
