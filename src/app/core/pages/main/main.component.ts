@@ -3,7 +3,6 @@ import { mockedReleases } from '../../data/mockedReleases';
 import { mockedMovies } from '../../data/mockedMovies';
 import { mockedSeries } from '../../data/mockedSeries';
 import { mockedCartoons } from '../../data/mockedCartoons';
-import { mockedAnimatedSeries } from '../../data/mockedAnimated-Series';
 import { mockedAnime } from '../../data/mockedAnime';
 
 @Component({
@@ -16,6 +15,5 @@ export class MainComponent {
   protected readonly mockedMovies = mockedMovies;
   protected readonly mockedSeries = mockedSeries;
   protected readonly mockedCartoons = mockedCartoons;
-  protected readonly mockedAnimatedSeries = mockedAnimatedSeries;
   protected readonly mockedAnime = mockedAnime;
 }
