@@ -24,6 +24,11 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.body__backdropped {
+  overflow-y: hidden;
+  padding: 0 calc(7vw + 17px) 0 7vw;
+}
+
 a {
   text-decoration: none;
   color: inherit;

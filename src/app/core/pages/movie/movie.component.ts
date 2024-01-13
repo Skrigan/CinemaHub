@@ -65,14 +65,27 @@ export class MovieComponent {
     ))
   }
 
+  showModal() {
+    const pageOffset = window.pageYOffset;
+    this.backdrop.nativeElement.style.top = `${pageOffset}px`;
+    this.modal.nativeElement.style.top = `calc(50% + ${pageOffset}px)`;
+
+    document.body.classList.add('body__backdropped');
+    this.backdrop.nativeElement.classList.remove('backdrop_hidden');
+    this.modal.nativeElement.classList.remove('modal_hidden');
+  }
+
+  closeModal() {
+    document.body.classList.remove('body__backdropped');
+    this.backdrop.nativeElement.classList.add('backdrop_hidden');
+    this.modal.nativeElement.classList.add('modal_hidden');
+  }
+
   getTrailer() {
     const trailer = this.movie?.videos?.trailers[0]?.url;
     if (trailer) {
       this.trailerOrMovie = this.sanitizer.bypassSecurityTrustResourceUrl(`${trailer}?autoplay=1`);
-      console.log(window.pageYOffset);
-      // this.backdrop.nativeElement.style.top = `${window.pageYOffset}px`;
-      console.log(this.backdrop);
-      console.log(document.querySelector('.backdrop'));
+      this.showModal()
     }
   }
 
@@ -80,10 +93,12 @@ export class MovieComponent {
     const firstEpisodeParam = this.movie.isSeries ? '?s=1&e=1' : ''
     this.trailerOrMovie = this.sanitizer
       .bypassSecurityTrustResourceUrl(`https://voidboost.tv/embed/${this.movie.id}${firstEpisodeParam}`);
+    this.showModal();
   }
 
   removeTrailerOrMovie() {
     this.trailerOrMovie = undefined;
+    this.closeModal();
   }
 
   getNumberOfSeasons(seasonsLength: number) {

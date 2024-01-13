@@ -156,6 +156,9 @@ iframe {
   z-index: 5;
   width: 100vw;
   height: 100vh;
+  &_hidden {
+    display: none;
+  }
 }
 
 .close-modal {
@@ -197,4 +200,7 @@ iframe {
   max-height: 48.37vw;
   background-color: black;
   z-index: 6;
+  &_hidden {
+    display: none;
+  }
 }

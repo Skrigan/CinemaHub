@@ -44,12 +44,11 @@
     <app-movie-card class="films__card" *ngFor="let similarMovie of movie.similarMovies" [card]="similarMovie" [attr.data-id]="similarMovie.id"></app-movie-card>
   </app-slider>
 </section>
-<div #backdrop *ngIf="trailerOrMovie" class="backdrop" (click)="removeTrailerOrMovie()"></div>
-<div #modal *ngIf="trailerOrMovie" class="modal modal_trailer">
-  <iframe width="1280" height="720" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+<div #backdrop class="backdrop backdrop_hidden" (click)="removeTrailerOrMovie()"></div>
+<div #modal class="modal modal_hidden">
+  <iframe *ngIf="trailerOrMovie" width="1280" height="720" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
    gyroscope; picture-in-picture; web-share" allowfullscreen="" title="Трейлер"
    [src]="trailerOrMovie">
   </iframe>
   <div class="close-modal" (click)="removeTrailerOrMovie()"></div>
 </div>
-
