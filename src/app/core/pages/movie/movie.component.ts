@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {MovieService} from "../../services/movie.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Params, Router} from "@angular/router";
@@ -11,6 +11,9 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
   styleUrl: './movie.component.scss'
 })
 export class MovieComponent {
+  @ViewChild('backdrop') backdrop!: ElementRef;
+  @ViewChild('modal') modal!: ElementRef;
+
   movie: any;
   subscriptions: Subscription[] = [];
   directors!: any[];
@@ -66,7 +69,21 @@ export class MovieComponent {
     const trailer = this.movie?.videos?.trailers[0]?.url;
     if (trailer) {
       this.trailerOrMovie = this.sanitizer.bypassSecurityTrustResourceUrl(`${trailer}?autoplay=1`);
+      console.log(window.pageYOffset);
+      // this.backdrop.nativeElement.style.top = `${window.pageYOffset}px`;
+      console.log(this.backdrop);
+      console.log(document.querySelector('.backdrop'));
     }
+  }
+
+  getVoidBoostLink() {
+    const firstEpisodeParam = this.movie.isSeries ? '?s=1&e=1' : ''
+    this.trailerOrMovie = this.sanitizer
+      .bypassSecurityTrustResourceUrl(`https://voidboost.tv/embed/${this.movie.id}${firstEpisodeParam}`);
+  }
+
+  removeTrailerOrMovie() {
+    this.trailerOrMovie = undefined;
   }
 
   getNumberOfSeasons(seasonsLength: number) {
@@ -82,15 +99,6 @@ export class MovieComponent {
     } else {
       return undefined;
     }
-  }
-
-  removeTrailerOrMovie() {
-    this.trailerOrMovie = undefined;
-  }
-
-  getVoidBoostLink() {
-    this.trailerOrMovie = this.sanitizer
-      .bypassSecurityTrustResourceUrl(`https://voidboost.tv/embed/${this.movie.id}${this.movie.isSeries ? '?s=1&e=1' : ''}`);
   }
 
   onMovieChoice(event: MouseEvent) {
