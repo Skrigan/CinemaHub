@@ -9,8 +9,8 @@
     <p class="title__text">Фильмы</p>
     <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
   </h3>
-  <app-slider [displayedImages]=6>
-    <app-movie-card *ngFor="let card of mockedMovies" [card]="card"></app-movie-card>
+  <app-slider [displayedImages]=6 (click)="onMovieChoice($event)">
+    <app-movie-card class="films__card" *ngFor="let card of mockedMovies" [card]="card" [attr.data-id]="card.id"></app-movie-card>
   </app-slider>
 </section>
 <section>
@@ -18,8 +18,8 @@
     <p class="title__text">Сериалы</p>
     <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
   </h3>
-  <app-slider [displayedImages]=6>
-    <app-movie-card *ngFor="let card of mockedSeries" [card]="card"></app-movie-card>
+  <app-slider [displayedImages]=6 (click)="onMovieChoice($event)">
+    <app-movie-card class="films__card" *ngFor="let card of mockedSeries" [card]="card" [attr.data-id]="card.id"></app-movie-card>
   </app-slider>
 </section>
 <section>
@@ -27,8 +27,8 @@
     <p class="title__text">Мульфильмы</p>
     <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
   </h3>
-  <app-slider [displayedImages]=6>
-    <app-movie-card *ngFor="let card of mockedCartoons" [card]="card"></app-movie-card>
+  <app-slider [displayedImages]=6 (click)="onMovieChoice($event)">
+    <app-movie-card class="films__card" *ngFor="let card of mockedCartoons" [card]="card" [attr.data-id]="card.id"></app-movie-card>
   </app-slider>
 </section>
 <section>
@@ -36,7 +36,7 @@
     <p class="title__text">Аниме</p>
     <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
   </h3>
-  <app-slider [displayedImages]=6>
-    <app-movie-card *ngFor="let card of mockedAnime" [card]="card"></app-movie-card>
+  <app-slider [displayedImages]=6 (click)="onMovieChoice($event)">
+    <app-movie-card class="films__card" *ngFor="let card of mockedAnime" [card]="card" [attr.data-id]="card.id"></app-movie-card>
   </app-slider>
 </section>

@@ -4,6 +4,7 @@ import { mockedMovies } from '../../data/mockedMovies';
 import { mockedSeries } from '../../data/mockedSeries';
 import { mockedCartoons } from '../../data/mockedCartoons';
 import { mockedAnime } from '../../data/mockedAnime';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main',
@@ -16,4 +17,17 @@ export class MainComponent {
   protected readonly mockedSeries = mockedSeries;
   protected readonly mockedCartoons = mockedCartoons;
   protected readonly mockedAnime = mockedAnime;
+
+  constructor(private router: Router) {
+  }
+
+  onMovieChoice(event: MouseEvent) {
+    const target = <HTMLElement>event.target;
+    const movieCard = target.closest('.films__card');
+
+    if (movieCard !== null) {
+      const id = movieCard.getAttribute('data-id')!;
+      this.router.navigate(['/movie', id]);
+    }
+  }
 }

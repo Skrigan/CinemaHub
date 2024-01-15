@@ -95,8 +95,8 @@ export const genres: Filter[] = [
 
 export const years = [
   {
-    label: '2020-2023',
-    value: '2020-2023',
+    label: '2020-2024',
+    value: '2020-2024',
   },
   {
     label: '2016-2019',

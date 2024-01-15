@@ -7,20 +7,20 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit{
-  // @ViewChild('header', {read: ElementRef}) headerRef!: ElementRef;
-  // @HostListener('window:wheel', ['$event'])
-  // onWheel(event: WheelEvent) {
-  //   if (document.documentElement.scrollHeight > window.innerHeight) {
-  //
-  //     if (event.deltaY > 0) {
-  //       this.headerRef.nativeElement.classList.add('header_hidden');
-  //     }
-  //     if (event.deltaY < 0) {
-  //       this.headerRef.nativeElement.classList.remove('header_hidden');
-  //     }
-  //
-  //   }
-  // }
+  @ViewChild('header', {read: ElementRef}) headerRef!: ElementRef;
+  @HostListener('window:wheel', ['$event'])
+  onWheel(event: WheelEvent) {
+    if (document.documentElement.scrollHeight > window.innerHeight) {
+
+      if (event.deltaY > 0) {
+        this.headerRef.nativeElement.classList.add('header_hidden');
+      }
+      if (event.deltaY < 0) {
+        this.headerRef.nativeElement.classList.remove('header_hidden');
+      }
+
+    }
+  }
 
   footerVisibility = true;
   cardMinWidth!: string;
