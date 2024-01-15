@@ -8,17 +8,17 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 })
 export class AppComponent implements OnInit{
   @ViewChild('header', {read: ElementRef}) headerRef!: ElementRef;
-  @HostListener('window:wheel', ['$event'])
-  onWheel(event: WheelEvent) {
+  prevScrollY: number = 0;
+  @HostListener('window:scroll', ['$event'])
+  onScroll() {
+    //если страница полностью проскроллена или скроллить некуда
     if (document.documentElement.scrollHeight > window.innerHeight) {
-
-      if (event.deltaY > 0) {
+      if (this.prevScrollY < window.scrollY) {
         this.headerRef.nativeElement.classList.add('header_hidden');
-      }
-      if (event.deltaY < 0) {
+      } else {
         this.headerRef.nativeElement.classList.remove('header_hidden');
       }
-
+      this.prevScrollY = window.scrollY;
     }
   }
 
@@ -35,6 +35,8 @@ export class AppComponent implements OnInit{
         this.footerVisibility = !!['main', 'movie'].find((item) => {
           return url.split('/').includes(item);
         })
+        window.scrollTo(0, 0);
+        this.headerRef.nativeElement.classList.remove('header_hidden');
       }
     })
   }
