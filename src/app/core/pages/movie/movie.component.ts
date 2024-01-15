@@ -19,6 +19,7 @@ export class MovieComponent {
   directors!: any[];
   actors!: any[];
   movieType!: string;
+  genre!: '';
 
   // trailer?: SafeResourceUrl;
   // voidBoostLink?: SafeResourceUrl;
@@ -43,6 +44,21 @@ export class MovieComponent {
     )
   }
 
+  getCorrectGenre(movieType: string) {
+    switch (movieType) {
+      case 'фильм':
+      case 'сериал':
+        this.genre = this.movie.genres[0]['name'];
+        break;
+      case 'мультфильм':
+        this.genre = this.movie.genres[1]['name'];
+        break;
+      case 'аниме':
+        this.genre = this.movie.genres[2]['name'];
+        break;
+    }
+  }
+
   getMovieById(id: number) {
     this.subscriptions.push(
       this.movieService.getMovieById(id).subscribe((movie) => {
@@ -61,6 +77,7 @@ export class MovieComponent {
         });
 
         this.movieType = getMovieType(this.movie.typeNumber);
+        this.getCorrectGenre(this.movieType);
       }
     ))
   }

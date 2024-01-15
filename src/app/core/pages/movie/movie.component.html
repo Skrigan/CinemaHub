@@ -5,7 +5,7 @@
     <div class="title">
       <span class="rating">{{movie['rating']['kp'] | number: '1.1-1'}}</span>
       <span class="year">{{movie['year']}}</span>
-      <span class="genre">{{movie.genres[0]['name']}}</span>
+      <span class="genre">{{this.genre}}</span>
       <span class="country">{{movie.countries[0]['name']}}</span>
       <span *ngIf="movie.movieLength" class="movie-length">{{movie['movieLength'] | minutesToHours}}</span>
       <span *ngIf="movie?.seasonsInfo?.length" class="country">{{seasonsNumber}}</span>
