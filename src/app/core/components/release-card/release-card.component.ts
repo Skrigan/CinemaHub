@@ -24,12 +24,16 @@ enum ruMonth {
 })
 export class ReleaseCardComponent implements OnInit {
   @Input({ required: true }) card!: IRelease;
+
+  isImgLoaded = false;
+
   textInfo: string = '';
 
   ngOnInit() {
-    const date = new Date(this.card.releaseDate);
+    const date = new Date(this.card.premiereRu);
+    console.log(date);
     this.textInfo = `
-      ${date.getDay()} ${ruMonth[date.getMonth()]},
+      ${date.getDate()} ${ruMonth[date.getMonth()]},
       ${this.card.countries[0].country},
       ${this.card.genres[0].genre}
      `;

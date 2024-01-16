@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {SearchParams} from "../pages/films/films.component";
-import {BehaviorSubject, forkJoin, Observable, Subject} from "rxjs";
+import {BehaviorSubject, forkJoin, Observable, ReplaySubject, Subject} from "rxjs";
 import {IMovie} from "../interfaces/IMovie";
 
 enum monthes {
@@ -30,7 +30,7 @@ type ReleaseParams = {
   providedIn: 'root'
 })
 export class MovieService {
-  releases$ = new Subject();
+  releases$ = new ReplaySubject();
 
   constructor(private http: HttpClient) {
     this.getReleases();

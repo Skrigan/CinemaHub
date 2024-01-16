@@ -1,5 +1,5 @@
 export interface IRelease {
-  filmId: number
+  kinopoiskId: number
   nameRu: string
   nameEn: string | null
   year: number
@@ -11,10 +11,6 @@ export interface IRelease {
   genres: {
     genre: string
   }[]
-  rating: number | null
-  ratingVoteCount: number
-  expectationsRating: number | null
-  expectationsRatingVoteCount: number
-  duration: number
-  releaseDate: string
+  "duration": number
+  "premiereRu": string
 }
