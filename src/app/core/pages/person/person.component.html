@@ -21,9 +21,9 @@
         <span class="person-info__attribute">Место рождения</span>
         <span class="person-info__value">{{person?.birthplace}}</span>
       </div>
-      <div class="person-info__element" *ngIf="person?.films?.length">
+      <div class="person-info__element" *ngIf="totalFilmsLength">
         <span class="person-info__attribute">Всего фильмов</span>
-        <span class="person-info__value">{{person?.films?.length}}</span>
+        <span class="person-info__value">{{totalFilmsLength}}</span>
       </div>
     </div>
   </div>

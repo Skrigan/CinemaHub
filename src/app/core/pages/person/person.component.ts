@@ -15,6 +15,7 @@ export class PersonComponent {
 
   person?: IPerson;
   films?: any[];
+  totalFilmsLength?: number
 
   birthdayRu?: string;
 
@@ -36,15 +37,17 @@ export class PersonComponent {
     this.subscriptions.push(
       this.movieService.getPersonById(id).subscribe((person) => {
         this.person = person;
-        console.log(person);
 
         let filmNameEn = '';
         this.films = person.films.filter((film) => {
           const isClone= film.nameEn === filmNameEn;
           filmNameEn = film.nameEn!;
-          if (isClone) {
-            return false
-          }
+          return !isClone;
+        })
+
+        this.totalFilmsLength = this.films.length;
+
+        this.films = this.films.filter((film) => {
           if (!film.nameRu) {
             return false;
           }
