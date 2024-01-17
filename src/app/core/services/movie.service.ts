@@ -79,7 +79,7 @@ export class MovieService {
   getPersonById(id: number) {
     const url = `https://kinopoiskapiunofficial.tech/api/v1/staff/${id}`;
     const headers = {
-      "X-API-KEY": "e4ef3242-e2cc-4ea4-933e-d4f1b854cafd"
+      "X-API-KEY": "7306cdbf-559b-4d3f-a864-4cead1b042af"
     };
     return this.http.get<IPerson>(url, {
       headers

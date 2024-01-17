@@ -11,11 +11,11 @@
       </div>
       <div class="person-info__element" *ngIf="person?.growth">
         <span class="person-info__attribute">Рост</span>
-        <span class="person-info__value">{{person?.growth}}</span>
+        <span class="person-info__value">{{person?.growth | number: '1.1-2'}} м</span>
       </div>
       <div class="person-info__element" *ngIf="person?.birthday">
         <span class="person-info__attribute">Дата рождения</span>
-        <span class="person-info__value">{{person?.birthday}}</span>
+        <span class="person-info__value">{{birthdayRu}}</span>
       </div>
       <div class="person-info__element" *ngIf="person?.birthplace">
         <span class="person-info__attribute">Место рождения</span>
@@ -29,6 +29,15 @@
   </div>
   <div class="person-facts">
     <h4 class="person-facts__title">Знаете ли вы, что...</h4>
-    <p class="person-facts__elem" *ngFor="let fact of person?.facts">{{fact}}</p>
+<!--    <p class="person-facts__element" *ngFor="let fact of person?.facts">{{fact}}</p>-->
+    <ul class="person-facts__ul">
+      <li class="person-facts__li" *ngFor="let fact of person?.facts">{{fact}}</li>
+    </ul>
   </div>
+</section>
+<section>
+  <h3 class="best-work">Лучшие работы<span *ngIf="films?.length"> ({{films?.length}})</span></h3>
+  <app-slider [displayedImages]="6">
+    <app-movie-card *ngFor="let film of films" [card]="film"></app-movie-card>
+  </app-slider>
 </section>

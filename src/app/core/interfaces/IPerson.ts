@@ -5,7 +5,7 @@ export interface IPerson {
   nameEn: string | null
   sex: string | null
   posterUrl: string
-  growth: string | null
+  growth: number | null
   birthday: string | null
   death: string | null
   age: number | null

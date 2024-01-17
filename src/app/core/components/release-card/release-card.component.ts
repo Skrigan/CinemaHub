@@ -1,20 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {IRelease} from "../../interfaces/IRelease";
+import {ruMonth} from "../../data/ruMonthEnum";
 
-enum ruMonth {
-  'Января',
-  'Февраля',
-  'Марта',
-  'Апреля',
-  'Мая',
-  'Июня',
-  'Июля',
-  'Августа',
-  'Сентября',
-  'Октября',
-  'Ноября',
-  'Декабря',
-}
 
 @Component({
   selector: 'app-release-card',
