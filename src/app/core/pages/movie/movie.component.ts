@@ -144,6 +144,12 @@ export class MovieComponent {
     }
   }
 
+  onPersonChoice(event: MouseEvent) {
+    const target = <HTMLElement>event.target;
+    const personLi = target.closest('.content__ul');
+
+  }
+
   ngOnDestroy() {
     this.subscriptions.forEach((sub) => {
       sub.unsubscribe();

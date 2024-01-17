@@ -75,6 +75,16 @@ export class MovieService {
     })
   }
 
+  getPersonById(id: number) {
+    const url = `https://kinopoiskapiunofficial.tech/api/v1/staff/${id}`;
+    const headers = {
+      "X-API-KEY": "e4ef3242-e2cc-4ea4-933e-d4f1b854cafd"
+    };
+    return this.http.get<any>(url, {
+      headers
+    })
+  }
+
   getReleases() {
     const url = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres';
     const headers = {

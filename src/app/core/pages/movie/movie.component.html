@@ -27,13 +27,13 @@
     <div *ngIf="actors.length" class="content__container">
       <h4 class="content__title">В главных ролях</h4>
       <ul class="content__ul">
-        <li *ngFor="let actor of actors">{{actor.name}}</li>
+        <li *ngFor="let actor of actors" [attr.data-id]="actor.id">{{actor.name}}</li>
       </ul>
     </div>
     <div *ngIf="directors.length"  class="content__container">
       <h4 class="content__title">Режиссеры</h4>
-      <ul class="content__ul">
-        <li *ngFor="let director of directors">{{director.name}}</li>
+      <ul class="content__ul" (click)="onPersonChoice($event)">
+        <li *ngFor="let director of directors" [attr.data-id]="director.id">{{director.name}}</li>
       </ul>
     </div>
   </div>

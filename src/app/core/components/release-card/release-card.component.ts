@@ -31,7 +31,6 @@ export class ReleaseCardComponent implements OnInit {
 
   ngOnInit() {
     const date = new Date(this.card.premiereRu);
-    console.log(date);
     this.textInfo = `
       ${date.getDate()} ${ruMonth[date.getMonth()]},
       ${this.card.countries[0].country},
