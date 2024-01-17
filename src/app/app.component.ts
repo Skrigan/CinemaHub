@@ -32,7 +32,7 @@ export class AppComponent implements OnInit{
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const url = event.urlAfterRedirects;
-        this.footerVisibility = !!['main', 'movie'].find((item) => {
+        this.footerVisibility = !!['main', 'movie', 'person'].find((item) => {
           return url.split('/').includes(item);
         })
         window.scrollTo(0, 0);

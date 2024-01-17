@@ -1,4 +1,4 @@
-<section class="person">
+<section class="person" *ngIf="person">
   <img [src]="person?.posterUrl" alt="" class="person__img">
   <div class="person__content">
     <h3 class="person__nameRu">{{person?.nameRu}}</h3>
@@ -11,7 +11,7 @@
       </div>
       <div class="person-info__element" *ngIf="person?.growth">
         <span class="person-info__attribute">Рост</span>
-        <span class="person-info__value">{{person?.growth | number: '1.1-2'}} м</span>
+        <span class="person-info__value">{{person?.growth | number: '1.0-2'}} м</span>
       </div>
       <div class="person-info__element" *ngIf="person?.birthday">
         <span class="person-info__attribute">Дата рождения</span>
@@ -21,13 +21,29 @@
         <span class="person-info__attribute">Место рождения</span>
         <span class="person-info__value">{{person?.birthplace}}</span>
       </div>
+      <div class="person-info__element" *ngIf="person?.death">
+        <span class="person-info__attribute">Дата смерти</span>
+        <span class="person-info__value">{{deathRu}}</span>
+      </div>
+      <div class="person-info__element person-info__element_spouse" *ngIf="spousesM?.length">
+        <span class="person-info__attribute">Супруг</span>
+        <ul class="person-info__ul">
+          <li class="person-info__li" *ngFor="let spouse of spousesM">{{spouse.name}} {{spouse.divorcedReason}} {{spouse.childrenStr}}</li>
+        </ul>
+      </div>
+      <div class="person-info__element person-info__element_spouse" *ngIf="spousesF?.length">
+        <span class="person-info__attribute">Супруга</span>
+        <ul class="person-info__ul">
+          <li class="person-info__li" *ngFor="let spouse of spousesF">{{spouse.name}} {{spouse.divorcedReason}} {{spouse.childrenStr}}</li>
+        </ul>
+      </div>
       <div class="person-info__element" *ngIf="totalFilmsLength">
         <span class="person-info__attribute">Всего фильмов</span>
         <span class="person-info__value">{{totalFilmsLength}}</span>
       </div>
     </div>
   </div>
-  <div class="person-facts">
+  <div class="person-facts" *ngIf="person?.facts?.length">
     <h4 class="person-facts__title">Знаете ли вы, что...</h4>
 <!--    <p class="person-facts__element" *ngFor="let fact of person?.facts">{{fact}}</p>-->
     <ul class="person-facts__ul">
@@ -35,9 +51,9 @@
     </ul>
   </div>
 </section>
-<section>
+<section class="slider" *ngIf="films?.length">
   <h3 class="best-work">Лучшие работы<span *ngIf="films?.length"> ({{films?.length}})</span></h3>
-  <app-slider [displayedImages]="6">
-    <app-movie-card *ngFor="let film of films" [card]="film"></app-movie-card>
+  <app-slider [displayedImages]="6" (click)="onMovieChoice($event)">
+    <app-movie-card class="films__card" *ngFor="let film of films" [card]="film" [attr.data-id]="film.filmId"></app-movie-card>
   </app-slider>
 </section>

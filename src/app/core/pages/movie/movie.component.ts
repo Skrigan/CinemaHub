@@ -146,8 +146,12 @@ export class MovieComponent {
 
   onPersonChoice(event: MouseEvent) {
     const target = <HTMLElement>event.target;
-    const personLi = target.closest('.content__ul');
+    const personLi = target.closest('.content__li');
 
+    if (personLi !== null) {
+      const id = personLi.getAttribute('data-id')!;
+      this.router.navigate(['/person', id]);
+    }
   }
 
   ngOnDestroy() {

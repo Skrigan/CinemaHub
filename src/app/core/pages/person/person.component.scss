@@ -1,3 +1,8 @@
+:host {
+  min-height: calc(100vh - 19.5vw);
+  display: block;
+}
+
 .person {
   display: flex;
   gap: 3vw;
@@ -16,8 +21,18 @@
       &__value {
 
       }
+      &__element_spouse {
+        display: flex;
+        //justify-content: space-between;
+      }
+      &__ul {
+        list-style-type: none;
+      }
+      &__li:not(:last-child) {
+        margin-bottom: .2vw;
+      }
       &__element:not(:last-child) {
-        margin-bottom: .8vw;
+        margin-bottom: 1vw;
       }
     }
   }
@@ -78,4 +93,8 @@
 .best-work {
   font-size: 1.2vw;
   margin: 2vw 0 2vw 1vw;
+}
+
+.slider {
+  padding-bottom: 3vw;
 }

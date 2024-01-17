@@ -18,8 +18,13 @@ export class PersonComponent {
   totalFilmsLength?: number
 
   birthdayRu?: string;
+  deathRu?: string;
+
+  spousesF: any[] = [];
+  spousesM: any[] = [];
 
   constructor(private movieService: MovieService,
+              private router: Router,
               private route: ActivatedRoute) {
   }
 
@@ -33,10 +38,21 @@ export class PersonComponent {
     )
   }
 
+  onMovieChoice(event: MouseEvent) {
+    const target = <HTMLElement>event.target;
+    const movieCard = target.closest('.films__card');
+
+    if (movieCard !== null) {
+      const id = movieCard.getAttribute('data-id')!;
+      this.router.navigate(['/movie', id]);
+    }
+  }
+
   getPersonById(id: number) {
     this.subscriptions.push(
       this.movieService.getPersonById(id).subscribe((person) => {
         this.person = person;
+        console.log(person);
 
         let filmNameEn = '';
         this.films = person.films.filter((film) => {
@@ -78,8 +94,47 @@ export class PersonComponent {
           const birthday = new Date(this.person.birthday);
           this.birthdayRu = `${birthday.getDate()} ${ruMonth[birthday.getMonth()]}, ${birthday.getFullYear()}`;
         }
+
+        if (this.person.death) {
+          const death = new Date(this.person.death);
+          this.deathRu = `${death.getDate()} ${ruMonth[death.getMonth()]}, ${death.getFullYear()}`;
+        }
+        this.person.spouses.sort((a: any, b: any) => {
+          if (a.divorced && !b.divorced) {
+            return -1;
+          } else if (!a.divorced && b.divorced) {
+            return 1;
+          } else {
+            return 0;
+          }
+        })
+        this.person.spouses.forEach((spouce: any) => {
+          if (spouce.children) {
+            spouce.childrenStr = this.getNumberOfChildren(spouce.children)
+          }
+          if (spouce.sex === 'MALE') {
+            this.spousesM.push(spouce);
+          } else {
+            this.spousesF.push(spouce);
+          }
+        })
       })
     )
+  }
+
+  getNumberOfChildren(childNum: number) {
+    const lastChildNum = childNum % 10;
+    if (childNum >= 10 && childNum <= 20) {
+      return `${childNum} детей`
+    } else if(lastChildNum === 1) {
+      return `${childNum} ребёнок`;
+    } else if(lastChildNum >= 2 && lastChildNum <= 4) {
+      return `${childNum} ребёнка`;
+    } else if(lastChildNum >= 5 && lastChildNum <= 9 || lastChildNum === 0) {
+      return `${childNum} детей`;
+    } else {
+      return undefined;
+    }
   }
 
   ngOnDestroy() {
