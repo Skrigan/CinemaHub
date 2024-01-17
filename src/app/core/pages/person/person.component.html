@@ -1,1 +1,34 @@
-<p>person works!</p>
+<section class="person">
+  <img [src]="person?.posterUrl" alt="" class="person__img">
+  <div class="person__content">
+    <h3 class="person__nameRu">{{person?.nameRu}}</h3>
+    <p class="person__nameEn">{{person?.nameEn}}</p>
+    <h4 class="person__about">О персоне</h4>
+    <div class="person-info">
+      <div class="person-info__element" *ngIf="person?.profession">
+        <span class="person-info__attribute">Карьера</span>
+        <span class="person-info__value">{{person?.profession}}</span>
+      </div>
+      <div class="person-info__element" *ngIf="person?.growth">
+        <span class="person-info__attribute">Рост</span>
+        <span class="person-info__value">{{person?.growth}}</span>
+      </div>
+      <div class="person-info__element" *ngIf="person?.birthday">
+        <span class="person-info__attribute">Дата рождения</span>
+        <span class="person-info__value">{{person?.birthday}}</span>
+      </div>
+      <div class="person-info__element" *ngIf="person?.birthplace">
+        <span class="person-info__attribute">Место рождения</span>
+        <span class="person-info__value">{{person?.birthplace}}</span>
+      </div>
+      <div class="person-info__element" *ngIf="person?.films?.length">
+        <span class="person-info__attribute">Всего фильмов</span>
+        <span class="person-info__value">{{person?.films?.length}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="person-facts">
+    <h4 class="person-facts__title">Знаете ли вы, что...</h4>
+    <p class="person-facts__elem" *ngFor="let fact of person?.facts">{{fact}}</p>
+  </div>
+</section>

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {SearchParams} from "../pages/films/films.component";
 import {BehaviorSubject, forkJoin, Observable, ReplaySubject, Subject} from "rxjs";
 import {IMovie} from "../interfaces/IMovie";
+import {IPerson} from "../interfaces/IPerson";
 
 enum monthes {
   JANUARY,
@@ -80,7 +81,7 @@ export class MovieService {
     const headers = {
       "X-API-KEY": "e4ef3242-e2cc-4ea4-933e-d4f1b854cafd"
     };
-    return this.http.get<any>(url, {
+    return this.http.get<IPerson>(url, {
       headers
     })
   }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {MovieService} from "../../services/movie.service";
-import {DomSanitizer} from "@angular/platform-browser";
+import {IPerson} from "../../interfaces/IPerson";
 
 @Component({
   selector: 'app-person',
@@ -11,7 +11,8 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class PersonComponent {
   subscriptions: Subscription[] = [];
-  person: any;
+  person?: IPerson;
+  filmsYearRange?: string;
 
   constructor(private movieService: MovieService,
               private route: ActivatedRoute) {
@@ -30,7 +31,7 @@ export class PersonComponent {
 
   getPersonById(id: number) {
     this.subscriptions.push(
-      this.movieService.getPersonById(id).subscribe((person: any) => {
+      this.movieService.getPersonById(id).subscribe((person) => {
         this.person = person;
         console.log(person);
       })
