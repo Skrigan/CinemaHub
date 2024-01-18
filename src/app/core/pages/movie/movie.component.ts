@@ -19,7 +19,7 @@ export class MovieComponent {
   directors!: any[];
   actors!: any[];
   movieType!: string;
-  genre!: '';
+  genre: string = '';
 
   // trailer?: SafeResourceUrl;
   // voidBoostLink?: SafeResourceUrl;

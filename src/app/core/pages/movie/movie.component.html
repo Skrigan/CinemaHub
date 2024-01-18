@@ -1,4 +1,4 @@
-<section class="about-movie" *ngIf="movie" [style.background-image]="'url('+ movie.backdrop.url+')'">
+<section class="about-movie" *ngIf="movie" [style.background-image]="'url('+movie.backdrop.url+')'">
   <div class="content">
     <img class="name" *ngIf="movie?.logo?.url" [hidden]="!isImgLoaded" [src]="movie['logo']['url']" (load)="isImgLoaded = true">
     <p class="name" *ngIf="!movie?.logo?.url">{{movie['name']}}</p>
@@ -26,22 +26,28 @@
     </div>
     <div *ngIf="actors.length" class="content__container">
       <h4 class="content__title">В главных ролях</h4>
-      <ul class="content__ul" (click)="onPersonChoice($event)">
-        <li class="content__li" *ngFor="let actor of actors" [attr.data-id]="actor.id">{{actor.name}}</li>
+      <ul class="content__ul">
+        <li class="content__li" *ngFor="let actor of actors">
+          <a class="content__a" routerLink="/person/{{actor.id}}">{{actor.name}}</a>
+        </li>
       </ul>
     </div>
     <div *ngIf="directors.length"  class="content__container">
       <h4 class="content__title">Режиссеры</h4>
-      <ul class="content__ul" (click)="onPersonChoice($event)">
-        <li class="content__li" *ngFor="let director of directors" [attr.data-id]="director.id">{{director.name}}</li>
+      <ul class="content__ul">
+        <li class="content__li" *ngFor="let director of directors">
+          <a class="content__a" routerLink="/person/{{director.id}}">{{director.name}}</a>
+        </li>
       </ul>
     </div>
   </div>
 </section>
 <section *ngIf="movie?.similarMovies?.length" class="similar">
   <h3>Похожее</h3>
-  <app-slider class="films" [displayedImages]="5" (click)="onMovieChoice($event)">
-    <app-movie-card class="films__card" *ngFor="let similarMovie of movie.similarMovies" [card]="similarMovie" [attr.data-id]="similarMovie.id"></app-movie-card>
+  <app-slider class="films" [displayedImages]="6">
+    <a class="films__card" *ngFor="let similarMovie of movie.similarMovies" routerLink="/movie/{{similarMovie.id}}">
+      <app-movie-card [card]="similarMovie"></app-movie-card>
+    </a>
   </app-slider>
 </section>
 <div #backdrop class="backdrop backdrop_hidden" (click)="removeTrailerOrMovie()"></div>

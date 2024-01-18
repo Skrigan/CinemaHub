@@ -53,7 +53,9 @@
 </section>
 <section class="slider" *ngIf="films?.length">
   <h3 class="best-work">Лучшие работы<span *ngIf="films?.length"> ({{films?.length}})</span></h3>
-  <app-slider [displayedImages]="6" (click)="onMovieChoice($event)">
-    <app-movie-card class="films__card" *ngFor="let film of films" [card]="film" [attr.data-id]="film.filmId"></app-movie-card>
+  <app-slider [displayedImages]="6">
+    <a class="films__card" *ngFor="let film of films" routerLink="/movie/{{film.filmId}}">
+      <app-movie-card [card]="film"></app-movie-card>
+    </a>
   </app-slider>
 </section>

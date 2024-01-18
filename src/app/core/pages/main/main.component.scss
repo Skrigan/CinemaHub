@@ -1,25 +1,19 @@
 .title {
-  display: inline-flex;
   font-size: 1.2vw;
-  gap: .5vw;
-  transition: gap .1s linear;
   margin: 2vw 0 2vw 1vw;
-  align-items: center;
-  cursor: pointer;
-  &:hover {
-    color: white;
-    gap: .8vw;
-    svg {
-      fill: white;
-    }
-  }
+  color: white;
   &_premieres {
-    color: rgba(255, 255, 255, 0.6);
     font-size: 1.4vw;
-    margin: 1vw 0 2vw 1vw;
+    margin: 0 0 2vw 1vw;
     cursor: default;
+  }
+  &__link {
+    display: inline-flex;
+    gap: .5vw;
+    transition: gap .1s linear;
+    align-items: center;
     &:hover {
-      color: rgba(255, 255, 255, 0.6);
+      gap: .8vw;
     }
   }
   &__svg {
@@ -30,6 +24,7 @@
 section {
   padding-bottom: 3vw;
   &.premieres {
+    padding-top: 1vw;
     padding-bottom: 4.5vw;
   }
 }
@@ -54,4 +49,8 @@ section {
     font-size: .9vw;
     text-transform: capitalize;
   }
+}
+
+.films__card {
+  display: contents;
 }

@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {IMovie} from "../../interfaces/IMovie";
 import {MovieService} from "../../services/movie.service";
 import {Subscription} from "rxjs";
+import {mockedCartoons} from "../../data/mockedCartoons";
 
 const typeFromPath: any = {
   "films": {
@@ -169,4 +170,6 @@ export class FilmsComponent implements OnInit, OnDestroy {
       }
     }));
   }
+
+  protected readonly mockedCartoons = mockedCartoons;
 }

@@ -3,11 +3,12 @@ section {
 }
 
 .title {
+  color: white;
   display: inline-flex;
   font-size: 1.2vw;
   gap: .5vw;
   transition: gap .1s linear;
-  margin: 2vw 0 2vw 1vw;
+  margin: 1vw 0 2vw 1vw;
   align-items: center;
   cursor: default;
 }
@@ -25,4 +26,8 @@ section {
   column-gap: 1vw;
   row-gap: 6vw;
   margin-bottom: 8vw;
+}
+
+.films__card {
+  display: contents;
 }

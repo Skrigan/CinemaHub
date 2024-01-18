@@ -9,7 +9,9 @@
     <app-selector [label]="'Сортировать'" [options]=sortFields [presetValue]="searchParams['sortField']" (onSelect)="getSort($event!)" style="margin: 0 0 0 auto;"></app-selector>
   </div>
   <div class="films" #films *ngIf="cards.length" (click)="onMovieChoice($event)">
-    <app-movie-card class="films__card" *ngFor="let card of cards" [card]="card" [attr.data-id]="card.id"></app-movie-card>
+    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of cards" >
+      <app-movie-card [card]="card"></app-movie-card>
+    </a>
   </div>
   <app-paginator *ngIf="lastPage > 1" [page]="parseInt(searchParams['page'])" [lastPage]="lastPage" (onChangePage)="changePage($event)"></app-paginator>
 </section>

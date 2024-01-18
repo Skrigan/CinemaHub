@@ -105,6 +105,9 @@
     display: flex;
     gap: 5vw;
     font-size: 1vw;
+    &__a:hover {
+      color: white;
+    }
     &__container {
       font-size: .8vw;
       .votes {
@@ -130,6 +133,7 @@
 }
 
 h3 {
+  color: white;
   font-size: 1.2vw;
   margin: 2vw 0 2vw 1vw;
 }
@@ -206,4 +210,8 @@ iframe {
   &_hidden {
     display: none;
   }
+}
+
+.films__card {
+  display: contents;
 }

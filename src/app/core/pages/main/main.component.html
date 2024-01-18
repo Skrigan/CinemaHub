@@ -5,38 +5,54 @@
   </app-slider>
 </section>
 <section>
-  <h3 class="title" routerLink="/films">
-    <p class="title__text">Фильмы</p>
-    <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+  <h3 class="title">
+    <a routerLink="/films" class="title__link">
+      <span class="title__text">Фильмы</span>
+      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+    </a>
   </h3>
-  <app-slider [displayedImages]=6 (click)="onMovieChoice($event)">
-    <app-movie-card class="films__card" *ngFor="let card of mockedMovies" [card]="card" [attr.data-id]="card.id"></app-movie-card>
+  <app-slider [displayedImages]=6>
+    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedMovies" >
+      <app-movie-card [card]="card"></app-movie-card>
+    </a>
   </app-slider>
 </section>
 <section>
-  <h3 class="title" routerLink="/series">
-    <p class="title__text">Сериалы</p>
-    <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+  <h3 class="title">
+    <a routerLink="/series" class="title__link">
+      <span class="title__text">Сериалы</span>
+      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+    </a>
   </h3>
-  <app-slider [displayedImages]=6 (click)="onMovieChoice($event)">
-    <app-movie-card class="films__card" *ngFor="let card of mockedSeries" [card]="card" [attr.data-id]="card.id"></app-movie-card>
+  <app-slider [displayedImages]=6>
+    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedSeries" >
+      <app-movie-card [card]="card"></app-movie-card>
+    </a>
   </app-slider>
 </section>
 <section>
-  <h3 class="title" routerLink="/cartoons">
-    <p class="title__text">Мульфильмы</p>
-    <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+  <h3 class="title">
+    <a routerLink="/cartoons" class="title__link">
+      <span class="title__text">Мульфильмы</span>
+      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+    </a>
   </h3>
-  <app-slider [displayedImages]=6 (click)="onMovieChoice($event)">
-    <app-movie-card class="films__card" *ngFor="let card of mockedCartoons" [card]="card" [attr.data-id]="card.id"></app-movie-card>
+  <app-slider [displayedImages]=6>
+    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedCartoons" >
+      <app-movie-card [card]="card"></app-movie-card>
+    </a>
   </app-slider>
 </section>
 <section>
-  <h3 class="title" routerLink="/anime">
-    <p class="title__text">Аниме</p>
-    <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+  <h3 class="title">
+    <a routerLink="/anime" class="title__link">
+      <span class="title__text">Аниме</span>
+      <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+    </a>
   </h3>
-  <app-slider [displayedImages]=6 (click)="onMovieChoice($event)">
-    <app-movie-card class="films__card" *ngFor="let card of mockedAnime" [card]="card" [attr.data-id]="card.id"></app-movie-card>
+  <app-slider [displayedImages]=6>
+    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedAnime" >
+      <app-movie-card [card]="card"></app-movie-card>
+    </a>
   </app-slider>
 </section>
