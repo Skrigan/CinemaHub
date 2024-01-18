@@ -9,7 +9,7 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { SliderComponent } from './core/components/slider/slider.component';
 import {NgOptimizedImage} from "@angular/common";
 import { MovieCardComponent } from './core/components/movie-card/movie-card.component';
-import { ReleaseCardComponent } from './core/components/release-card/release-card.component';
+import { PremiereCardComponent } from './core/components/premiere-card/premiere-card.component';
 import { MainComponent } from './core/pages/main/main.component';
 import { FilmsComponent } from './core/pages/films/films.component';
 import { SelectorComponent } from './core/components/selector/selector.component';
@@ -25,7 +25,7 @@ import { PersonComponent } from './core/pages/person/person.component';
     FooterComponent,
     SliderComponent,
     MovieCardComponent,
-    ReleaseCardComponent,
+    PremiereCardComponent,
     MainComponent,
     FilmsComponent,
     SelectorComponent,

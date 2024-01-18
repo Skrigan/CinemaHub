@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-// import { mockedReleases } from '../../data/mockedReleases';
 import { mockedMovies } from '../../data/mockedMovies';
 import { mockedSeries } from '../../data/mockedSeries';
 import { mockedCartoons } from '../../data/mockedCartoons';
 import { mockedAnime } from '../../data/mockedAnime';
 import {Router} from "@angular/router";
-import {MovieService} from "../../services/movie.service";
+import {PremiereService} from "../../services/premiere.service";
 
 @Component({
   selector: 'app-main',
@@ -13,27 +12,26 @@ import {MovieService} from "../../services/movie.service";
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
-  // protected readonly mockedReleases = mockedReleases;
-  releases?: any;
+  premieres?: any;
   protected readonly mockedMovies = mockedMovies;
   protected readonly mockedSeries = mockedSeries;
   protected readonly mockedCartoons = mockedCartoons;
   protected readonly mockedAnime = mockedAnime;
 
-  constructor(private router: Router, private movieService: MovieService) {
-    movieService.releases$.subscribe((value: any) => {
-      const releases = [...value.currentMonthReleases.items, ...value.nextMonthReleases.items];
+  constructor(private router: Router, private premiereService: PremiereService) {
+    premiereService.premieres$.subscribe((value: any) => {
+      const premieres = [...value.currentMonthPremiere.items, ...value.nextMonthPremiere.items];
       const currentDate = new Date();
-      this.releases = releases.filter((release) => {
-        const releaseDate = new Date(release.premiereRu);
+      this.premieres = premieres.filter((premiere) => {
+        const premiereDate = new Date(premiere.premiereRu);
         if (
-          releaseDate.getFullYear() === currentDate.getFullYear() &&
-          releaseDate.getMonth() === currentDate.getMonth() &&
-          releaseDate.getDate() === currentDate.getDate()
+          premiereDate.getFullYear() === currentDate.getFullYear() &&
+          premiereDate.getMonth() === currentDate.getMonth() &&
+          premiereDate.getDate() === currentDate.getDate()
         ) {
           return true
         } else {
-          return releaseDate >= currentDate;
+          return premiereDate >= currentDate;
         }
       }).slice(0, 16);
     })

@@ -1,4 +1,4 @@
-export interface IRelease {
+export interface IPremiere {
   kinopoiskId: number
   nameRu: string
   nameEn: string | null

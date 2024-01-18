@@ -1,16 +1,16 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {IRelease} from "../../interfaces/IRelease";
+import {IPremiere} from "../../interfaces/IPremiere";
 import {ruMonth} from "../../data/ruMonthEnum";
 
 
 @Component({
-  selector: 'app-release-card',
-  templateUrl: './release-card.component.html',
-  styleUrl: './release-card.component.scss',
+  selector: 'app-premiere-card',
+  templateUrl: './premiere-card.component.html',
+  styleUrl: './premiere-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ReleaseCardComponent implements OnInit {
-  @Input({ required: true }) card!: IRelease;
+export class PremiereCardComponent implements OnInit {
+  @Input({ required: true }) card!: IPremiere;
 
   isImgLoaded = false;
 

@@ -5,36 +5,16 @@ import {BehaviorSubject, forkJoin, Observable, ReplaySubject, Subject} from "rxj
 import {IMovie} from "../interfaces/IMovie";
 import {IPerson} from "../interfaces/IPerson";
 
-enum monthes {
-  JANUARY,
-  FEBRUARY,
-  MARCH,
-  APRIL,
-  MAY,
-  JUNE,
-  JULY,
-  AUGUST,
-  SEPTEMBER,
-  OCTOBER,
-  NOVEMBER,
-  DECEMBER,
-}
 // const monthes =
 // ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
 
-type ReleaseParams = {
-  year: number,
-  month: string
-}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-  releases$ = new ReplaySubject();
-
   constructor(private http: HttpClient) {
-    this.getReleases();
   }
 
   getMoviesData(searchParams: SearchParams) {
@@ -83,40 +63,6 @@ export class MovieService {
     };
     return this.http.get<IPerson>(url, {
       headers
-    })
-  }
-
-  getReleases() {
-    const url = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres';
-    const headers = {
-      "X-API-KEY": "e4ef3242-e2cc-4ea4-933e-d4f1b854cafd"
-    };
-
-    const date = new Date();
-    const currentMonthParams: ReleaseParams = {
-      year: date.getFullYear(),
-      month: monthes[date.getMonth()],
-    }
-    const nextMonthParams: ReleaseParams =
-      currentMonthParams.month === 'DECEMBER' ?{
-        year: date.getFullYear() + 1,
-        month: monthes[0],
-      } : {
-        year: date.getFullYear(),
-        month: monthes[date.getMonth()],
-      }
-
-    forkJoin({
-      currentMonthReleases: this.http.get<any>(url, {
-        headers,
-        params: currentMonthParams
-      }),
-      nextMonthReleases: this.http.get<any>(url, {
-        headers,
-        params: nextMonthParams
-      }),
-    }).subscribe((value) => {
-      this.releases$.next(value);
     })
   }
 }
