@@ -3,3 +3,23 @@
   <router-outlet></router-outlet>
 </main>
 <app-footer *ngIf="footerVisibility" ></app-footer>
+<div #backdrop class="backdrop backdrop_hidden" (click)="removeTrailerOrMovie()"></div>
+<div #modal class="modal modal_hidden">
+  <iframe *ngIf="videoLink" width="1280" height="720" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+   gyroscope; picture-in-picture; web-share" allowfullscreen="" title="Трейлер"
+          [src]="videoLink">
+  </iframe>
+  <div class="close-modal" (click)="removeTrailerOrMovie()"></div>
+</div>
+<div class="search" #search *ngIf="searchResults.length">
+  <ul>
+    <li *ngFor="let film of searchResults">
+      <a routerLink="/movie/{{film.filmId}}">
+        <span class="nameRu" *ngIf="film?.nameRu">{{film.nameRu}} </span>
+        (<span *ngIf="film?.nameEn">{{film.nameEn}}, </span>
+        <span *ngIf="film?.countries[0]?.country">{{film.countries[0].country}}, </span>
+        <span class="genre" *ngIf="film?.genres[0]?.genre">{{film.genres[0].genre}}</span>)
+      </a>
+    </li>
+  </ul>
+</div>

@@ -153,65 +153,6 @@ iframe {
   height: 100%;
 }
 
-
-.backdrop {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.66);
-  z-index: 5;
-  width: 100vw;
-  height: 100vh;
-  &_hidden {
-    display: none;
-  }
-}
-
-.close-modal {
-  position: absolute;
-  top: -2vw;
-  right: -2vw;
-  cursor: pointer;
-  height: 1.6vw;
-  width: 1.6vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &:before, &:after {
-    position: absolute;
-    content: '';
-    display: block;
-    height: .1vw;
-    width: 100%;
-    background-color: white;
-  }
-  &:before {
-    transform: rotate(45deg);
-  }
-  &:after {
-    transform: rotate(-45deg);
-  }
-}
-
-.modal {
-  border: 0;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  position: absolute;
-  width: 1280px;
-  max-width: 86vw;
-  height: 720px;
-  max-height: 48.37vw;
-  background-color: black;
-  z-index: 6;
-  &_hidden {
-    display: none;
-  }
-}
-
 .films__card {
   display: contents;
 }

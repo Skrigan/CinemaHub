@@ -99,6 +99,7 @@
   &:focus-within {
     //width: calc(100% - 8.5vw);
     width: 100%;
+    max-width: 53vw;
   }
 
   &__icon {

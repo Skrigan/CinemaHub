@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {getMovieType} from "../../utils";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+import {ModalService} from "../../services/modal.service";
 
 @Component({
   selector: 'app-movie',
@@ -31,7 +32,7 @@ export class MovieComponent {
   constructor(private movieService: MovieService,
               private route: ActivatedRoute,
               private router: Router,
-              public sanitizer: DomSanitizer) {
+              private modalService: ModalService) {
   }
 
   ngOnInit() {
@@ -63,7 +64,6 @@ export class MovieComponent {
     this.subscriptions.push(
       this.movieService.getMovieById(id).subscribe((movie) => {
         this.movie = movie;
-        console.log(this.movie);
 
         this.seasonsNumber = this.getNumberOfSeasons(this.movie?.seasonsInfo?.length);
 
@@ -99,23 +99,12 @@ export class MovieComponent {
   }
 
   getTrailer() {
-    const trailer = this.movie?.videos?.trailers[0]?.url;
-    if (trailer) {
-      this.trailerOrMovie = this.sanitizer.bypassSecurityTrustResourceUrl(`${trailer}?autoplay=1`);
-      this.showModal()
-    }
+    this.modalService.setVideoLink(this.movie?.videos?.trailers[0]?.url);
   }
 
   getVoidBoostLink() {
-    const firstEpisodeParam = this.movie.isSeries ? '?s=1&e=1' : ''
-    this.trailerOrMovie = this.sanitizer
-      .bypassSecurityTrustResourceUrl(`https://voidboost.tv/embed/${this.movie.id}${firstEpisodeParam}`);
-    this.showModal();
-  }
-
-  removeTrailerOrMovie() {
-    this.trailerOrMovie = undefined;
-    this.closeModal();
+    const firstEpisodeParam = this.movie.isSeries ? '?s=1&e=1' : '';
+    this.modalService.setVideoLink(`https://voidboost.tv/embed/${this.movie.id}${firstEpisodeParam}`);
   }
 
   getNumberOfSeasons(seasonsLength: number) {
