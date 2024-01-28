@@ -10,6 +10,7 @@ import {ModalService} from "../../services/modal.service";
 })
 export class HeaderComponent implements OnInit{
   @ViewChild('inputElement', { static: true }) inputElement!: ElementRef;
+  isFocused = false;
 
   constructor(
     private router: Router,
@@ -17,57 +18,39 @@ export class HeaderComponent implements OnInit{
   ) {
   }
 
-
-
   onBlur() {
-    console.log('blur');
-    this.modalService.removeSearchResults();
+    this.isFocused = false;
+    //ааааа
+    // setTimeout(() => {
+    this.modalService.$isFocused.next(false);
+    // }, 100);
+  }
+
+  onFocus() {
+    this.isFocused = true;
+    setTimeout(() => {
+      if (this.isFocused) {
+        this.modalService.$isFocused.next(true);
+      }
+    }, 300);
   }
 
   ngOnInit() {
-
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.inputElement.nativeElement.value = '';
       }
     })
 
-
     fromEvent(this.inputElement.nativeElement, 'keyup')
       .pipe(
         debounceTime(700),
         map((e: any) => (e.target as HTMLInputElement).value),
         filter((str) => str.length > 2),
-        // distinctUntilChanged(),
       )
       .subscribe((value) => {
-        console.log('keyup: ', value);
         this.modalService.setSearchResults(value);
       });
-
-    fromEvent(this.inputElement.nativeElement, 'focus')
-      .pipe(
-        debounceTime(200),
-        map((e: any) => (e.target as HTMLInputElement).value),
-        filter((str) => str.length > 2),
-        // distinctUntilChanged(),
-      )
-      .subscribe((value) => {
-        console.log("focus: ", value);
-        this.modalService.setSearchResults(value);
-      });
-
-    // fromEvent(this.inputElement.nativeElement, 'blur')
-    //   .pipe(
-    //     debounceTime(200),
-    //     map((e: any) => (e.target as HTMLInputElement).value),
-    //     filter((str) => str.length > 2),
-    //     // distinctUntilChanged(),
-    //   )
-    //   .subscribe(() => {
-    //     console.log('blur');
-    //     this.modalService.removeSearchResults();
-    //   });
   }
 }
 

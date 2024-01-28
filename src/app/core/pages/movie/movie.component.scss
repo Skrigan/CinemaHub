@@ -117,6 +117,9 @@
         font-size: 1vw;
         max-width: 70%;
       }
+      &_first {
+        flex-grow: 1;
+      }
     }
     &__title {
       margin-bottom: .8vw;

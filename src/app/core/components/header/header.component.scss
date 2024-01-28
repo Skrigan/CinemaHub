@@ -67,7 +67,7 @@
   //right: 0;
   //width: 22rem;
   width: 11.5vw;
-  transition: width .4s linear;
+  transition: width .3s linear;
   //padding: 1rem 0;
   padding: 0.5vw 0;
   background-color: black;
@@ -83,7 +83,7 @@
     padding-left: 1.6vw;
     background-color: black;
     font-size: .7vw;
-    transition: background-color .4s linear;
+    transition: background-color .3s linear;
     color: rgba(255, 255, 255, 0.9);
     color: rgb(117, 117, 117);
     &:focus {
@@ -97,8 +97,7 @@
   }
 
   &:focus-within {
-    //width: calc(100% - 8.5vw);
-    width: 100%;
+    width: 53vw;
     max-width: 53vw;
   }
 

@@ -2,6 +2,8 @@ import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/c
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {ModalService} from "./core/services/modal.service";
 import {SafeResourceUrl} from "@angular/platform-browser";
+import {getMovieType} from "./core/utils";
+import {ratings} from "./core/data/filters";
 
 @Component({
   selector: 'app-root',
@@ -11,10 +13,11 @@ import {SafeResourceUrl} from "@angular/platform-browser";
 export class AppComponent implements OnInit{
   @ViewChild('header', {read: ElementRef}) headerRef!: ElementRef;
   prevScrollY: number = 0;
+  inputFocused = false;
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     //если страница полностью проскроллена или скроллить некуда
-    if (document.documentElement.scrollHeight > window.innerHeight) {
+    if (document.documentElement.scrollHeight > window.innerHeight && !this.inputFocused) {
       if (this.prevScrollY < window.scrollY) {
         this.headerRef.nativeElement.classList.add('header_hidden');
       } else {
@@ -51,7 +54,20 @@ export class AppComponent implements OnInit{
     document.body.classList.remove('body__backdropped');
   }
 
+  getMovie(event: MouseEvent) {
+    const target = <Element>event.target;
+    const link = target.closest('.movieA');
+    if (link) {
+      const id = link.getAttribute('data-id');
+      this.router.navigate(['/movie', id]);
+    }
+  }
+
   ngOnInit() {
+    this.modalService.$isFocused.subscribe((focus) => {
+      this.inputFocused = focus;
+    })
+
     this.modalService.getVideoLink().subscribe((videoLink) => {
       this.videoLink = videoLink;
       if (videoLink) this.showModal();
@@ -61,7 +77,6 @@ export class AppComponent implements OnInit{
     this.modalService.getSearchResults().subscribe((searchResults: any) => {
       if (searchResults?.searchFilmsCountResult >= 0) {
         this.searchResults = searchResults.films;
-        console.log(searchResults.films);
       } else {
         this.searchResults = [];
       }
@@ -74,11 +89,12 @@ export class AppComponent implements OnInit{
           return url.split('/').includes(item);
         })
         window.scrollTo(0, 0);
+        this.inputFocused = false;
         this.modalService.removeSearchResults();
         this.headerRef.nativeElement.classList.remove('header_hidden');
       }
     })
   }
+
+  protected readonly getMovieType = getMovieType;
 }
-// Дюна (Dune: Part One, Фильм, США, Фантастика) рейтинг
-// Призрак в доспехах (Koukaku Kidoutai, Аниме, Япония, Боевик) рейтинг

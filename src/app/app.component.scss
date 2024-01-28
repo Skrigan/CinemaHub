@@ -16,7 +16,6 @@
   margin-top: 4.5vw;
 }
 
-
 .backdrop {
   position: absolute;
   cursor: pointer;
@@ -84,11 +83,14 @@ iframe {
 .search {
   //height: 60vh;
   width: 53vw;
-  position: absolute;
+  position: fixed;
   top: 3vw;
   right: 7vw;
   z-index: 2;
   border-bottom: 1px solid white;
+  &_hidden {
+    visibility: hidden;
+  }
   //border-left: 1px solid white;
   //border-right: 1px solid white;
   //padding-top: .5vw;

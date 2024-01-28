@@ -9,6 +9,7 @@ import {HttpClient} from "@angular/common/http";
 export class ModalService {
   private $videoLink: ReplaySubject<SafeResourceUrl | null> = new ReplaySubject();
   private $searchResults: ReplaySubject<any> = new ReplaySubject();
+  $isFocused: ReplaySubject<boolean> = new ReplaySubject();
   constructor(public sanitizer: DomSanitizer, private http: HttpClient) {
   }
 
