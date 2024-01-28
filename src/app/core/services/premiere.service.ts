@@ -44,12 +44,12 @@ export class PremiereService {
       month: monthes[date.getMonth()],
     }
     const nextMonthParams: PremiereParams =
-      currentMonthParams.month === 'DECEMBER' ?{
+      currentMonthParams.month === 'DECEMBER' ? {
         year: date.getFullYear() + 1,
         month: monthes[0],
       } : {
         year: date.getFullYear(),
-        month: monthes[date.getMonth()],
+        month: monthes[date.getMonth() + 1],
       }
 
     forkJoin({
