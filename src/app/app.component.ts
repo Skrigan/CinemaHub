@@ -17,8 +17,8 @@ export class AppComponent implements OnInit{
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     //если страница полностью проскроллена или скроллить некуда
-    if (document.documentElement.scrollHeight > window.innerHeight && !this.inputFocused) {
-      if (this.prevScrollY < window.scrollY) {
+    if (document.documentElement.scrollHeight > window.innerHeight) {
+      if (this.prevScrollY < window.scrollY && !this.inputFocused) {
         this.headerRef.nativeElement.classList.add('header_hidden');
       } else {
         this.headerRef.nativeElement.classList.remove('header_hidden');
