@@ -44,6 +44,7 @@ export class AppComponent implements OnInit{
 
   showModal() {
     this.modal.nativeElement.classList.remove('modal_hidden');
+    this.modal.nativeElement.style.top = `calc(50% + ${window.scrollY}px)`;
     this.backdrop.nativeElement.classList.remove('backdrop_hidden');
     document.body.classList.add('body__backdropped');
   }
