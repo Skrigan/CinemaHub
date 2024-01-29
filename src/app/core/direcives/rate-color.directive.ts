@@ -4,37 +4,22 @@ import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
   selector: '[appRateColor]'
 })
 export class RateColorDirective implements OnInit {
-  @Input() rating!: number;
+  @Input() rating!: number | string;
 
   constructor(private element: ElementRef, private render: Renderer2) { }
 
   ngOnInit() {
-    switch (Math.floor(this.rating)) {
-      case 0 :
-      case 1 :
-      case 2 :
-      case 3 :
-      case 4 :
-      case 5 : {
-        this.setBackgroundColor('red');
-        break
-      }
-      case 6 : {
-        this.setBackgroundColor('#777');
-        break
-      }
-      case 7 : {
-        this.setBackgroundColor('#3bb33b');
-        break
-      }
-      case 8 :
-      case 9 :
-      case 10 : {
+    const fixedRating = Number((typeof this.rating === 'number' ? this.rating : Number(this.rating)).toFixed(1));
+      if (fixedRating >= 8) {
         this.setBackgroundImage('linear-gradient(160deg,#eacc7f 16%,#ad9c72 64%)');
-        break
+      } else if (fixedRating >= 7) {
+        this.setBackgroundColor('#3bb33b');
+      } else if (fixedRating >= 6) {
+        this.setBackgroundColor('#777')
+      } else {
+        this.setBackgroundColor('red');
       }
     }
-  }
 
   setBackgroundColor(color: string) {
     this.render.setStyle(this.element.nativeElement, 'background-color', color);
