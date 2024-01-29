@@ -1,6 +1,6 @@
 <section class="premieres">
   <h2 class="title title_premieres">Ближайшие премьеры</h2>
-  <app-slider [displayedImages]=4>
+  <app-slider *ngIf="premieres?.length" [displayedImages]=4>
     <app-premiere-card *ngFor="let card of premieres" [card]="card"></app-premiere-card>
   </app-slider>
 </section>
