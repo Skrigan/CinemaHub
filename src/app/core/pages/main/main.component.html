@@ -39,7 +39,7 @@
   </h3>
   <app-slider [displayedImages]=6>
     <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedCartoons" >
-      <app-movie-card *ngFor="let card of mockedCartoons"  [card]="card"></app-movie-card>
+      <app-movie-card [card]="card"></app-movie-card>
     </a>
   </app-slider>
 </section>
