@@ -19,6 +19,7 @@
         (<span *ngIf="film?.nameEn">{{film.nameEn}}, </span>
         <span *ngIf="film?.countries[0]?.country">{{film.countries[0].country}}, </span>
         <span class="genre" *ngIf="film?.genres[0]?.genre">{{film.genres[0].genre}}</span>)
+        <span class="rating" *ngIf="film?.rating && film?.rating !== 'null'" appRateColor [rating]="film.rating">{{film?.rating}}</span>
       </a>
     </li>
   </ul>

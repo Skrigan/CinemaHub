@@ -135,5 +135,11 @@ iframe {
     .genre {
       text-transform: capitalize;
     }
+    .rating {
+      //font-size: 0.9vw;
+      padding: 0.1vw 0.2vw;
+      border-radius: 0.2vw;
+      color: white;
+    }
   }
 }

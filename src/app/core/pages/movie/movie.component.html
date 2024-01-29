@@ -3,7 +3,7 @@
     <img class="name" *ngIf="movie?.logo?.url" [hidden]="!isImgLoaded" [src]="movie['logo']['url']" (load)="isImgLoaded = true">
     <p class="name" *ngIf="!movie?.logo?.url">{{movie['name']}}</p>
     <div class="title">
-      <span class="rating">{{movie['rating']['kp'] | number: '1.1-1'}}</span>
+      <span class="rating" appRateColor [rating]="movie['rating']['kp']">{{movie['rating']['kp'] | number: '1.1-1'}}</span>
       <span class="year">{{movie['year']}}</span>
       <span class="genre">{{this.genre}}</span>
       <span class="country">{{movie.countries[0]['name']}}</span>

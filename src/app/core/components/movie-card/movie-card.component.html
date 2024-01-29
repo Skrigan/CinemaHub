@@ -4,4 +4,4 @@
   <h4 class="text__title">{{card.name}}</h4>
   <p class="text__info">{{textInfo}}</p>
 </div>
-<div *ngIf="card?.rating?.kp" class="rating">{{card.rating.kp | number: '1.1-1'}}</div>
+<div *ngIf="card?.rating?.kp" appRateColor [rating]="card.rating.kp" class="rating">{{card.rating.kp | number: '1.1-1'}}</div>

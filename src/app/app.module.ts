@@ -17,6 +17,7 @@ import { PaginatorComponent } from './core/components/paginator/paginator.compon
 import { MovieComponent } from './core/pages/movie/movie.component';
 import { MinutesToHoursPipe } from './core/pipes/minutes-to-hours.pipe';
 import { PersonComponent } from './core/pages/person/person.component';
+import { RateColorDirective } from './core/direcives/rate-color.directive';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PersonComponent } from './core/pages/person/person.component';
     MovieComponent,
     MinutesToHoursPipe,
     PersonComponent,
+    RateColorDirective,
   ],
   imports: [
     BrowserModule,
