@@ -42,22 +42,6 @@ export type SearchParams = {
 })
 export class FilmsComponent implements OnInit, OnDestroy {
   protected readonly parseInt = parseInt;
-  // @HostListener('window:scroll', ['$event'])
-  // onScroll(event: WheelEvent) {
-  //   const windowHeight = window.innerHeight;
-  //   const scrollHeight = document.documentElement.scrollHeight;
-  //   const currentScroll = document.documentElement.scrollTop + windowHeight;
-  //
-  //   const shownCardsLength = this.shownCards.length;
-  //   const cardsLength = this.cards.length;
-  //   if (currentScroll >= scrollHeight && shownCardsLength < cardsLength) {
-  //     console.log('scrolled!');
-  //     const lengthDiff = cardsLength - shownCardsLength;
-  //     console.log(`slice(${shownCardsLength}, ${lengthDiff >= 60 ? shownCardsLength + 60 : shownCardsLength + lengthDiff})`);
-  //     this.shownCards.push(...this.cards.slice(shownCardsLength, lengthDiff >= 60 ? shownCardsLength + 60 : shownCardsLength + lengthDiff));
-  //   }
-  // }
-
   @ViewChild('films') films!: ElementRef;
 
   title!: string;
