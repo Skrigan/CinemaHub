@@ -19,11 +19,21 @@
     height: 4vw;
     cursor: pointer;
     z-index: 1;
+    @media (max-width: 500px) {
+      width: 40px;
+      height: 40px;
+    }
     &_left {
       left: -2.5vw;
+      @media (max-width: 500px) {
+        left: calc(-20px - .5vw);
+      }
     }
     &_right {
       right: -2.5vw;
+      @media (max-width: 500px) {
+        right: calc(-20px - .5vw);
+      }
     }
     &_left svg, &_right svg {
       width: 1vw;
@@ -31,6 +41,9 @@
       top: 50%;
       left: 50%;
       transform: translate(-40%, -50%);
+      @media (max-width: 500px) {
+        width: 10px;
+      }
     }
     &_left svg {
       transform: translate(-60%, -50%) rotate(180deg);

@@ -1,5 +1,10 @@
 :host {
   position: relative;
+  display: block;
+  min-width: calc((100% - 2vw) / 3);
+  @media (max-width: 500px) {
+    min-width: 100%
+  }
 }
 
 .img {
@@ -15,9 +20,16 @@
     font-size: 1.2vw;
     color: white;
     margin: .5vw 0;
+    @media (max-width: 500px) {
+      font-size: 12px;
+      margin: 5px 0;
+    }
   }
   &__info {
     font-size: .9vw;
     text-transform: capitalize;
+    @media (max-width: 500px) {
+      font-size: 9px;
+    }
   }
 }

@@ -34,9 +34,9 @@ export class SliderComponent implements AfterContentChecked {
 
   ngAfterContentChecked() {
     this.cards = Array.from(this.cardsRef.nativeElement.children);
-    this.cards.forEach((item: HTMLElement) => {
-      item.style.minWidth = this.cardMinWidth;
-    })
+    // this.cards.forEach((item: HTMLElement) => {
+    //   item.style.minWidth = this.cardMinWidth;
+    // })
 
     if (this.cardsLength === undefined || this.cardsLength !== this.cards.length) {
       this.cardsLength = this.cards.length;

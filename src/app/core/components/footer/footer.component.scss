@@ -17,6 +17,13 @@
   align-items: flex-start;
   justify-content: center;
   gap: 1vw;
+  @media (max-width: 500px) {
+    height: 70px;
+    margin: 40px 0;
+    padding: 0 20px;
+    font-size: 10px;
+    gap: 10px;
+  }
 }
 
 .title {
@@ -28,10 +35,17 @@
   gap: 0.5vw;
   align-items: center;
   cursor: pointer;
+  @media (max-width: 500px) {
+    gap: 5px;
+  }
 
   svg {
     width: 1.8vw;
     height: 1.8vw;
+    @media (max-width: 500px) {
+      width: 18px;
+      height: 18px;
+    }
   }
   &:hover {
     color: white;
