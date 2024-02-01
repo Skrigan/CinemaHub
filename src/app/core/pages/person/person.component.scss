@@ -1,22 +1,43 @@
 :host {
   min-height: calc(100vh - 19.5vw);
   display: block;
+  @media (max-width: 500px) {
+    min-height: calc(100vh - 220px);
+  }
 }
 
 .person {
   display: flex;
   gap: 3vw;
-  padding-top:1vw;
+  padding-top: 1vw;
+  @media (max-width: 500px) {
+    flex-wrap: wrap;
+    row-gap: 0;
+    column-gap: 3vw;
+  }
   &__img {
     height: 30vw;
+    @media (max-width: 500px) {
+      width: calc(50% - 1.5vw);
+      height: auto;
+    }
   }
   &__content {
     text-wrap: nowrap;
+    @media (max-width: 500px) {
+      width: calc(50% - 1.5vw);
+    }
     .person-info {
       font-size: .7vw;
+      @media (max-width: 500px) {
+        font-size: 7px;
+      }
       &__attribute {
         display: inline-block;
         width: 8vw;
+        @media (max-width: 500px) {
+          width: 80px;
+        }
       }
       &__value {
 
@@ -30,9 +51,15 @@
       }
       &__li:not(:last-child) {
         margin-bottom: .2vw;
+        @media (max-width: 500px) {
+          margin-bottom: 2px;
+        }
       }
       &__element:not(:last-child) {
         margin-bottom: 1vw;
+        @media (max-width: 500px) {
+          margin-bottom: 10px;
+        }
       }
     }
   }
@@ -40,31 +67,58 @@
     font-size: 2.2vw;
     margin-bottom: .8vw;
     color: white;
+    @media (max-width: 500px) {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
   }
   &__nameEn {
     font-size: 1vw;
     margin-bottom: 3vw;
+    @media (max-width: 500px) {
+      font-size: 10px;
+      margin-bottom: 30px;
+    }
   }
   &__about {
     font-size: 1.2vw;
     color: white;
     margin-bottom: 1vw;
+    @media (max-width: 500px) {
+      font-size: 12px;
+      color: white;
+      margin-bottom: 10px;
+    }
   }
   .person-facts {
     padding-top: .8vw;
     padding-left: 6vw;
     overflow-y: hidden;
+    @media (max-width: 500px) {
+      padding: 0;
+      width: 100%;
+    }
     &__title {
       color: white;
       font-size: 1.2vw;
       margin-bottom: 1.5vw;
       height: 1.5vw;
+      @media (max-width: 500px) {
+        font-size: 12px;
+        margin: 20px 0 20px 10px;
+        height: 15px;
+      }
     }
     &__ul {
       font-size: .7vw;
       padding-left: 0.8vw;
       max-height: 26.2vw;
       overflow-y: auto;
+      @media (max-width: 500px) {
+        font-size: 7px;
+        padding-left: 0;
+        max-height: 120px;
+      }
       &::-webkit-scrollbar {
         width: 5px;
       }
@@ -86,6 +140,11 @@
       margin-bottom: .8vw;
       padding-bottom: .8vw;
       border-bottom: 1px solid #404040;
+      @media (max-width: 500px) {
+        padding-right: 30px;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+      }
     }
   }
 }
@@ -94,6 +153,10 @@
   color: white;
   font-size: 1.2vw;
   margin: 2vw 0 2vw 1vw;
+  @media (max-width: 500px) {
+    font-size: 12px;
+    margin: 20px 0 20px 10px;
+  }
 }
 
 .slider {
@@ -101,5 +164,9 @@
 }
 
 .films__card {
-  display: contents;
+  display: block;
+  min-width: calc((100% - 5vw) / 6);
+  @media (max-width: 500px) {
+    min-width: calc((100% - 2vw) / 3);
+  }
 }

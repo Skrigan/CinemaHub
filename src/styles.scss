@@ -29,6 +29,9 @@ body {
 .body__backdropped {
   overflow-y: hidden;
   padding: 0 calc(7vw + 17px) 0 7vw;
+  //@media (max-width: 1200px) {
+  //  padding: 0 7vw;
+  //}
 }
 
 a {
