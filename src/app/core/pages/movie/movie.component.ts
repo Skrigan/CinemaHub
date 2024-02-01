@@ -87,13 +87,11 @@ export class MovieComponent {
     this.backdrop.nativeElement.style.top = `${pageOffset}px`;
     this.modal.nativeElement.style.top = `calc(50% + ${pageOffset}px)`;
 
-    document.body.classList.add('body__backdropped');
     this.backdrop.nativeElement.classList.remove('backdrop_hidden');
     this.modal.nativeElement.classList.remove('modal_hidden');
   }
 
   closeModal() {
-    document.body.classList.remove('body__backdropped');
     this.backdrop.nativeElement.classList.add('backdrop_hidden');
     this.modal.nativeElement.classList.add('modal_hidden');
   }

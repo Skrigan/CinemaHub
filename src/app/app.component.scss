@@ -27,14 +27,14 @@
 }
 
 .backdrop {
-  position: absolute;
+  position: fixed;
   cursor: pointer;
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.66);
   z-index: 5;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   &_hidden {
     display: none;
   }
@@ -50,7 +50,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  @media (max-width: 500px) {
+    top: -20px;
+    right: -20px;
+    height: 16px;
+    width: 16px;
+  }
   &:before, &:after {
     position: absolute;
     content: '';
@@ -58,6 +63,9 @@
     height: .1vw;
     width: 100%;
     background-color: white;
+    @media (max-width: 500px) {
+      height: 1px;
+    }
   }
   &:before {
     transform: rotate(45deg);
@@ -68,11 +76,11 @@
 }
 
 .modal {
+  position: fixed;
   border: 0;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  position: absolute;
   width: 1280px;
   max-width: 86vw;
   height: 720px;
