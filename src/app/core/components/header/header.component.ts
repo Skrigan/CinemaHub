@@ -10,7 +10,11 @@ import {ModalService} from "../../services/modal.service";
 })
 export class HeaderComponent implements OnInit{
   @ViewChild('inputElement', { static: true }) inputElement!: ElementRef;
+  @ViewChild('burger', { static: true }) burger!: ElementRef;
+  @ViewChild('nav', { static: true }) nav!: ElementRef;
+
   isFocused = false;
+  isBurgerOpened = false;
 
   constructor(
     private router: Router,
@@ -18,12 +22,23 @@ export class HeaderComponent implements OnInit{
   ) {
   }
 
+  toggleBurgerMenu() {
+    if (!this.isBurgerOpened) {
+      this.burger.nativeElement.classList.add('burger_opened');
+      this.nav.nativeElement.classList.add('nav_opened');
+      this.modalService.$isFocused.next(true);
+    } else {
+      this.burger.nativeElement.classList.remove('burger_opened')
+      this.nav.nativeElement.classList.remove('nav_opened')
+      this.modalService.$isFocused.next(false);
+    }
+
+    this.isBurgerOpened = !this.isBurgerOpened;
+  }
+
   onBlur() {
     this.isFocused = false;
-    //ааааа
-    // setTimeout(() => {
     this.modalService.$isFocused.next(false);
-    // }, 100);
   }
 
   onFocus() {
@@ -38,6 +53,9 @@ export class HeaderComponent implements OnInit{
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        if (this.isBurgerOpened) {
+          this.toggleBurgerMenu();
+        }
         this.inputElement.nativeElement.value = '';
       }
     })
