@@ -10,11 +10,14 @@ import {ModalService} from "../../services/modal.service";
 })
 export class HeaderComponent implements OnInit{
   @ViewChild('inputElement', { static: true }) inputElement!: ElementRef;
+  @ViewChild('logo', { static: true }) logo!: ElementRef;
+  @ViewChild('inputContainer', { static: true }) inputContainer!: ElementRef;
   @ViewChild('burger', { static: true }) burger!: ElementRef;
   @ViewChild('nav', { static: true }) nav!: ElementRef;
 
   isFocused = false;
   isBurgerOpened = false;
+  isSearchOpened = false;
 
   constructor(
     private router: Router,
@@ -23,6 +26,12 @@ export class HeaderComponent implements OnInit{
   }
 
   toggleBurgerMenu() {
+    if (this.isSearchOpened) {
+      this.inputContainer.nativeElement.classList.remove('search_mobile-open');
+      this.logo.nativeElement.classList.remove('logo_mobile-hidden');
+      this.isSearchOpened = false;
+    }
+
     if (!this.isBurgerOpened) {
       this.burger.nativeElement.classList.add('burger_opened');
       this.nav.nativeElement.classList.add('nav_opened');
@@ -34,6 +43,17 @@ export class HeaderComponent implements OnInit{
     }
 
     this.isBurgerOpened = !this.isBurgerOpened;
+  }
+
+  openMobileSearch() {
+    if (!this.isSearchOpened) {
+      this.inputContainer.nativeElement.classList.add('search_mobile-open');
+      this.inputElement.nativeElement.focus();
+      this.logo.nativeElement.classList.add('logo_mobile-hidden');
+      this.burger.nativeElement.classList.add('burger_opened');
+      this.isBurgerOpened = true;
+      this.isSearchOpened = true;
+    }
   }
 
   onBlur() {

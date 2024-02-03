@@ -3,7 +3,7 @@ import {
   AfterContentInit, AfterViewChecked,
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  ElementRef, HostListener,
   Input,
   OnInit,
   ViewChild
@@ -17,6 +17,13 @@ import {HttpClient} from "@angular/common/http";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SliderComponent implements AfterContentChecked {
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any){
+    const window = event.target;
+
+    console.log("Width: " + window.innerWidth);
+  }
+
   @Input() displayedImages: number = 3;
 
   @ViewChild('controlLeft', { static: true }) controlLeft!: ElementRef;
@@ -33,11 +40,13 @@ export class SliderComponent implements AfterContentChecked {
   }
 
   ngAfterContentChecked() {
+    console.log('ngAfterContentChecked');
     this.cards = Array.from(this.cardsRef.nativeElement.children);
     // this.cards.forEach((item: HTMLElement) => {
     //   item.style.minWidth = this.cardMinWidth;
     // })
 
+    //скрывает контролы
     if (this.cardsLength === undefined || this.cardsLength !== this.cards.length) {
       this.cardsLength = this.cards.length;
       if (this.cards.length <= this.displayedImages) {

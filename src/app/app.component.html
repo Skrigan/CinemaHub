@@ -12,6 +12,7 @@
   <div class="close-modal" (click)="removeTrailerOrMovie()"></div>
 </div>
 <div class="search" #search *ngIf="searchResults.length && inputFocused">
+<!--<div class="search" #search>-->
   <ul (mousedown)="getMovie($event)">
     <li *ngFor="let film of searchResults">
       <a class="movieA" routerLink="/movie/{{film.filmId}}" [attr.data-id]="film.filmId">
@@ -24,3 +25,7 @@
     </li>
   </ul>
 </div>
+
+<!--<div class="mobile-search">-->
+<!--  <input class="mobile-search__input" type="text" placeholder="Поиск фильмов и сериалов">-->
+<!--</div>-->
