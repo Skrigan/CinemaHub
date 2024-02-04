@@ -16,8 +16,16 @@
   <ul (mousedown)="getMovie($event)">
     <li *ngFor="let film of searchResults">
       <a class="movieA" routerLink="/movie/{{film.filmId}}" [attr.data-id]="film.filmId">
-        <span class="nameRu" *ngIf="film?.nameRu">{{film.nameRu}} </span>
-        (<span *ngIf="film?.nameEn">{{film.nameEn}}, </span>
+        <ng-container *ngIf="film?.nameRu && film?.nameEn">
+          <span class="nameRu">{{film.nameRu}} </span>
+          (<span>{{film.nameEn}}, </span>
+        </ng-container>
+        <ng-container *ngIf="film?.nameRu && !film?.nameEn">
+          <span class="nameRu">{{film.nameRu}} (</span>
+        </ng-container>
+        <ng-container *ngIf="!film?.nameRu && film?.nameEn">
+          <span class="nameRu">{{film.nameEn}} (</span>
+        </ng-container>
         <span *ngIf="film?.countries[0]?.country">{{film.countries[0].country}}, </span>
         <span class="genre" *ngIf="film?.genres[0]?.genre">{{film.genres[0].genre}}</span>)
         <span class="rating" *ngIf="film?.rating && film?.rating !== 'null'" appRateColor [rating]="film.rating">{{film?.rating}}</span>

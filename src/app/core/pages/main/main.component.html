@@ -1,8 +1,8 @@
 <section class="premieres">
   <h2 class="title title_premieres">Ближайшие премьеры</h2>
-<!--  <app-slider *ngIf="premieres?.length">-->
-<!--    <app-premiere-card *ngFor="let card of premieres" [card]="card"></app-premiere-card>-->
-<!--  </app-slider>-->
+  <app-slider *ngIf="premieres?.length">
+    <app-premiere-card *ngFor="let card of premieres" [card]="card"></app-premiere-card>
+  </app-slider>
 </section>
 <section>
   <h3 class="title">
@@ -24,11 +24,11 @@
       <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
     </a>
   </h3>
-<!--  <app-slider>-->
-<!--    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedSeries" >-->
-<!--      <app-movie-card [card]="card"></app-movie-card>-->
-<!--    </a>-->
-<!--  </app-slider>-->
+  <app-slider>
+    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedSeries" >
+      <app-movie-card [card]="card"></app-movie-card>
+    </a>
+  </app-slider>
 </section>
 <section>
   <h3 class="title">
@@ -37,11 +37,11 @@
       <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
     </a>
   </h3>
-<!--  <app-slider>-->
-<!--    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedCartoons" >-->
-<!--      <app-movie-card [card]="card"></app-movie-card>-->
-<!--    </a>-->
-<!--  </app-slider>-->
+  <app-slider>
+    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedCartoons" >
+      <app-movie-card [card]="card"></app-movie-card>
+    </a>
+  </app-slider>
 </section>
 <section>
   <h3 class="title">
@@ -50,9 +50,9 @@
       <svg class="title__svg" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
     </a>
   </h3>
-<!--  <app-slider>-->
-<!--    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedAnime" >-->
-<!--      <app-movie-card [card]="card"></app-movie-card>-->
-<!--    </a>-->
-<!--  </app-slider>-->
+  <app-slider>
+    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedAnime" >
+      <app-movie-card [card]="card"></app-movie-card>
+    </a>
+  </app-slider>
 </section>
