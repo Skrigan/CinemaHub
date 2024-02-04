@@ -44,7 +44,7 @@
 </section>
 <section *ngIf="movie?.similarMovies?.length" class="similar">
   <h3>Похожее</h3>
-  <app-slider class="films" [displayedImages]="6">
+  <app-slider class="films">
     <a class="films__card" *ngFor="let similarMovie of movie.similarMovies" routerLink="/movie/{{similarMovie.id}}">
       <app-movie-card [card]="similarMovie"></app-movie-card>
     </a>
