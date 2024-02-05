@@ -1,11 +1,15 @@
 .slider {
   position: relative;
   .cards {
+    position: relative;
     display: flex;
     //gap: 1.5rem;
     gap: 1vw;
     width: 100%;
     transition: transform 1s ease;
+    &_after-touch {
+     transition: transform 1s ease, left 1s ease;
+    }
   }
 
   .control {

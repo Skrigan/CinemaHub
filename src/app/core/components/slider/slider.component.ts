@@ -26,6 +26,35 @@ export class SliderComponent implements AfterContentChecked {
   protected currentSlide = 0;
   protected maxSlide = 0;
 
+  startX = 0;
+
+  onTouchStart(event: TouchEvent) {
+    console.log('touchstart');
+    console.log(event);
+    this.startX = event.changedTouches[0].clientX;
+  }
+
+  onTouchMove(event: TouchEvent) {
+    const x = event.changedTouches[0].clientX;
+    this.cardsRef.nativeElement.style.left = `${x - this.startX}px`;
+    console.log(x - this.startX);
+  }
+
+  onTouchEnd(event: TouchEvent) {
+    this.cardsRef.nativeElement.classList.add('cards_after-touch');
+    setTimeout(() => {
+      this.cardsRef.nativeElement.classList.remove('cards_after-touch');
+    }, 1000);
+    const endX = event.changedTouches[0].clientX;
+    if (this.startX > endX && this.currentSlide < this.maxSlide) {
+      this.moveRight();
+    } else if (this.currentSlide > 0) {
+      this.moveLeft();
+    }
+    this.cardsRef.nativeElement.style.left = 0;
+    this.startX = 0;
+  }
+
   checkControlVisibility() {
     const cardsRefContainerElement = this.cardsRef.nativeElement.parentNode;
     const cardsRefElement = this.cardsRef.nativeElement;
