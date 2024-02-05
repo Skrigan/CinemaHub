@@ -28,9 +28,9 @@ export class SliderComponent implements AfterContentChecked {
 
   startX = 0;
   touchAnimationInProgress = false;
+  timeout: any;
 
   onTouchStart(event: TouchEvent) {
-    console.log('touchstart');
     this.startX = event.changedTouches[0].clientX;
   }
 
@@ -43,19 +43,26 @@ export class SliderComponent implements AfterContentChecked {
 
   onTouchEnd(event: TouchEvent) {
     this.cardsRef.nativeElement.classList.add('cards_after-touch');
-    setTimeout(() => {
+    // if (this.touchAnimationInProgress) {
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
+    this.timeout = setTimeout(() => {
       this.cardsRef.nativeElement.classList.remove('cards_after-touch');
       this.touchAnimationInProgress = false;
     }, 1000);
+
     const endX = event.changedTouches[0].clientX;
     if (this.startX > endX) {
       if (this.currentSlide < this.maxSlide) {
         this.touchAnimationInProgress = true;
+        console.log('moveRight');
         this.moveRight();
       }
     } else {
       if (this.currentSlide > 0) {
         this.touchAnimationInProgress = true;
+        console.log('moveLeft');
         this.moveLeft();
       }
     }
