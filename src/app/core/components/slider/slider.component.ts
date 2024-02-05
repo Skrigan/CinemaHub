@@ -48,12 +48,16 @@ export class SliderComponent implements AfterContentChecked {
       this.touchAnimationInProgress = false;
     }, 1000);
     const endX = event.changedTouches[0].clientX;
-    if (this.startX > endX && this.currentSlide < this.maxSlide) {
-      this.touchAnimationInProgress = true;
-      this.moveRight();
-    } else if (this.currentSlide > 0) {
-      this.touchAnimationInProgress = true;
-      this.moveLeft();
+    if (this.startX > endX) {
+      if (this.currentSlide < this.maxSlide) {
+        this.touchAnimationInProgress = true;
+        this.moveRight();
+      }
+    } else {
+      if (this.currentSlide > 0) {
+        this.touchAnimationInProgress = true;
+        this.moveLeft();
+      }
     }
     this.cardsRef.nativeElement.style.left = 0;
     this.startX = 0;
