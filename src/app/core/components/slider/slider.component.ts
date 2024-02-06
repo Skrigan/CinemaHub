@@ -39,7 +39,7 @@ export class SliderComponent implements AfterContentChecked {
     if (this.isScrolled === null) {
       const deltaX = Math.abs(event.changedTouches[0].clientX - this.startX);
       const deltaY = Math.abs(event.changedTouches[0].clientY - this.startY);
-      this.isScrolled = deltaY >= deltaX / 3;
+      this.isScrolled = deltaY >= deltaX / 2.5;
     }
 
     if (!this.isScrolled) {
