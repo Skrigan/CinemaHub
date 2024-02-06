@@ -27,18 +27,20 @@ export class SliderComponent implements AfterContentChecked {
   protected maxSlide = 0;
 
   startX = 0;
+  startY = 0;
   touchAnimationInProgress = false;
   timeout: any;
 
   onTouchStart(event: TouchEvent) {
     this.startX = event.changedTouches[0].clientX;
+    this.startY = event.changedTouches[0].clientY;
   }
 
   onTouchMove(event: TouchEvent) {
-    const x = event.changedTouches[0].clientX;
-    if (!this.touchAnimationInProgress) {
-      this.cardsRef.nativeElement.style.left = `${x - this.startX}px`;
-    }
+      if (!this.touchAnimationInProgress) {
+        const x = event.changedTouches[0].clientX;
+        // this.cardsRef.nativeElement.style.left = `${x - this.startX}px`;
+      }
   }
 
   onTouchEnd(event: TouchEvent) {
@@ -53,21 +55,25 @@ export class SliderComponent implements AfterContentChecked {
     }, 1000);
 
     const endX = event.changedTouches[0].clientX;
-    if (this.startX > endX) {
-      if (this.currentSlide < this.maxSlide) {
-        this.touchAnimationInProgress = true;
-        console.log('moveRight');
-        this.moveRight();
+    const endY = event.changedTouches[0].clientY;
+    // if (Math.abs(endX - this.startX) > Math.abs(endY - this.startY)) {
+      if (this.startX > endX) {
+        if (this.currentSlide < this.maxSlide) {
+          this.touchAnimationInProgress = true;
+          console.log('moveRight');
+          this.moveRight();
+        }
+      } else {
+        if (this.currentSlide > 0) {
+          this.touchAnimationInProgress = true;
+          console.log('moveLeft');
+          this.moveLeft();
+        }
       }
-    } else {
-      if (this.currentSlide > 0) {
-        this.touchAnimationInProgress = true;
-        console.log('moveLeft');
-        this.moveLeft();
-      }
-    }
+    // }
     this.cardsRef.nativeElement.style.left = 0;
     this.startX = 0;
+    this.startY = 0;
   }
 
   checkControlVisibility() {
