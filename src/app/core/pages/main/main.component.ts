@@ -33,7 +33,7 @@ export class MainComponent {
         } else {
           return premiereDate >= currentDate;
         }
-      }).slice(0, 15);
+      }).slice(0, 20);
     })
   }
 

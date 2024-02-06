@@ -28,8 +28,7 @@ export class SliderComponent implements AfterContentChecked {
 
   startX = 0;
   startY = 0;
-  touchAnimationInProgress = false;
-  timeout: any;
+  isScrolled: boolean | null = null;
 
   onTouchStart(event: TouchEvent) {
     this.startX = event.changedTouches[0].clientX;
@@ -37,41 +36,31 @@ export class SliderComponent implements AfterContentChecked {
   }
 
   onTouchMove(event: TouchEvent) {
-      if (!this.touchAnimationInProgress) {
-        const x = event.changedTouches[0].clientX;
-        // this.cardsRef.nativeElement.style.left = `${x - this.startX}px`;
-      }
+    if (this.isScrolled === null) {
+      const deltaX = Math.abs(event.changedTouches[0].clientX - this.startX);
+      const deltaY = Math.abs(event.changedTouches[0].clientY - this.startY);
+      this.isScrolled = deltaY >= deltaX / 3;
+    }
+
+    if (!this.isScrolled) {
+      event.preventDefault();
+    }
   }
 
   onTouchEnd(event: TouchEvent) {
-    this.cardsRef.nativeElement.classList.add('cards_after-touch');
-    // if (this.touchAnimationInProgress) {
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
-    this.timeout = setTimeout(() => {
-      this.cardsRef.nativeElement.classList.remove('cards_after-touch');
-      this.touchAnimationInProgress = false;
-    }, 1000);
+    if (!this.isScrolled) {
+      const endX = event.changedTouches[0].clientX;
 
-    const endX = event.changedTouches[0].clientX;
-    const endY = event.changedTouches[0].clientY;
-    // if (Math.abs(endX - this.startX) > Math.abs(endY - this.startY)) {
-      if (this.startX > endX) {
-        if (this.currentSlide < this.maxSlide) {
-          this.touchAnimationInProgress = true;
-          console.log('moveRight');
-          this.moveRight();
-        }
-      } else {
-        if (this.currentSlide > 0) {
-          this.touchAnimationInProgress = true;
-          console.log('moveLeft');
-          this.moveLeft();
-        }
+      if (this.startX < endX && this.currentSlide > 0) {
+        this.moveLeft();
       }
-    // }
-    this.cardsRef.nativeElement.style.left = 0;
+
+      if (this.startX > endX && this.currentSlide < this.maxSlide) {
+        this.moveRight();
+      }
+    }
+
+    this.isScrolled = null;
     this.startX = 0;
     this.startY = 0;
   }

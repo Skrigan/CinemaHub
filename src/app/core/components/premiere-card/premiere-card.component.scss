@@ -1,7 +1,7 @@
 :host {
   position: relative;
   display: block;
-  min-width: calc((100% - 2vw) / 3);
+  min-width: calc((100% - 3vw) / 4);
   @media (max-width: 500px) {
     min-width: 100%
   }
