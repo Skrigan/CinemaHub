@@ -1,3 +1,5 @@
+@import "variables";
+
 :host {
   position: relative;
   cursor: pointer;
@@ -26,7 +28,7 @@
   position: absolute;
   &__title {
     font-size: .9vw;
-    color: white;
+    color: $text-white;
     margin: .3vw 0;
     @media (max-width: 500px) {
       font-size: 8.4px;
@@ -49,7 +51,7 @@
   font-size: .8vw;
   padding: .2vw;
   border-radius: .2vw;
-  color: white;
+  color: $text-white;
   @media (max-width: 500px) {
     font-size: 8px;
     padding: 2px;

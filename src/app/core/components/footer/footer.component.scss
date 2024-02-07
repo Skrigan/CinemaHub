@@ -1,3 +1,5 @@
+@import "variables";
+
 :host {
   display: flex;
   justify-content: center;
@@ -5,11 +7,12 @@
   align-items: center;
   position: relative;
 }
+
 .container {
   height: 7vw;
   margin: 4vw 0;
   padding: 0 2vw;
-  background: black;
+  background-color: black;
   z-index: 1;
   font-size: 1vw;
   display: flex;
@@ -48,7 +51,7 @@
     }
   }
   &:hover {
-    color: white;
+    color: $text-white;
     svg {
       fill: white;
     }
@@ -58,5 +61,5 @@
 hr {
   position: absolute;
   width: 100%;
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: $transparent-neutral-20;
 }

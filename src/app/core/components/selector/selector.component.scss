@@ -1,3 +1,5 @@
+@import "variables";
+
 :host {
   display: block;
   @media (max-width: 500px) {
@@ -19,7 +21,7 @@
 .placeholder {
   height: 2.6vw;
   padding: .4vw .8vw;
-  background-color: #1c1c1f;
+  background-color: $neutral-0;
   transition: background-color .2s;
   border-radius: .3vw;
   display: flex;
@@ -46,7 +48,7 @@
     }
   }
   &__label {
-    color: white;
+    color: $text-white;
   }
   &__option {
     font-size: .6vw;
@@ -55,12 +57,12 @@
     }
   }
   &:hover {
-    background-color: #2a2a2e;
+    background-color: $neutral-10;
   }
 }
 
 .options {
-  background-color: #1c1c1f;
+  background-color: $neutral-0;
   position: absolute;
   top: calc(100% + .5vw);
   overflow-x: hidden;
@@ -90,12 +92,12 @@
     }
 
     &_selected {
-      background-color: #3d3d43;
-      color: white;
+      background-color: $neutral-20;
+      color: $text-white;
     }
     &:hover {
-      background-color: #2a2a2e;
-      color: white;
+      background-color: $neutral-10;
+      color: $text-white;
     }
   }
 }

@@ -1,3 +1,9 @@
+@import "variables";
+
+:host {
+  background-color: black;
+}
+
 .header {
   position: relative;
   //height: 9rem;
@@ -36,7 +42,7 @@
     display: none;
   }
   &__text {
-    color: white;
+    color: $text-white;
     //font-size: 2.4rem;
     font-size: 1.3vw;
     background-color: black;
@@ -80,13 +86,13 @@
   &__ul li {
     cursor: pointer;
     &:hover {
-      color: white;
+      color: $text-white;
     }
   }
 }
 
 .active-link {
-  color: white;
+  color: $text-white;
   position: relative;
   &:before {
     content: "";
@@ -97,7 +103,7 @@
     //height: 0.2rem;
     height: 0.1vw;
     width: 100%;
-    background: white;
+    background-color: white;
     @media (max-width: 500px) {
       bottom: -4px;
       height: 2px;
@@ -132,14 +138,14 @@
     padding-left: 1.6vw;
     background-color: black;
     transition: background-color .3s linear;
-    color: rgb(117, 117, 117);
+    color: $neutral-30;
     outline: none;
     @media (max-width: 500px) {
       font-size: 18px;
       height: unset;
       border-radius: unset;
       padding: 5px 10px;
-      color: black;
+      color: $text-black;
       background-color: white;
     }
     &:focus {

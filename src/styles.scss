@@ -1,8 +1,5 @@
-//@import "normalize.css";
-//@import "./styles/_fonts.scss";
-
-$main-bg: #000000;
-$main-tc:  rgba(255, 255, 255, 0.6);
+@import "normalize.css";
+@import "variables";
 
 * {
   margin: 0;
@@ -17,10 +14,9 @@ html {
 }
 
 body {
-  background-color: $main-bg;
-  color: $main-tc;
+  background-color: black;
+  color: $text-gray;
   padding: 0 7vw;
-  //max-width: 1400px;
   margin: 0 auto;
   overflow-x: hidden;
   font-family: Arial, sans-serif;

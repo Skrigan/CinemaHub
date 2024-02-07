@@ -1,7 +1,7 @@
 <div class="container">
-    <div class="control control_left" #controlLeft (click)="moveLeft()">
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
-    </div>
+  <div class="control control_left" #controlLeft (click)="moveLeft()">
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+  </div>
   <div class="pages" #pages (click)="onPageClick($event)">
     <div class="page"
          [ngClass]="{ page_start: i === 0, page_end: i === 10, page_current: number === page }"
@@ -10,7 +10,7 @@
       {{number}}
     </div>
   </div>
-    <div class="control control_right" #controlRight (click)="moveRight()">
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
-    </div>
+  <div class="control control_right" #controlRight (click)="moveRight()">
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='#ffffff99'><path d='M1.3 0 8 7l-6.7 7L0 12.7 5.5 7 0 1.3z'/></svg>
+  </div>
 </div>

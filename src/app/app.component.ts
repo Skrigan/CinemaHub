@@ -1,9 +1,7 @@
 import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {ModalService} from "./core/services/modal.service";
 import {SafeResourceUrl} from "@angular/platform-browser";
-import {getMovieType} from "./core/utils";
-import {ratings} from "./core/data/filters";
 
 @Component({
   selector: 'app-root',
@@ -12,11 +10,18 @@ import {ratings} from "./core/data/filters";
 })
 export class AppComponent implements OnInit{
   @ViewChild('header', {read: ElementRef}) headerRef!: ElementRef;
+  @ViewChild('backdrop') backdrop!: ElementRef;
+  @ViewChild('modal') modal!: ElementRef;
+  @ViewChild('search') search!: ElementRef;
+
   prevScrollY: number = 0;
   inputFocused = false;
+  videoLink: SafeResourceUrl | null = null;
+  searchResults: any[] = []
+  footerVisibility = true;
+
   @HostListener('window:scroll', ['$event'])
   onScroll() {
-    //если страница полностью проскроллена или скроллить некуда
     if (document.documentElement.scrollHeight > window.innerHeight) {
       if (this.prevScrollY < window.scrollY && !this.inputFocused) {
         this.headerRef.nativeElement.classList.add('header_hidden');
@@ -27,19 +32,7 @@ export class AppComponent implements OnInit{
     }
   }
 
-  @ViewChild('backdrop') backdrop!: ElementRef;
-  @ViewChild('modal') modal!: ElementRef;
-  @ViewChild('search') search!: ElementRef;
-
-  videoLink: SafeResourceUrl | null = null;
-  searchResults: any[] = []
-
-  footerVisibility = true;
-  constructor(private route: ActivatedRoute, private router: Router, private modalService: ModalService) {
-  }
-
-  removeTrailerOrMovie() {
-    this.modalService.removeVideoLink();
+  constructor(private router: Router, private modalService: ModalService) {
   }
 
   showModal() {
@@ -53,9 +46,13 @@ export class AppComponent implements OnInit{
     this.backdrop.nativeElement.classList.add('backdrop_hidden');
   }
 
+  removeTrailerOrMovie() {
+    this.modalService.removeVideoLink();
+  }
+
   getMovie(event: MouseEvent) {
     const target = <Element>event.target;
-    const link = target.closest('.movieA');
+    const link = target.closest('.search__a');
     if (link) {
       const id = link.getAttribute('data-id');
       this.router.navigate(['/movie', id]);
@@ -94,6 +91,4 @@ export class AppComponent implements OnInit{
       }
     })
   }
-
-  protected readonly getMovieType = getMovieType;
 }
