@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {MovieService} from "../../services/movie.service";
-import {PersonById} from "../../interfaces/PersonById";
+import {PersonById, PersonByIdFilm, PersonByIdSpouse} from "../../interfaces/PersonById";
 import {ruMonth} from "../../data/ruMonthEnum";
+
+type SpouseView = {childrenStr: string} & PersonByIdSpouse;
+type FilmsView = {poster: {previewUrl: string}, rating: {kp: string | null}, name: string} & PersonByIdFilm;
 
 @Component({
   selector: 'app-person',
@@ -11,14 +14,14 @@ import {ruMonth} from "../../data/ruMonthEnum";
 })
 export class PersonComponent implements OnInit{
   person?: PersonById;
-  films?: any[];
+  films: FilmsView[] = [];
   totalFilmsLength?: number
 
   birthdayRu?: string;
   deathRu?: string;
 
-  spousesF: any[] = [];
-  spousesM: any[] = [];
+  spousesF: SpouseView[] = [];
+  spousesM: SpouseView[] = [];
 
   constructor(private movieService: MovieService,
               private route: ActivatedRoute) {
@@ -38,15 +41,15 @@ export class PersonComponent implements OnInit{
       console.log(person);
 
       let filmNameEn = '';
-      this.films = person.films.filter((film) => {
+      person.films = person.films.filter((film) => {
         const isClone= film.nameEn === filmNameEn;
         filmNameEn = film.nameEn!;
         return !isClone;
       })
 
-      this.totalFilmsLength = this.films.length;
+      this.totalFilmsLength = person.films.length;
 
-      this.films = this.films.filter((film) => {
+      person.films = person.films.filter((film) => {
         if (!film.nameRu) {
           return false;
         }
@@ -59,14 +62,18 @@ export class PersonComponent implements OnInit{
         return false
       });
 
-      this.films.forEach((film) => {
-        film.poster = {
-          previewUrl: `https://st.kp.yandex.net/images/film_iphone/iphone360_${film.filmId}.jpg`
-        };
-        film.name = film.nameRu ? film.nameRu : film.nameEn;
-        film.rating = {
-          kp: film.rating
+      person.films.forEach((film) => {
+        const viewPart = {
+          poster: {
+            previewUrl: `https://st.kp.yandex.net/images/film_iphone/iphone360_${film.filmId}.jpg`
+          },
+          rating: {
+            kp: film.rating
+          },
+          name: film.nameRu ? film.nameRu : film.nameEn!
         }
+
+        this.films.push(Object.assign(viewPart, film));
       })
 
       if (this.person.growth) {
@@ -82,7 +89,7 @@ export class PersonComponent implements OnInit{
         const death = new Date(this.person.death);
         this.deathRu = `${death.getDate()} ${ruMonth[death.getMonth()]}, ${death.getFullYear()}`;
       }
-      this.person.spouses.sort((a: any, b: any) => {
+      this.person.spouses.sort((a, b) => {
         if (a.divorced && !b.divorced) {
           return -1;
         } else if (!a.divorced && b.divorced) {
@@ -91,14 +98,15 @@ export class PersonComponent implements OnInit{
           return 0;
         }
       })
-      this.person.spouses.forEach((spouce: any) => {
-        if (spouce.children) {
-          spouce.childrenStr = this.getNumberOfChildren(spouce.children)
-        }
-        if (spouce.sex === 'MALE') {
-          this.spousesM.push(spouce);
-        } else {
-          this.spousesF.push(spouce);
+      this.person.spouses.forEach((spouse) => {
+        if (spouse.children) {
+          const childrenStr = this.getNumberOfChildren(spouse.children);
+          const spouseView: SpouseView = Object.assign(spouse, {childrenStr: childrenStr ? childrenStr : ''});
+          if (spouse.sex === 'MALE') {
+            this.spousesM.push(spouseView);
+          } else {
+            this.spousesF.push(spouseView);
+          }
         }
       })
     })

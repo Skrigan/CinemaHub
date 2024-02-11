@@ -14,7 +14,11 @@ export type PersonById = {
   hasAwards: number | null
   profession: string | null
   facts: string[]
-  spouses: {
+  spouses: PersonByIdSpouse[]
+  films: PersonByIdFilm[]
+}
+
+export type PersonByIdSpouse = {
     personId: number
     name: string
     divorced: boolean
@@ -23,8 +27,9 @@ export type PersonById = {
     children: number
     webUrl: string
     relation: string
-  }[]
-  films: {
+}
+
+export type PersonByIdFilm = {
     filmId: number
     nameRu: string | null
     nameEn: string | null
@@ -32,5 +37,4 @@ export type PersonById = {
     general: boolean
     description: string | null
     professionKey: string
-  }[]
 }
