@@ -2,8 +2,8 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { genres, ratings, sortFields, years } from "../../data/filters";
 
 import {ActivatedRoute, Router} from "@angular/router";
-import {Movie} from "../../interfaces/Movie";
-import {MovieService} from "../../services/movie.service";
+import {Movie} from "../../types/Movie";
+import {HttpService} from "../../services/http.service";
 
 const typeFromPath: any = {
   "films": {
@@ -52,7 +52,7 @@ export class FilmsComponent implements OnInit {
   sortFields = sortFields;
 
   searchParams!: SearchParams
-  constructor(private route: ActivatedRoute, private router: Router, private movieService: MovieService) {
+  constructor(private route: ActivatedRoute, private router: Router, private movieService: HttpService) {
   }
 
   ngOnInit() {
@@ -72,7 +72,11 @@ export class FilmsComponent implements OnInit {
         // @ts-ignore
         this.searchParams[param] = params[param];
       }
-      this.getMoviesData();
+
+      this.movieService.getMovies(this.searchParams).subscribe((response) => {
+        this.cards = response.docs;
+        this.lastPage = response.pages;
+      });
     })
   }
 
@@ -122,12 +126,5 @@ export class FilmsComponent implements OnInit {
       queryParams: params,
       queryParamsHandling: 'merge',
     })
-  }
-
-  getMoviesData() {
-    this.movieService.getMoviesData(this.searchParams).subscribe((response) => {
-      this.cards = response.docs;
-      this.lastPage = response.pages;
-    });
   }
 }

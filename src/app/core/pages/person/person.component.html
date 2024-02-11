@@ -1,17 +1,17 @@
 <section class="person" *ngIf="person">
-  <img [src]="person?.posterUrl" alt="" class="person__img">
+  <img [src]="person.posterUrl" alt="" class="person__img">
   <div class="person__content">
-    <h3 class="person__nameRu">{{person?.nameRu}}</h3>
-    <p class="person__nameEn">{{person?.nameEn}}</p>
+    <h3 class="person__nameRu">{{person.nameRu}}</h3>
+    <p class="person__nameEn">{{person.nameEn}}</p>
     <h4 class="person__about">О персоне</h4>
     <div class="person-info">
       <div class="person-info__element" *ngIf="person?.profession">
         <span class="person-info__attribute">Карьера</span>
-        <span class="person-info__value">{{person?.profession}}</span>
+        <span class="person-info__value">{{person.profession}}</span>
       </div>
       <div class="person-info__element" *ngIf="person?.growth">
         <span class="person-info__attribute">Рост</span>
-        <span class="person-info__value">{{person?.growth | number: '1.0-2'}} м</span>
+        <span class="person-info__value">{{person.growth | number: '1.0-2'}} м</span>
       </div>
       <div class="person-info__element" *ngIf="person?.birthday">
         <span class="person-info__attribute">Дата рождения</span>
@@ -19,7 +19,7 @@
       </div>
       <div class="person-info__element" *ngIf="person?.birthplace">
         <span class="person-info__attribute">Место рождения</span>
-        <span class="person-info__value">{{person?.birthplace}}</span>
+        <span class="person-info__value">{{person.birthplace}}</span>
       </div>
       <div class="person-info__element" *ngIf="person?.death">
         <span class="person-info__attribute">Дата смерти</span>
@@ -51,7 +51,7 @@
   </div>
 </section>
 <section class="slider" *ngIf="films?.length">
-  <h3 class="best-work">Лучшие работы<span *ngIf="films?.length"> ({{films?.length}})</span></h3>
+  <h3 class="best-work">Лучшие работы<span *ngIf="films?.length"> ({{films.length}})</span></h3>
   <app-slider>
     <a class="films__card" *ngFor="let film of films" routerLink="/movie/{{film.filmId}}">
       <app-movie-card [card]="film"></app-movie-card>

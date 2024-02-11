@@ -4,7 +4,8 @@ import { mockedSeries } from '../../data/mockedSeries';
 import { mockedCartoons } from '../../data/mockedCartoons';
 import { mockedAnime } from '../../data/mockedAnime';
 import { PremiereService } from "../../services/premiere.service";
-import {Premiere} from "../../interfaces/Premiere";
+import {Premiere} from "../../types/Premiere";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-main',
@@ -22,7 +23,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.premiereService.premieres$.subscribe((value) => {
+    this.premiereService.premieres$.pipe(take(1)).subscribe((value) => {
       const premieres = value;
       const currentDate = new Date();
       this.premieres = premieres.filter((premiere) => {

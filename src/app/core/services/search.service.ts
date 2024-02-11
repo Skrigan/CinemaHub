@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {ReplaySubject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {Movie2} from "../interfaces/Movie2";
+import {MovieBySearch} from "../types/MovieBySearch";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
-  private $searchResults: ReplaySubject<Movie2[] | null> = new ReplaySubject();
+  private $searchResults: ReplaySubject<MovieBySearch[] | null> = new ReplaySubject();
   $isFocused: ReplaySubject<boolean> = new ReplaySubject();
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class SearchService {
     const params = {
       keyword: searchString
     }
-    this.http.get<{films: Movie2[], keyword: string, pagesCount: number, searchFilmsCountResult: number}>(url, {
+    this.http.get<{films: MovieBySearch[], keyword: string, pagesCount: number, searchFilmsCountResult: number}>(url, {
       headers,
       params,
     }).subscribe((searchResults) => {

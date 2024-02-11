@@ -1,10 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {MovieService} from "../../services/movie.service";
+import {HttpService} from "../../services/http.service";
 import {ActivatedRoute, Params} from "@angular/router";
-import {getMovieType} from "../../utils";
 import {ModalService} from "../../services/modal.service";
-import {MovieById} from "../../interfaces/MovieById";
-import {Person} from "../../interfaces/Person";
+import {MovieById} from "../../types/MovieById";
+import {Person} from "../../types/Person";
 
 @Component({
   selector: 'app-movie',
@@ -24,7 +23,7 @@ export class MovieComponent implements OnInit{
   seasonsNumber?: string;
 
   isImgLoaded = false;
-  constructor(private movieService: MovieService,
+  constructor(private movieService: HttpService,
               private route: ActivatedRoute,
               private modalService: ModalService) {
   }
@@ -67,10 +66,14 @@ export class MovieComponent implements OnInit{
           return person.enProfession === 'director';
         });
 
-        this.movieType = getMovieType(this.movie.typeNumber);
+        this.movieType = this.getMovieType(this.movie.typeNumber);
         this.getCorrectGenre(this.movieType);
       }
     )
+  }
+
+  getMovieType(typeNumber: number) {
+    return ['фильм', 'сериал', 'мультфильм', 'аниме', 'мультфильм'][typeNumber - 1];
   }
 
   getTrailer() {

@@ -1,4 +1,4 @@
-import {Movie} from "../interfaces/Movie";
+import {Movie} from "../types/Movie";
 
 export const mockedCartoons: Movie[] = [
   {

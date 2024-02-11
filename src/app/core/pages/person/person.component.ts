@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
-import {MovieService} from "../../services/movie.service";
-import {PersonById, PersonByIdFilm, PersonByIdSpouse} from "../../interfaces/PersonById";
+import {HttpService} from "../../services/http.service";
+import {PersonById, PersonByIdFilm, PersonByIdSpouse} from "../../types/PersonById";
 import {ruMonth} from "../../data/ruMonthEnum";
 
 type SpouseView = {childrenStr: string} & PersonByIdSpouse;
@@ -23,7 +23,7 @@ export class PersonComponent implements OnInit{
   spousesF: SpouseView[] = [];
   spousesM: SpouseView[] = [];
 
-  constructor(private movieService: MovieService,
+  constructor(private movieService: HttpService,
               private route: ActivatedRoute) {
   }
 
@@ -38,7 +38,6 @@ export class PersonComponent implements OnInit{
   getPersonById(id: number) {
     this.movieService.getPersonById(id).subscribe((person) => {
       this.person = person;
-      console.log(person);
 
       let filmNameEn = '';
       person.films = person.films.filter((film) => {

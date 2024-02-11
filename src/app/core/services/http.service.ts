@@ -1,18 +1,40 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {SearchParams} from "../pages/films/films.component";
-import {Movie} from "../interfaces/Movie";
-import {PersonById} from "../interfaces/PersonById";
-import {MovieById} from "../interfaces/MovieById";
+import {Movie} from "../types/Movie";
+import {PersonById} from "../types/PersonById";
+import {MovieById} from "../types/MovieById";
+import {forkJoin} from "rxjs";
+import {Premiere} from "../types/Premiere";
+
+type PremiereParams = {
+  year: number,
+  month: string
+}
+
+enum monthes {
+  JANUARY,
+  FEBRUARY,
+  MARCH,
+  APRIL,
+  MAY,
+  JUNE,
+  JULY,
+  AUGUST,
+  SEPTEMBER,
+  OCTOBER,
+  NOVEMBER,
+  DECEMBER,
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class MovieService {
+export class HttpService {
   constructor(private http: HttpClient) {
   }
 
-  getMoviesData(searchParams: SearchParams) {
+  getMovies(searchParams: SearchParams) {
     const url = 'https://api.kinopoisk.dev/v1.4/movie';
     const headers = {
       "X-API-KEY": "ZFDKM2M-ZK5MR14-QZEWNKN-5ES2KGB"
@@ -58,6 +80,38 @@ export class MovieService {
     };
     return this.http.get<PersonById>(url, {
       headers
+    })
+  }
+
+  getPremieres() {
+    const url = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres';
+    const headers = {
+      "X-API-KEY": "e4ef3242-e2cc-4ea4-933e-d4f1b854cafd"
+    };
+
+    const date = new Date();
+    const currentMonthParams: PremiereParams = {
+      year: date.getFullYear(),
+      month: monthes[date.getMonth()],
+    }
+    const nextMonthParams: PremiereParams =
+        currentMonthParams.month === 'DECEMBER' ? {
+          year: date.getFullYear() + 1,
+          month: monthes[0],
+        } : {
+          year: date.getFullYear(),
+          month: monthes[date.getMonth() + 1],
+        }
+
+    return forkJoin({
+      currentMonthPremiere: this.http.get<{items: Premiere[], total: number}>(url, {
+        headers,
+        params: currentMonthParams
+      }),
+      nextMonthPremiere: this.http.get<{items: Premiere[], total: number}>(url, {
+        headers,
+        params: nextMonthParams
+      }),
     })
   }
 }

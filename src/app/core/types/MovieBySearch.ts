@@ -1,4 +1,4 @@
-export type Movie2 = {
+export type MovieBySearch = {
   filmId: number
   nameRu?: string
   nameEn?: string

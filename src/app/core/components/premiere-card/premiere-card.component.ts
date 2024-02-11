@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {Premiere} from "src/app/core/interfaces/Premiere";
+import {Premiere} from "src/app/core/types/Premiere";
 import {ruMonth} from "src/app/core/data/ruMonthEnum";
 
 @Component({

@@ -3,7 +3,7 @@ import {NavigationEnd, Router} from "@angular/router";
 import {ModalService} from "./core/services/modal.service";
 import {SafeResourceUrl} from "@angular/platform-browser";
 import {SearchService} from "./core/services/search.service";
-import {Movie2} from "./core/interfaces/Movie2";
+import {MovieBySearch} from "./core/types/MovieBySearch";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
   prevScrollY: number = 0;
   inputFocused = false;
   videoLink: SafeResourceUrl | null = null;
-  searchResults: Movie2[] = []
+  searchResults: MovieBySearch[] = []
   footerVisibility = true;
 
   @HostListener('window:scroll', ['$event'])

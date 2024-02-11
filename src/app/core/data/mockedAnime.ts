@@ -1,4 +1,4 @@
-import {Movie} from "src/app/core/interfaces/Movie";
+import {Movie} from "src/app/core/types/Movie";
 
 export const mockedAnime: Movie[] = [
   {
