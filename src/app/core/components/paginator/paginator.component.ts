@@ -1,36 +1,39 @@
-import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  ViewChild
+} from '@angular/core';
 
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
   styleUrl: './paginator.component.scss',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PaginatorComponent {
+export class PaginatorComponent implements OnChanges {
   @Input({required: true}) page!: number;
   @Input({required: true}) lastPage!: number;
 
   @Output() onChangePage = new EventEmitter<number>();
 
-  @ViewChild('pages') pages!: ElementRef;
-  @ViewChild('controlLeft') controlLeft!: ElementRef;
-  @ViewChild('controlRight') controlRight!: ElementRef;
+  @ViewChild('pages', {static: true}) pages!: ElementRef;
+  @ViewChild('controlLeft', {static: true}) controlLeft!: ElementRef;
+  @ViewChild('controlRight', {static: true}) controlRight!: ElementRef;
 
   visiblePages: number[] = [];
 
   ngOnChanges() {
-    if (this.pages && this.controlLeft && this.controlRight) {
-      this.getPages();
-    }
-  }
-
-  ngAfterViewInit() {
     this.getPages();
   }
 
   getPages() {
     this.visiblePages.length = 0;
-    //controls check
+
     if (this.page === 1) {
       this.controlLeft.nativeElement.classList.add('control_disabled');
     } else {
@@ -43,7 +46,6 @@ export class PaginatorComponent {
       this.controlRight.nativeElement.classList.remove('control_disabled');
     }
 
-    //pages check
     if (this.lastPage <= 11) {
 
       this.pages.nativeElement.classList.remove('pages_before');

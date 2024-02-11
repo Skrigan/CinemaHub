@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {forkJoin, ReplaySubject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {Premiere} from "../interfaces/Premiere";
 
 type PremiereParams = {
   year: number,
@@ -26,7 +27,7 @@ enum monthes {
   providedIn: 'root'
 })
 export class PremiereService {
-  premieres$ = new ReplaySubject();
+  premieres$: ReplaySubject<Premiere[]> = new ReplaySubject();
 
   constructor(private http: HttpClient) {
     this.getPremieres();
@@ -53,16 +54,16 @@ export class PremiereService {
       }
 
     forkJoin({
-      currentMonthPremiere: this.http.get<any>(url, {
+      currentMonthPremiere: this.http.get<{items: Premiere[], total: number}>(url, {
         headers,
         params: currentMonthParams
       }),
-      nextMonthPremiere: this.http.get<any>(url, {
+      nextMonthPremiere: this.http.get<{items: Premiere[], total: number}>(url, {
         headers,
         params: nextMonthParams
       }),
     }).subscribe((value) => {
-      this.premieres$.next(value);
+      this.premieres$.next([...value.currentMonthPremiere.items, ...value.nextMonthPremiere.items]);
     })
   }
 }

@@ -1,4 +1,4 @@
-export interface IPremiere {
+export type Premiere = {
   kinopoiskId: number
   nameRu: string
   nameEn: string | null

@@ -1,6 +1,6 @@
-import {IMovie} from "../interfaces/IMovie";
+import {Movie} from "../interfaces/Movie";
 
-export const mockedSeries: IMovie[] = [
+export const mockedSeries: Movie[] = [
   {
     "id": 4647040,
     "countries": [

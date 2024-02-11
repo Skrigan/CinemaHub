@@ -27,32 +27,34 @@
     font-size: 10px;
     gap: 10px;
   }
-}
 
-.title {
-  cursor: default;
-}
-
-.link {
-  display: flex;
-  gap: 0.5vw;
-  align-items: center;
-  cursor: pointer;
-  @media (max-width: 500px) {
-    gap: 5px;
+  &__title {
+    cursor: default;
   }
 
-  svg {
-    width: 1.8vw;
-    height: 1.8vw;
+  .link {
+    display: flex;
+    gap: 0.5vw;
+    align-items: center;
+    cursor: pointer;
     @media (max-width: 500px) {
-      width: 18px;
-      height: 18px;
+      gap: 5px;
     }
-  }
-  &:hover {
-    color: $text-white;
-    svg {
+
+    &__svg {
+      width: 1.8vw;
+      height: 1.8vw;
+      @media (max-width: 500px) {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &:hover {
+      color: $text-white;
+    }
+
+    &:hover .link__svg {
       fill: white;
     }
   }

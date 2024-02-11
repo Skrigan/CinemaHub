@@ -10,6 +10,7 @@
   background-size: cover;
   background-position: center;
   height: 48.5vw;
+
   &:after {
     content: '';
     position: absolute;
@@ -59,12 +60,10 @@
   font-size: 1vw;
   margin-bottom: 1vw;
   @media (max-width: 500px) {
-    //position: absolute;
     margin-bottom: 10px;
     gap: 5px;
     font-size: 13px;
     left: 0;
-    //bottom: -25px;
   }
 
   span:not(:first-child):not(:last-child):after {
@@ -119,15 +118,14 @@
   transition: background-color 0.2s;
   padding: 0 0.8vw;
   border-radius: .3vw;
-  //letter-spacing: ;
   border: none;
   cursor: pointer;
   height: 2.6vw;
   justify-content: space-between;
   align-items: center;
   margin-right: .8vw;
-  &:last-child {
-    margin-right: 0;
+  &:hover {
+    background-color: $neutral-10;
   }
   @media (max-width: 500px) {
     width: calc(50% - 5px);
@@ -136,8 +134,9 @@
     margin-right: 10px;
     border-radius: 3px;
   }
-  &:hover {
-    background-color: $neutral-10;
+
+  &:last-child {
+    margin-right: 0;
   }
 }
 
@@ -146,6 +145,7 @@
   @media (max-width: 500px) {
     padding-top: 150px;
   }
+
   .content {
     display: flex;
     gap: 5vw;

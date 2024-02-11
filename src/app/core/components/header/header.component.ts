@@ -1,71 +1,72 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {debounceTime, distinctUntilChanged, filter, fromEvent, map, takeWhile} from "rxjs";
+import {ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {debounceTime, filter, fromEvent, map} from "rxjs";
 import {NavigationEnd, Router} from "@angular/router";
-import {ModalService} from "../../services/modal.service";
+import {SearchService} from "src/app/core/services/search.service";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent implements OnInit{
-  @ViewChild('inputElement', { static: true }) inputElement!: ElementRef;
+export class HeaderComponent implements OnInit {
   @ViewChild('logo', { static: true }) logo!: ElementRef;
-  @ViewChild('inputContainer', { static: true }) inputContainer!: ElementRef;
-  @ViewChild('burger', { static: true }) burger!: ElementRef;
   @ViewChild('nav', { static: true }) nav!: ElementRef;
+  @ViewChild('inputContainer', { static: true }) inputContainer!: ElementRef;
+  @ViewChild('inputElement', { static: true }) inputElement!: ElementRef;
+  @ViewChild('burger', { static: true }) burger!: ElementRef;
 
-  isFocused = false;
+  isSearchFocused = false;
+  isMobileSearchOpened = false;
+
   isBurgerOpened = false;
-  isSearchOpened = false;
 
   constructor(
     private router: Router,
-    private modalService: ModalService
+    private searchService: SearchService
   ) {
   }
 
   toggleBurgerMenu() {
-    if (this.isSearchOpened) {
-      this.inputContainer.nativeElement.classList.remove('search_mobile-open');
+    if (this.isMobileSearchOpened) {
       this.logo.nativeElement.classList.remove('logo_mobile-hidden');
-      this.isSearchOpened = false;
+      this.inputContainer.nativeElement.classList.remove('search_mobile-open');
+      this.isMobileSearchOpened = false;
     }
 
-    if (!this.isBurgerOpened) {
-      this.burger.nativeElement.classList.add('burger_opened');
-      this.nav.nativeElement.classList.add('nav_opened');
-      this.modalService.$isFocused.next(true);
-    } else {
+    if (this.isBurgerOpened) {
       this.burger.nativeElement.classList.remove('burger_opened')
       this.nav.nativeElement.classList.remove('nav_opened')
-      this.modalService.$isFocused.next(false);
+    } else {
+      this.burger.nativeElement.classList.add('burger_opened');
+      this.nav.nativeElement.classList.add('nav_opened');
     }
 
     this.isBurgerOpened = !this.isBurgerOpened;
   }
 
   openMobileSearch() {
-    if (!this.isSearchOpened) {
-      this.inputContainer.nativeElement.classList.add('search_mobile-open');
-      this.inputElement.nativeElement.focus();
+    if (!this.isMobileSearchOpened) {
       this.logo.nativeElement.classList.add('logo_mobile-hidden');
+      this.inputContainer.nativeElement.classList.add('search_mobile-open');
       this.burger.nativeElement.classList.add('burger_opened');
+      this.inputElement.nativeElement.focus();
+
       this.isBurgerOpened = true;
-      this.isSearchOpened = true;
+      this.isMobileSearchOpened = true;
     }
   }
 
   onBlur() {
-    this.isFocused = false;
-    this.modalService.$isFocused.next(false);
+    this.isSearchFocused = false;
+    this.searchService.$isFocused.next(false);
   }
 
   onFocus() {
-    this.isFocused = true;
+    this.isSearchFocused = true;
     setTimeout(() => {
-      if (this.isFocused) {
-        this.modalService.$isFocused.next(true);
+      if (this.isSearchFocused) {
+        this.searchService.$isFocused.next(true);
       }
     }, 300);
   }
@@ -83,11 +84,15 @@ export class HeaderComponent implements OnInit{
     fromEvent(this.inputElement.nativeElement, 'keyup')
       .pipe(
         debounceTime(700),
-        map((e: any) => (e.target as HTMLInputElement).value),
-        filter((str) => str.length > 2),
+        map((ev: any) => (ev.target as HTMLInputElement).value),
+        filter((str) => str.length >= 3 || str.length === 0),
       )
-      .subscribe((value) => {
-        this.modalService.setSearchResults(value);
+      .subscribe((str) => {
+        if (str.length === 0) {
+          this.searchService.removeSearchResults();
+        } else {
+          this.searchService.setSearchResults(str);
+        }
       });
   }
 }

@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {IPremiere} from "../../interfaces/IPremiere";
-import {ruMonth} from "../../data/ruMonthEnum";
-
+import {Premiere} from "src/app/core/interfaces/Premiere";
+import {ruMonth} from "src/app/core/data/ruMonthEnum";
 
 @Component({
   selector: 'app-premiere-card',
@@ -10,7 +9,7 @@ import {ruMonth} from "../../data/ruMonthEnum";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PremiereCardComponent implements OnInit {
-  @Input({ required: true }) card!: IPremiere;
+  @Input({ required: true }) card!: Premiere;
 
   isImgLoaded = false;
 

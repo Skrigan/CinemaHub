@@ -1,11 +1,9 @@
-import {Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { genres, ratings, sortFields, years } from "../../data/filters";
 
 import {ActivatedRoute, Router} from "@angular/router";
-import {IMovie} from "../../interfaces/IMovie";
+import {Movie} from "../../interfaces/Movie";
 import {MovieService} from "../../services/movie.service";
-import {Subscription} from "rxjs";
-import {mockedCartoons} from "../../data/mockedCartoons";
 
 const typeFromPath: any = {
   "films": {
@@ -40,15 +38,13 @@ export type SearchParams = {
   templateUrl: './films.component.html',
   styleUrl: './films.component.scss',
 })
-export class FilmsComponent implements OnInit, OnDestroy {
+export class FilmsComponent implements OnInit {
   protected readonly parseInt = parseInt;
   @ViewChild('films') films!: ElementRef;
 
   title!: string;
-  cards: IMovie[] = [];
+  cards: Movie[] = [];
   lastPage: number = 0;
-
-  subscriptions: Subscription[] = [];
 
   genres = genres;
   years = years;
@@ -77,12 +73,6 @@ export class FilmsComponent implements OnInit, OnDestroy {
         this.searchParams[param] = params[param];
       }
       this.getMoviesData();
-    })
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach((subscription) => {
-      subscription.unsubscribe();
     })
   }
 
@@ -117,16 +107,6 @@ export class FilmsComponent implements OnInit, OnDestroy {
     this.changeQueryParams(params);
   }
 
-  onMovieChoice(event: MouseEvent) {
-    const target = <HTMLElement>event.target;
-    const movieCard = target.closest('.films__card');
-
-    if (movieCard !== null) {
-     const id = movieCard.getAttribute('data-id')!;
-     this.router.navigate(['/movie', id]);
-    }
-  }
-
   getSort(sortField: string) {
     const params = {
       'sortField': sortField,
@@ -145,15 +125,9 @@ export class FilmsComponent implements OnInit, OnDestroy {
   }
 
   getMoviesData() {
-    this.subscriptions.push(this.movieService.getMoviesData(this.searchParams).subscribe((response) => {
-      if (response.total > 0) {
-        this.cards = response.docs;
-        this.lastPage = response.pages;
-      } else {
-        ///???
-      }
-    }));
+    this.movieService.getMoviesData(this.searchParams).subscribe((response) => {
+      this.cards = response.docs;
+      this.lastPage = response.pages;
+    });
   }
-
-  protected readonly mockedCartoons = mockedCartoons;
 }

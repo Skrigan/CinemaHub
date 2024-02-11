@@ -2,57 +2,65 @@
 
 .slider {
   position: relative;
-  .cards {
-    position: relative;
-    display: flex;
-    //gap: 1.5rem;
-    gap: 1vw;
-    width: 100%;
-    transition: transform 1s ease;
-    &_after-touch {
-     transition: transform 1s ease, left 1s ease;
+}
+
+.cards {
+  position: relative;
+  display: flex;
+  gap: 1vw;
+  width: 100%;
+  transition: transform 1s ease;
+
+  &_after-touch {
+    transition: transform 1s ease, left 1s ease;
+  }
+}
+
+.control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: $transparent-neutral-10;
+  backdrop-filter: blur(0.2vw);
+  border-radius: 50%;
+  width: 4vw;
+  height: 4vw;
+  cursor: pointer;
+  z-index: 1;
+  @media (max-width: 500px) {
+    width: 40px;
+    height: 40px;
+  }
+
+  &_left {
+    left: -2.5vw;
+    @media (max-width: 500px) {
+      left: calc(-20px - .5vw);
     }
   }
 
-  .control {
+  &_right {
+    right: -2.5vw;
+    @media (max-width: 500px) {
+      right: calc(-20px - .5vw);
+    }
+  }
+
+  &_left svg, &_right svg {
+    width: 1vw;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    background: $transparent-neutral-10;
-    backdrop-filter: blur(0.2vw);
-    border-radius: 50%;
-    width: 4vw;
-    height: 4vw;
-    cursor: pointer;
-    z-index: 1;
+    left: 50%;
     @media (max-width: 500px) {
-      width: 40px;
-      height: 40px;
+      width: 10px;
     }
-    &_left {
-      left: -2.5vw;
-      @media (max-width: 500px) {
-        left: calc(-20px - .5vw);
-      }
-    }
-    &_right {
-      right: -2.5vw;
-      @media (max-width: 500px) {
-        right: calc(-20px - .5vw);
-      }
-    }
-    &_left svg, &_right svg {
-      width: 1vw;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-40%, -50%);
-      @media (max-width: 500px) {
-        width: 10px;
-      }
-    }
-    &_left svg {
-      transform: translate(-60%, -50%) rotate(180deg);
-    }
+  }
+
+  &_right svg {
+    transform: translate(-40%, -50%);
+  }
+
+  &_left svg {
+    transform: translate(-60%, -50%) rotate(180deg);
   }
 }

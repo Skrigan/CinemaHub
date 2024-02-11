@@ -12,7 +12,7 @@
     </a>
   </h3>
   <app-slider>
-    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedMovies" >
+    <a class="card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedMovies" >
       <app-movie-card [card]="card"></app-movie-card>
     </a>
   </app-slider>
@@ -25,7 +25,7 @@
     </a>
   </h3>
   <app-slider>
-    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedSeries" >
+    <a class="card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedSeries" >
       <app-movie-card [card]="card"></app-movie-card>
     </a>
   </app-slider>
@@ -38,7 +38,7 @@
     </a>
   </h3>
   <app-slider>
-    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedCartoons" >
+    <a class="card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedCartoons" >
       <app-movie-card [card]="card"></app-movie-card>
     </a>
   </app-slider>
@@ -51,7 +51,7 @@
     </a>
   </h3>
   <app-slider>
-    <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedAnime" >
+    <a class="card" [routerLink]="'/movie/' + card.id" *ngFor="let card of mockedAnime" >
       <app-movie-card [card]="card"></app-movie-card>
     </a>
   </app-slider>

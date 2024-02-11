@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {IMovie} from "../../interfaces/IMovie";
 
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MovieCardComponent implements OnInit {
   @Input({ required: true }) card: any;

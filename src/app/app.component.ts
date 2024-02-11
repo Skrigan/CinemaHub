@@ -2,6 +2,8 @@ import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/c
 import {NavigationEnd, Router} from "@angular/router";
 import {ModalService} from "./core/services/modal.service";
 import {SafeResourceUrl} from "@angular/platform-browser";
+import {SearchService} from "./core/services/search.service";
+import {Movie2} from "./core/interfaces/Movie2";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,7 @@ export class AppComponent implements OnInit{
   prevScrollY: number = 0;
   inputFocused = false;
   videoLink: SafeResourceUrl | null = null;
-  searchResults: any[] = []
+  searchResults: Movie2[] = []
   footerVisibility = true;
 
   @HostListener('window:scroll', ['$event'])
@@ -32,7 +34,10 @@ export class AppComponent implements OnInit{
     }
   }
 
-  constructor(private router: Router, private modalService: ModalService) {
+  constructor(private router: Router,
+              private modalService: ModalService,
+              private searchService: SearchService
+  ) {
   }
 
   showModal() {
@@ -46,7 +51,7 @@ export class AppComponent implements OnInit{
     this.backdrop.nativeElement.classList.add('backdrop_hidden');
   }
 
-  removeTrailerOrMovie() {
+  removeVideoLink() {
     this.modalService.removeVideoLink();
   }
 
@@ -54,13 +59,13 @@ export class AppComponent implements OnInit{
     const target = <Element>event.target;
     const link = target.closest('.search__a');
     if (link) {
-      const id = link.getAttribute('data-id');
+      const id = link.getAttribute('data-id')!;
       this.router.navigate(['/movie', id]);
     }
   }
 
   ngOnInit() {
-    this.modalService.$isFocused.subscribe((focus) => {
+    this.searchService.$isFocused.subscribe((focus) => {
       this.inputFocused = focus;
     })
 
@@ -70,12 +75,8 @@ export class AppComponent implements OnInit{
       else this.closeModal();
     })
 
-    this.modalService.getSearchResults().subscribe((searchResults: any) => {
-      if (searchResults?.searchFilmsCountResult >= 0) {
-        this.searchResults = searchResults.films;
-      } else {
-        this.searchResults = [];
-      }
+    this.searchService.getSearchResults().subscribe((searchResults) => {
+      this.searchResults = searchResults !== null ? searchResults : [];
     })
 
     this.router.events.subscribe((event) => {
@@ -86,7 +87,7 @@ export class AppComponent implements OnInit{
         })
         window.scrollTo(0, 0);
         this.inputFocused = false;
-        this.modalService.removeSearchResults();
+        this.searchService.removeSearchResults();
         this.headerRef.nativeElement.classList.remove('header_hidden');
       }
     })

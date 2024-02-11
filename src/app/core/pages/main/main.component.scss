@@ -1,42 +1,5 @@
 @import "variables";
 
-.title {
-  font-size: 1.2vw;
-  margin: 2vw 0 2vw 1vw;
-  color: $text-white;
-  @media (max-width: 500px) {
-    font-size: 12px;
-    margin: 20px 0 20px 10px;
-  }
-  &_premieres {
-    font-size: 1.4vw;
-    margin: 0 0 2vw 1vw;
-    cursor: default;
-    @media (max-width: 500px) {
-      font-size: 14px;
-      margin: 0 0 20px 10px;
-    }
-  }
-  &__link {
-    display: inline-flex;
-    gap: .5vw;
-    transition: gap .1s linear;
-    align-items: center;
-    @media (max-width: 500px) {
-      gap: 5px;
-    }
-    &:hover {
-      gap: .8vw;
-    }
-  }
-  &__svg {
-    height: 1vw;
-    @media (max-width: 500px) {
-      height: 10px;
-    }
-  }
-}
-
 section {
   padding-bottom: 3vw;
   @media (max-width: 500px) {
@@ -50,37 +13,50 @@ section {
   }
 }
 
-.card {
-  position: relative;
-  &__img {
-    border-radius: 2rem;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.title {
+  font-size: 1.2vw;
+  margin: 2vw 0 2vw 1vw;
+  color: $text-white;
+  &:hover {
+    gap: .8vw;
   }
-  &__text {
-    position: absolute;
+  @media (max-width: 500px) {
+    font-size: 12px;
+    margin: 20px 0 20px 10px;
   }
-  &__title {
-    font-size: 1.2vw;
-    color: $text-white;
-    margin: 1rem 0;
+
+  &_premieres {
+    font-size: 1.4vw;
+    margin: 0 0 2vw 1vw;
+    cursor: default;
+    @media (max-width: 500px) {
+      font-size: 14px;
+      margin: 0 0 20px 10px;
+    }
   }
-  &__info {
-    font-size: .9vw;
-    text-transform: capitalize;
+
+  &__link {
+    display: inline-flex;
+    gap: .5vw;
+    transition: gap .1s linear;
+    align-items: center;
+    @media (max-width: 500px) {
+      gap: 5px;
+    }
+  }
+
+  &__svg {
+    height: 1vw;
+    @media (max-width: 500px) {
+      height: 10px;
+    }
   }
 }
 
-.films__card {
+.card {
   display: block;
   min-width: calc((100% - 5vw) / 6);
   @media (max-width: 500px) {
     min-width: calc((100% - 2vw) / 3);
   }
-}
-
-.loading-animation {
-  display: block;
-  margin: 0 auto;
 }

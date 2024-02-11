@@ -45,7 +45,6 @@
   </div>
   <div class="person-facts" *ngIf="person?.facts?.length">
     <h4 class="person-facts__title">Знаете ли вы, что...</h4>
-<!--    <p class="person-facts__element" *ngFor="let fact of person?.facts">{{fact}}</p>-->
     <ul class="person-facts__ul">
       <li class="person-facts__li" *ngFor="let fact of person?.facts">{{fact}}</li>
     </ul>

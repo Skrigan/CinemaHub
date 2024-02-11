@@ -1,14 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {SearchParams} from "../pages/films/films.component";
-import {BehaviorSubject, forkJoin, Observable, ReplaySubject, Subject} from "rxjs";
-import {IMovie} from "../interfaces/IMovie";
-import {IPerson} from "../interfaces/IPerson";
-
-// const monthes =
-// ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
-
-
+import {Movie} from "../interfaces/Movie";
+import {PersonById} from "../interfaces/PersonById";
+import {MovieById} from "../interfaces/MovieById";
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +34,7 @@ export class MovieService {
       }
     }
 
-    return this.http.get<{docs: IMovie[], total: number, limit: number, page: number, pages: number}>(url, {
+    return this.http.get<{docs: Movie[], total: number, limit: number, page: number, pages: number}>(url, {
       headers,
       params,
     })
@@ -51,7 +46,7 @@ export class MovieService {
       "X-API-KEY": "ZFDKM2M-ZK5MR14-QZEWNKN-5ES2KGB"
     };
 
-    return this.http.get<any>(url, {
+    return this.http.get<MovieById>(url, {
       headers
     })
   }
@@ -61,7 +56,7 @@ export class MovieService {
     const headers = {
       "X-API-KEY": "7306cdbf-559b-4d3f-a864-4cead1b042af"
     };
-    return this.http.get<IPerson>(url, {
+    return this.http.get<PersonById>(url, {
       headers
     })
   }

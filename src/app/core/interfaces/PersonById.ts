@@ -1,4 +1,4 @@
-export interface IPerson {
+export type PersonById = {
   personId: number
   webUrl: string | null
   nameRu: string | null
@@ -14,7 +14,16 @@ export interface IPerson {
   hasAwards: number | null
   profession: string | null
   facts: string[]
-  spouses: any
+  spouses: {
+    personId: number
+    name: string
+    divorced: boolean
+    divorcedReason: string
+    sex: string
+    children: number
+    webUrl: string
+    relation: string
+  }[]
   films: {
     filmId: number
     nameRu: string | null
@@ -22,6 +31,6 @@ export interface IPerson {
     rating: string | null
     general: boolean
     description: string | null
-    professionKEy: string
+    professionKey: string
   }[]
 }

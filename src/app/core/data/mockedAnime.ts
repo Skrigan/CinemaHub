@@ -1,6 +1,6 @@
-import {IMovie} from "../interfaces/IMovie";
+import {Movie} from "src/app/core/interfaces/Movie";
 
-export const mockedAnime: IMovie[] = [
+export const mockedAnime: Movie[] = [
   {
     "id": 2043233,
     "countries": [

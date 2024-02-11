@@ -33,7 +33,6 @@ section {
 
 .films {
   display: flex;
-  //gap: 1vw;
   flex-wrap: wrap;
   column-gap: 1vw;
   row-gap: 6vw;
@@ -42,6 +41,7 @@ section {
     row-gap: 50px;
     margin-bottom: 60px;
   }
+
   &__card {
     display: block;
     width: calc((100% - 5vw) / 6);

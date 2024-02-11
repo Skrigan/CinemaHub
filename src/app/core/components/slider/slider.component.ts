@@ -1,9 +1,9 @@
 import {
   AfterContentChecked,
-  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
-  ElementRef, HostListener,
+  ElementRef,
+  HostListener,
   ViewChild
 } from '@angular/core';
 

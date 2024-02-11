@@ -4,7 +4,7 @@ import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
   selector: '[appRateColor]'
 })
 export class RateColorDirective implements OnInit {
-  @Input() rating!: number | string;
+  @Input({required: true}) rating!: number | string;
 
   constructor(private element: ElementRef, private render: Renderer2) { }
 

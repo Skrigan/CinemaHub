@@ -1,14 +1,12 @@
 <section>
-  <h3 class="title">
-    <p class="title__text">{{title}}</p>
-  </h3>
+  <h3 class="title">{{title}}</h3>
   <div class="filters">
     <app-selector [label]="'Жанр'" [options]=genres [anyOption]="{label: 'Любой', value: null}" [presetValue]="searchParams['genres.name']" (onSelect)="getGenre($event)"></app-selector>
     <app-selector [label]="'Годы выхода'" [options]=years [anyOption]="{label: 'Любые', value: null}" [presetValue]="searchParams['year']" (onSelect)="getYear($event)"></app-selector>
     <app-selector [label]="'Рейтинг'" [options]=ratings [anyOption]="{label: 'Любой', value: null}" [presetValue]="searchParams['rating.kp']" (onSelect)="getRating($event)"></app-selector>
     <app-selector [label]="'Сортировать'" [options]=sortFields [presetValue]="searchParams['sortField']" (onSelect)="getSort($event!)" style="margin: 0 0 0 auto;"></app-selector>
   </div>
-  <div class="films" #films *ngIf="cards.length" (click)="onMovieChoice($event)">
+  <div class="films" #films>
     <a class="films__card" [routerLink]="'/movie/' + card.id" *ngFor="let card of cards" >
       <app-movie-card [card]="card"></app-movie-card>
     </a>

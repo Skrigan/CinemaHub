@@ -1,5 +1,6 @@
 import {
-  AfterViewChecked,
+  AfterViewInit,
+  OnChanges,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -9,7 +10,6 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-selector',
@@ -17,7 +17,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrl: './selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectorComponent {
+export class SelectorComponent implements OnChanges, AfterViewInit {
   @Input({required: true}) label!: string;
   @Input({required: true}) options!: { label: string, value: any }[];
   @Input() anyOption?: { label: string, value: any };
@@ -25,10 +25,10 @@ export class SelectorComponent {
 
   @Output() onSelect = new EventEmitter<any>();
 
-  @ViewChild('dropdown') dropdown!: ElementRef;
-  @ViewChild('placeholder') placeholder!: ElementRef;
-  @ViewChild('icon') icon!: ElementRef;
-  @ViewChild('option') option!: ElementRef;
+  @ViewChild('dropdown', {static: true}) dropdown!: ElementRef;
+  @ViewChild('placeholder', {static: true}) placeholder!: ElementRef;
+  @ViewChild('icon', {static: true}) icon!: ElementRef;
+  @ViewChild('option', {static: true}) option!: ElementRef;
 
   isOpened = false;
   selected!: Element;
@@ -46,13 +46,11 @@ export class SelectorComponent {
     }
   }
 
-  constructor(private route: ActivatedRoute) {
+  constructor() {
   }
 
   ngOnChanges() {
-    if (this.dropdown && this.placeholder && this.option && this.icon) {
-      this.updateView();
-    }
+    this.updateView();
   }
 
   ngAfterViewInit() {
@@ -77,7 +75,7 @@ export class SelectorComponent {
         if (this.options[i].value === this.presetValue) {
           const index = this.anyOption ? i + 1 : i;
           this.selected = dropdownElement.children[index];
-          this.option.nativeElement.textContent = this.selected.textContent;
+          this.option.nativeElement.textContent = this.selected?.textContent;
           isFounded = true;
         }
       }
@@ -93,7 +91,7 @@ export class SelectorComponent {
 
     }
 
-    this.selected.classList.add('options__value_selected');
+    this.selected?.classList.add('options__value_selected');
   }
 
   getOption(event: MouseEvent) {
