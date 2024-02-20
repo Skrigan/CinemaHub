@@ -1,9 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MainComponent} from "./core/pages/main/main.component";
-import {FilmsComponent} from "./core/pages/films/films.component";
-import {MovieComponent} from "./core/pages/movie/movie.component";
-import {PersonComponent} from "./core/pages/person/person.component";
 
 const routes: Routes = [
   {
@@ -13,31 +9,31 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    component: MainComponent,
+    loadChildren: () => import("./main/main.module").then((m) => m.MainModule),
   },
   {
     path: 'movie/:id',
-    component: MovieComponent,
+    loadChildren: () => import("./movie/movie.module").then((m) => m.MovieModule),
   },
   {
     path: 'films',
-    component: FilmsComponent,
+    loadChildren: () => import("./films/films.module").then((m) => m.FilmsModule),
   },
   {
     path: 'series',
-    component: FilmsComponent,
+    loadChildren: () => import("./films/films.module").then((m) => m.FilmsModule),
   },
   {
     path: 'cartoons',
-    component: FilmsComponent,
+    loadChildren: () => import("./films/films.module").then((m) => m.FilmsModule),
   },
   {
     path: 'anime',
-    component: FilmsComponent,
+    loadChildren: () => import("./films/films.module").then((m) => m.FilmsModule),
   },
   {
     path: 'person/:id',
-    component: PersonComponent,
+    loadChildren: () => import("./person/person.module").then((m) => m.PersonModule),
   },
 ];
 

@@ -1,0 +1,103 @@
+@import "../../../../variables";
+
+:host {
+  display: block;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+}
+
+.selector {
+  position: relative;
+  width: 10vw;
+  font-size: .8vw;
+  cursor: pointer;
+  @media (max-width: 500px) {
+    width: 100%;
+    font-size: 2vw;
+  }
+}
+
+.placeholder {
+  height: 2.6vw;
+  padding: .4vw .8vw;
+  background-color: $neutral-0;
+  transition: background-color .2s;
+  border-radius: .3vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 500px) {
+    height: 5.4vw;
+    border-radius: .6vw;
+    padding: .8vw 1.6vw;
+  }
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
+  &__icon {
+    width: 0.5vw;
+    transform: rotate(90deg);
+    transition: transform .2s;
+    @media (max-width: 500px) {
+      width: 1vw;
+    }
+    &_opened {
+      transform: rotate(-90deg);
+    }
+  }
+  &__label {
+    color: $text-white;
+  }
+  &__option {
+    font-size: .6vw;
+    @media (max-width: 500px) {
+      font-size: 1.5vw;
+    }
+  }
+  &:hover {
+    background-color: $neutral-10;
+  }
+}
+
+.options {
+  background-color: $neutral-0;
+  position: absolute;
+  top: calc(100% + .5vw);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  max-height: 14.5vw;
+  z-index: 2;
+  border-radius: .3vw;
+  width: 100%;
+  @media (max-width: 500px) {
+    max-height: 50vw;
+    border-radius: .6vw;
+  }
+
+  &__hidden {
+    display: none;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &__value {
+    position: relative;
+    padding: .5vw .8vw;
+    transition: background-color .2s, color .2s;
+    @media (max-width: 500px) {
+      padding: 1vw 1.6vw;
+    }
+
+    &_selected {
+      background-color: $neutral-20;
+      color: $text-white;
+    }
+    &:hover {
+      background-color: $neutral-10;
+      color: $text-white;
+    }
+  }
+}

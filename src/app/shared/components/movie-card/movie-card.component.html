@@ -1,0 +1,7 @@
+<img class="img" *ngIf="!isImgLoaded" src="../../../../assets/placeholder.png" >
+<img class="img" [hidden]="!isImgLoaded" [src]="card.poster.previewUrl" (load)="isImgLoaded = true" >
+<div class="text">
+  <h4 class="text__title">{{card.name}}</h4>
+  <p class="text__info">{{textInfo}}</p>
+</div>
+<div *ngIf="card?.rating?.kp" appRateColor [rating]="card.rating.kp" class="rating">{{card.rating.kp | number: '1.1-1'}}</div>

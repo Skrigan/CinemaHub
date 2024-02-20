@@ -1,31 +1,18 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {SearchParams} from "../pages/films/films.component";
-import {Movie} from "../types/Movie";
-import {PersonById} from "../types/PersonById";
-import {MovieById} from "../types/MovieById";
+import {SearchParams} from "../../films/page/films/films.component";
+import {Movie} from "../../shared/types/Movie";
+import {PersonById} from "../../shared/types/PersonById";
+import {MovieById} from "../../shared/types/MovieById";
 import {forkJoin} from "rxjs";
-import {Premiere} from "../types/Premiere";
+import {Premiere} from "../../shared/types/Premiere";
 
 type PremiereParams = {
   year: number,
   month: string
 }
 
-enum monthes {
-  JANUARY,
-  FEBRUARY,
-  MARCH,
-  APRIL,
-  MAY,
-  JUNE,
-  JULY,
-  AUGUST,
-  SEPTEMBER,
-  OCTOBER,
-  NOVEMBER,
-  DECEMBER,
-}
+const MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +26,9 @@ export class HttpService {
     const headers = {
       "X-API-KEY": "ZFDKM2M-ZK5MR14-QZEWNKN-5ES2KGB"
     };
-    const params = {
+    const params: {
+      [key: string]: any;
+    } = {
       'selectFields': ['id', 'name', 'countries', 'genres', 'year', 'votes', 'rating', 'poster'],
       'limit': 60,
       'sortType': -1,
@@ -47,14 +36,13 @@ export class HttpService {
       'page': '1',
     }
 
-    for (let param in searchParams) {
-      // @ts-ignore
+    const arr = (Object.keys(searchParams) as Array<keyof SearchParams>);
+    arr.forEach((param) => {
       const value = searchParams[param];
       if (value !== null) {
-        // @ts-ignore
         params[param] = value;
       }
-    }
+    })
 
     return this.http.get<{docs: Movie[], total: number, limit: number, page: number, pages: number}>(url, {
       headers,
@@ -92,15 +80,15 @@ export class HttpService {
     const date = new Date();
     const currentMonthParams: PremiereParams = {
       year: date.getFullYear(),
-      month: monthes[date.getMonth()],
+      month: MONTHS[date.getMonth()],
     }
     const nextMonthParams: PremiereParams =
         currentMonthParams.month === 'DECEMBER' ? {
           year: date.getFullYear() + 1,
-          month: monthes[0],
+          month: MONTHS[0],
         } : {
           year: date.getFullYear(),
-          month: monthes[date.getMonth() + 1],
+          month: MONTHS[date.getMonth() + 1],
         }
 
     return forkJoin({

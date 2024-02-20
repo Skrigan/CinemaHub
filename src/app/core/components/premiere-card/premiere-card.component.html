@@ -1,6 +1,0 @@
-<img class="img" *ngIf="!isImgLoaded" src="./assets/placeholder.png" >
-<img class="img" [hidden]="!isImgLoaded" [src]="card.posterUrl" (load)="isImgLoaded = true" alt="failed to load poster image">
-<div class="text">
-  <h4 class="text__title">{{card.nameRu}}</h4>
-  <p class="text__info">{{textInfo}}</p>
-</div>

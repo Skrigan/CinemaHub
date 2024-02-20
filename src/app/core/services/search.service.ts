@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ReplaySubject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {MovieBySearch} from "../types/MovieBySearch";
+import {MovieBySearch} from "../../shared/types/MovieBySearch";
 
 @Injectable({
   providedIn: 'root'

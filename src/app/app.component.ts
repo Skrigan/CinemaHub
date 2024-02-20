@@ -3,7 +3,7 @@ import {NavigationEnd, Router} from "@angular/router";
 import {ModalService} from "./core/services/modal.service";
 import {SafeResourceUrl} from "@angular/platform-browser";
 import {SearchService} from "./core/services/search.service";
-import {MovieBySearch} from "./core/types/MovieBySearch";
+import {MovieBySearch} from "./shared/types/MovieBySearch";
 
 @Component({
   selector: 'app-root',
