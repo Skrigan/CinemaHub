@@ -56,7 +56,10 @@ export class FilmsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const key = this.router.url.slice(1);
+    const url = this.router.url;
+    const param = url.indexOf('?');
+    const key = url.slice(1, param === -1 ? url.length : param);
+    console.log('key: ', key);
     this.title = typeFromPath[key].title;
 
     this.route.queryParams.subscribe((params) => {
