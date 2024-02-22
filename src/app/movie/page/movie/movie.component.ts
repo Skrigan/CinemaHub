@@ -82,7 +82,7 @@ export class MovieComponent implements OnInit{
 
   getVoidBoostLink() {
     const firstEpisodeParam = this.movie.isSeries ? '?s=1&e=1' : '';
-    this.modalService.setVideoLink(`https://voidboost.tv/embed/${this.movie.id}${firstEpisodeParam}`);
+    this.modalService.setVideoLink(`https://voidboost.net/embed/${this.movie.id}${firstEpisodeParam}`);
   }
 
   getNumberOfSeasons(seasonsLength: number) {
